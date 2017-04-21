@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Bundle-SymbolicName: org.openhab.binding.smartthings;singleton:=true
+Export-Package: org.openhab.binding.smartthings,org.openhab.binding.sm
+ artthings.handler
+Bundle-Name: Smartthings Binding
+Bundle-Version: 2.1.0.201704202201
+Bundle-ClassPath: .
+Require-Bundle: org.eclipse.jetty.http,org.eclipse.jetty.client;bundle
+ -version="9.2.12"
+Bundle-ManifestVersion: 2
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Vendor: openHAB
+Import-Package: com.google.gson,javax.servlet,javax.servlet.http,com.g
+ oogle.common.collect,org.apache.commons.codec;version="1.6.0",org.ecl
+ ipse.jetty.client.api;version="9.2.12",org.eclipse.jetty.client.http;
+ version="9.2.12",org.eclipse.jetty.client.util;version="9.2.12",org.e
+ clipse.jetty.util.component;version="9.2.12",org.eclipse.smarthome.co
+ nfig.core,org.eclipse.smarthome.config.discovery,org.eclipse.smarthom
+ e.core.events,org.eclipse.smarthome.core.items,org.eclipse.smarthome.
+ core.library.types,org.eclipse.smarthome.core.thing,org.eclipse.smart
+ home.core.thing.binding,org.eclipse.smarthome.core.thing.binding.buil
+ der,org.eclipse.smarthome.core.thing.type,org.eclipse.smarthome.core.
+ types,org.openhab.binding.smartthings,org.openhab.binding.smartthings
+ .handler,org.osgi.framework,org.osgi.service.component,org.osgi.servi
+ ce.event,org.osgi.service.http,org.slf4j
+Service-Component: OSGI-INF/*.xml
+
