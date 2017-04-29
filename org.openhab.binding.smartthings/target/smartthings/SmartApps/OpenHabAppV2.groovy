@@ -216,7 +216,7 @@ import groovy.transform.Field
             "currentActivity"
         ]
     ],
-    "motionSensors": [
+    "motionSensor": [
         name: "Motion Sensor",
         capability: "capability.motionSensor",
         attributes: [

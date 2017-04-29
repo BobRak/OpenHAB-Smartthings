@@ -3,7 +3,7 @@ Bundle-SymbolicName: org.openhab.binding.smartthings;singleton:=true
 Export-Package: org.openhab.binding.smartthings,org.openhab.binding.sm
  artthings.handler
 Bundle-Name: Smartthings Binding
-Bundle-Version: 2.1.0.201704202201
+Bundle-Version: 2.1.0.201704290425
 Bundle-ClassPath: .
 Require-Bundle: org.eclipse.jetty.http,org.eclipse.jetty.client;bundle
  -version="9.2.12"

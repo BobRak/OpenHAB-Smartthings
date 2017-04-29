@@ -714,7 +714,7 @@
      </thing-type>
     
     <!-- Motion Sensor -->
-    <thing-type id="motionSensors">
+    <thing-type id="motionSensor">
         <supported-bridge-type-refs>
             <bridge-type-ref id="smartthings"/>
         </supported-bridge-type-refs>

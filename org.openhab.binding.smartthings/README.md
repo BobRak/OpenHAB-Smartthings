@@ -11,7 +11,7 @@ The goal is to support all of the bindings in the [Smartthings Capabilities list
 * Switch Level (i.e. dimmer)
 * Three Axis
 
-Please test with your devices. When (I won't even say if) you find one that doesn't work [follow these instructions](TroubleShooting.md) to collect the required data so I can work to support it.
+Please test with your devices. When (I won't even say if) you find one that doesn't work [follow these instructions](Troubleshooting.md) to collect the required data so I can work to support it.
 
 ## Discovery
 Discovery allows OpenHAB to examine a binding and automatically find the Things available on binding. Discovery is supported and does work but needs more testing.
@@ -24,7 +24,7 @@ Discovery is not run automatically on startup. Therefore to run the discovery pr
 5. You should now see the Smartthings Things in the Inbox
 6. More information on using discovery is available in the [configuration Tutorial](http://docs.openhab.org/tutorials/beginner/configuration.html)
 
-##OpenHAB Configuration
+## OpenHAB Configuration
 This binding is an OpenHAB 2 binding and uses the Bridge / Thing design with the Smartthings Hub being the Bridge and the controlled modules being the Things. The following definitions are specified in the .things file.
 
 ### Bridge Configuration
@@ -84,7 +84,7 @@ The parts (separated by :) are defined as:
     Number  MainGarageBattery    "Garage battery [%.0f]"  <battery>           { channel="smartthings:battery:Home:MainGarageBattery:battery" }  
     Switch           OfficeLight          "Office light"    <light>           { channel="smartthings:switch:Home:OfficeLight:switch" }
 
-##Smartthings Configuration
+## Smartthings Configuration
 Prior to running starting the binding the Smartthings hub must have the required OpenHAB software installed. [Follow these instructions](SmartthingsInstallation.md)
 
 ## Installation
