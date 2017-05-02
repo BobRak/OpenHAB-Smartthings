@@ -42,7 +42,7 @@ public class SmartthingsBindingConstants {
             new ThingTypeUID(BINDING_ID, "imageCapture"), new ThingTypeUID(BINDING_ID, "indicator"),
             new ThingTypeUID(BINDING_ID, "infraredLevel"), new ThingTypeUID(BINDING_ID, "light"),
             new ThingTypeUID(BINDING_ID, "lock"), new ThingTypeUID(BINDING_ID, "lockOnly"),
-            new ThingTypeUID(BINDING_ID, "mediaController"), new ThingTypeUID(BINDING_ID, "motionSensors"),
+            new ThingTypeUID(BINDING_ID, "mediaController"), new ThingTypeUID(BINDING_ID, "motionSensor"),
             new ThingTypeUID(BINDING_ID, "musicPlayer"), new ThingTypeUID(BINDING_ID, "outlet"),
             new ThingTypeUID(BINDING_ID, "pHMeasurement"), new ThingTypeUID(BINDING_ID, "powerMeter"),
             new ThingTypeUID(BINDING_ID, "powerSource"), new ThingTypeUID(BINDING_ID, "presenceSensor"),
