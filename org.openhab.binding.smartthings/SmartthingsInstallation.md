@@ -31,7 +31,7 @@ The files are located within the **target** directory structure. The following f
 11. The SmartApp is now ready
 
 ### Install OpenHabDeviceHandler
-1. Locate OpenHabAppV2.groovy in the /target/smartthings/DeviceHandlers Directory.
+1. Locate OpenHabDeviceHandler.groovy in the /target/smartthings/DeviceHandlers Directory.
 2. Open OpenHabDeviceHandler.groovy in an editor (Some program you can use to copy the contents to the clipboard)
 3. Copy the contents to the clipboard
 4. Using the Smartthings developers tools:
@@ -60,8 +60,6 @@ The files are located within the **target** directory structure. The following f
      * mac: (This is the same as the Device Network ID but with : between segments
      * port: 8080 (This is the port of the OpenHAB application on your server)
      * Save the preferences
-10. Click on **Publish -> For Me**
-11. The SmartApp is now ready
 
 ## Configuration in the Smartthings App
 Next the App needs to be configured using **the Smartthings App on your smartphone**.

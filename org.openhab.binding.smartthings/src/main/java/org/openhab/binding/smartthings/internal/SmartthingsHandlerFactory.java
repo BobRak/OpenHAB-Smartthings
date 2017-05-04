@@ -116,7 +116,7 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see org.osgi.service.event.EventHandler#handleEvent(org.osgi.service.event.Event)
      *
      * "state" messages from the Hub are delivered here.

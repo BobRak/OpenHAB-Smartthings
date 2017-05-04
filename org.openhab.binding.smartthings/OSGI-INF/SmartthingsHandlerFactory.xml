@@ -17,5 +17,4 @@
    </service>
    <property name="event.topics" value="org/openhab/binding/smartthings/state" />
    
-   <reference interface="org.eclipse.smarthome.core.thing.type.ThingTypeRegistry" bind="setThingTypeRegistry"/>
 </scr:component>
