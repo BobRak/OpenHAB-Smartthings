@@ -1,13 +1,13 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='org.openhab.binding.smartthings' version='2.1.0.201705041728'>
+  <artifact classifier='osgi.bundle' id='org.openhab.binding.smartthings' version='2.2.0.201708312359'>
     <properties size='5'>
-      <property name='artifact.size' value='38581'/>
-      <property name='download.size' value='38581'/>
+      <property name='artifact.size' value='44149'/>
+      <property name='download.size' value='44149'/>
       <property name='maven-groupId' value='org.openhab.binding'/>
       <property name='maven-artifactId' value='org.openhab.binding.smartthings'/>
-      <property name='maven-version' value='2.1.0-SNAPSHOT'/>
+      <property name='maven-version' value='2.2.0-SNAPSHOT'/>
     </properties>
   </artifact>
 </artifacts>

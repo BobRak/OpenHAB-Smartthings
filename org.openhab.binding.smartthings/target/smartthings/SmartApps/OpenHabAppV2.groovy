@@ -216,7 +216,7 @@ import groovy.transform.Field
             "currentActivity"
         ]
     ],
-    "motionSensor": [
+    "motionSensors": [
         name: "Motion Sensor",
         capability: "capability.motionSensor",
         attributes: [
@@ -272,7 +272,7 @@ import groovy.transform.Field
             "presence"
         ]
     ],
-    "humiditySensor": [
+    "relativeHumidityMeasurement": [
         name: "Relative Humidity Measurement",
         capability: "capability.relativeHumidityMeasurement",
         attributes: [
@@ -620,7 +620,6 @@ def openhabStateHandler(evt) {
                 body: [
                     deviceDisplayName: device.displayName,
                     capabilityAttribute: json.capabilityAttribute,
-                    capabilityKey: json.capabilityKey,
                     value: currentState
                 ]
             ]) 
@@ -668,7 +667,7 @@ def openhabUpdateHandler(evt) {
                 log.debug "openhabUpdateHandler - Capability ${capability.name} with device name ${device.displayName} changed to ${json.value} using action ${capability.action}"
                 def action = capability["action"]
                 // Yes, this is calling the method dynamically
-                "$action"(device, json.type, json.value)
+                "$action"(device, json.capabilityAttribute, json.value)
             }
         }
     }
@@ -761,7 +760,7 @@ def actionColor(device, attribute, value) {
 def actionOpenClosed(device, attribute, value) {
     if (value == "open") {
         device.open()
-    } else if (value == "closed") {
+    } else if (value == "close") {
         device.close()
     }
 }

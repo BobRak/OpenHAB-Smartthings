@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?><sca xmlns:functx="http://www.functx.com">
+<file name=".binding.smartthings\build.properties">
+      <message tool="checkstyle" line="0" message="File does not end with a newline." priority="3" rule="NewlineAtEndOfFileCheck" category="style"/>
+   </file>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</sca>

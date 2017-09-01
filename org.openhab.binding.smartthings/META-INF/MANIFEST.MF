@@ -3,19 +3,21 @@ Bundle-ManifestVersion: 2
 Bundle-Name: Smartthings Binding
 Bundle-SymbolicName: org.openhab.binding.smartthings;singleton:=true
 Bundle-Vendor: openHAB
-Bundle-Version: 2.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-Version: 2.2.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-ClassPath: .
 Import-Package: 
  com.google.gson,
  javax.servlet,
  javax.servlet.http,
  com.google.common.collect,
- org.apache.commons.codec;version="1.6.0",
- org.eclipse.jetty.client.api;version="9.2.12",
- org.eclipse.jetty.client.http;version="9.2.12",
- org.eclipse.jetty.client.util;version="9.2.12",
- org.eclipse.jetty.util.component;version="9.2.12",
+ org.apache.commons.codec,
+ org.eclipse.jetty.client,
+ org.eclipse.jetty.client.api,
+ org.eclipse.jetty.client.http,
+ org.eclipse.jetty.client.util,
+ org.eclipse.jetty.http,
+ org.eclipse.jetty.util.component,
  org.eclipse.smarthome.config.core,
  org.eclipse.smarthome.config.discovery,
  org.eclipse.smarthome.core.events,
@@ -27,6 +29,8 @@ Import-Package:
  org.eclipse.smarthome.core.thing.type,
  org.eclipse.smarthome.core.types,
  org.openhab.binding.smartthings,
+ org.openhab.binding.smartthings.config,
+ org.openhab.binding.smartthings.discovery,
  org.openhab.binding.smartthings.handler,
  org.osgi.framework,
  org.osgi.service.component,
@@ -35,6 +39,6 @@ Import-Package:
  org.slf4j
 Service-Component: OSGI-INF/*.xml
 Export-Package: org.openhab.binding.smartthings,
+ org.openhab.binding.smartthings.config,
+ org.openhab.binding.smartthings.discovery,
  org.openhab.binding.smartthings.handler
-Require-Bundle: org.eclipse.jetty.http,
- org.eclipse.jetty.client;bundle-version="9.2.12"

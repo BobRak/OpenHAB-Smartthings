@@ -1,7 +1,9 @@
 # Samsung Smartthings Binding
+
 This binding integrates the Samsung Smartthings Hub into OpenHAB. This is implemented as an OpenHAB 2 binding.
 
 ## Supported things
+
 The goal is to support all of the bindings in the [Smartthings Capabilities list](http://docs.smartthings.com/en/latest/capabilities-reference.html). However I have a very limited number of devices and have currently tested the following devices:
 
 * Acceleration
@@ -14,9 +16,11 @@ The goal is to support all of the bindings in the [Smartthings Capabilities list
 Please test with your devices. When (I won't even say if) you find one that doesn't work [follow these instructions](Troubleshooting.md) to collect the required data so I can work to support it.
 
 ## Discovery
+
 Discovery allows OpenHAB to examine a binding and automatically find the Things available on binding. Discovery is supported and does work but needs more testing.
 
 Discovery is not run automatically on startup. Therefore to run the discovery process perform the following:
+
 1. Start the PaperUI
 2. Click on **Inbox**
 3. At the bottom of the screen click on **SEARCH FOR THINGS**
@@ -25,9 +29,11 @@ Discovery is not run automatically on startup. Therefore to run the discovery pr
 6. More information on using discovery is available in the [configuration Tutorial](http://docs.openhab.org/tutorials/beginner/configuration.html)
 
 ## OpenHAB Configuration
+
 This binding is an OpenHAB 2 binding and uses the Bridge / Thing design with the Smartthings Hub being the Bridge and the controlled modules being the Things. The following definitions are specified in the .things file.
 
 ### Bridge Configuration
+
 The bridge requires the IP address and port used to connect the OpenHAB server to the Smarrthings Hub.
 
     Bridge smartthings:smartthings:Home    [ smartthingsIp="192.168.1.12", smartthingsPort=39500 ] {
@@ -40,6 +46,7 @@ where:
 
 
 ### Thing Configuration
+
 Each attached thing must specify the type of device and it's Smartthings device name. The formart of the Thing description is:
 
     Thing <thingTypeId> name [ smartthingsName="<deviceName>" ]
@@ -62,6 +69,7 @@ where:
     }
 
 ## Items
+
 These are specified in the .items file. This section describes the specifics related to this binding. Please see the [Items documentation](http://docs.openhab.org/configuration/items.html) for a full explanation of configuring items.
 
 The most important thing is getting the **channel** specification correct. The general format is:
@@ -85,9 +93,11 @@ The parts (separated by :) are defined as:
     Switch           OfficeLight          "Office light"    <light>           { channel="smartthings:switch:Home:OfficeLight:switch" }
 
 ## Smartthings Configuration
+
 Prior to running starting the binding the Smartthings hub must have the required OpenHAB software installed. [Follow these instructions](SmartthingsInstallation.md)
 
 ## Installation
+
 Until this binding has been added to the OpenHAB repository you will need to copy the binding "jar" file to your OpenHAB server.
 
 1. Locate the org.openhab.binding.smartthings-2.1.0-SNAPSHOT.jar file in the /target folder of the distribution.
@@ -96,10 +106,12 @@ Until this binding has been added to the OpenHAB repository you will need to cop
 4. Add the appropriate configuration files (.things, .items, .sitemaps)
 
 ## Known issues 
+
 1. An exception is thrown when the the .things file is changed. Needs further research
 2. Testing has been limited to the small set of devices I own.
 
 ## How to report issues
+
 Testing has been limited to the small number of devices I own which are listed near the top of this document. If you discover one of your devices doesn't work as expected please follow the instructions in the [Troubleshooting file](Troubleshooting.md) and raise an issue on my Github Repo [BobRak](https://github.com/BobRak/)
 
 ## References

@@ -34,9 +34,6 @@
        <channels>
             <channel id="acceleration" typeId="acceleration-channel">
                 <label>acceleration</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -60,9 +57,6 @@
        <channels>
             <channel id="alarm" typeId="alarm-channel">
                 <label>Alarm</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -88,9 +82,6 @@
         <channels>
             <channel id="battery" typeId="battery-channel">
                 <label>battery</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -114,9 +105,6 @@
         <channels>
             <channel id="presence" typeId="presence-channel">
                 <label>presence</label>
-                <properties>
-                    <property name="smarttsmartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -140,9 +128,6 @@
         <channels>
             <channel id="switch" typeId="switch-channel">
                 <label>bulb</label>
-                <properties>
-                    <property name="smartthings-dataType">OnOff</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -166,9 +151,6 @@
        <channels>
             <channel id="button" typeId="button-channel">
                 <label>Button</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -192,9 +174,6 @@
        <channels>
             <channel id="carbonDioxide" typeId="carbonDioxide-channel">
                 <label>CarbonDioxide</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -218,9 +197,6 @@
        <channels>
             <channel id="carbonMonoxide" typeId="carbonMonoxide-channel">
                 <label>CarbonMonoxide</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -244,9 +220,6 @@
        <channels>
             <channel id="hue" typeId="hue-channel">
                 <label>Hue</label>
-                <properties>
-                    <property name="smartthings-dataType">Percent</property>
-                </properties>
             </channel>
             <channel id="saturation" typeId="saturation-channel">
                 <label>Saturation</label>
@@ -282,9 +255,6 @@
        <channels>
             <channel id="colorTemperature" typeId="colorTemperature-channel">
                 <label>ColorTemperature</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -308,9 +278,6 @@
        <channels>
             <channel id="consumable" typeId="consumable-channel">
                 <label>Consumable</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -335,9 +302,6 @@
         <channels>
             <channel id="contact" typeId="contact-channel">
                 <label>Contact</label>
-                <properties>
-                    <property name="smartthings-dataType">OpenClosed</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -359,10 +323,10 @@
         <label>Door control</label>
         <description>Allow for the control of a door</description>
         <channels>
-            <channel id="door" typeId="door-state-channel">
+            <channel id="door" typeId="door-control-channel">
                 <label>Door</label>
                 <properties>
-                    <property name="smartthings-dataType">ENUM</property>
+                    <property name="smartthings-converter">openCloseControl</property>
                 </properties>
             </channel>
         </channels>
@@ -387,9 +351,6 @@
         <channels>
             <channel id="energy" typeId="energy-channel">
                 <label>Energy</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -414,9 +375,6 @@
        <channels>
             <channel id="estimatedTimeOfArrival" typeId="estimatedTimeOfArrival-channel">
                 <label>estimatedTimeOfArrival</label>
-                <properties>
-                    <property name="smartthings-dataType">Text</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -439,10 +397,10 @@
         <label>Garage Door Control</label>
         <description>Garage Door Control</description>
        <channels>
-            <channel id="door" typeId="door-state-channel">
+            <channel id="door" typeId="door-control-channel">
                 <label>Door</label>
                 <properties>
-                    <property name="smartthings-dataType"></property>
+                    <property name="smartthings-converter">openCloseControl</property>
                 </properties>
             </channel>
         </channels>
@@ -468,15 +426,9 @@
        <channels>
             <channel id="button" typeId="button-channel">
                 <label>Button</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
             <channel id="numberOfButtons" typeId="numberOfButtons-channel">
                 <label>Button</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -501,9 +453,6 @@
        <channels>
             <channel id="illuminance" typeId="illuminance-channel">
                 <label>IlluminanceMeasurement</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -528,9 +477,6 @@
        <channels>
             <channel id="imageCapture" typeId="imageCapture-channel">
                 <label>ImageCapture</label>
-                <properties>
-                    <property name="smartthings-dataType">Text</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -555,9 +501,6 @@
        <channels>
             <channel id="indicatorStatus" typeId="indicatorStatus-channel">
                 <label>Indicator</label>
-                <properties>
-                    <property name="smartthings-dataType">Text</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -582,9 +525,6 @@
        <channels>
             <channel id="infraredLevel" typeId="infraredLevel-channel">
                 <label>infraredLevel</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -609,9 +549,6 @@
        <channels>
             <channel id="switch" typeId="switch-channel">
                 <label>Switch</label>
-                <properties>
-                    <property name="smartthings-dataType">OnOff</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -636,9 +573,6 @@
        <channels>
             <channel id="lock" typeId="lock-channel">
                 <label>Lock</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -663,9 +597,6 @@
        <channels>
             <channel id="lock" typeId="lock-channel">
                 <label>Lock</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -690,15 +621,9 @@
        <channels>
             <channel id="activities" typeId="activities-channel">
                 <label>Activities</label>
-                <properties>
-                    <property name="smartthings-dataType">Text</property>
-                </properties>
             </channel>
             <channel id="currentActivity" typeId="currentActivity-channel">
                 <label>Current Activity</label>
-                <properties>
-                    <property name="smartthings-dataType">Text</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -723,9 +648,6 @@
        <channels>
             <channel id="motion" typeId="motion-channel">
                 <label>motion</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -750,33 +672,18 @@
        <channels>
             <channel id="status" typeId="status-channel">
                 <label>status</label>
-                <properties>
-                    <property name="smartthings-dataType">Text</property>
-                </properties>
             </channel>
-            <channel id="level" typeId="level-channel">
-                <label>status</label>
-                <properties>
-                    <property name="smartthings-dataType">Percent</property>
-                </properties>
+            <channel id="level" typeId="volumeLevel-channel">
+                <label>level</label>
             </channel>
             <channel id="trackDescription" typeId="trackDescription-channel">
                 <label>status</label>
-                <properties>
-                    <property name="smartthings-dataType">Text</property>
-                </properties>
             </channel>
             <channel id="trackData" typeId="trackData-channel">
                 <label>status</label>
-                <properties>
-                    <property name="smartthings-dataType">Text</property>
-                </properties>
             </channel>
             <channel id="mute" typeId="mute-channel">
                 <label>status</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -801,9 +708,6 @@
        <channels>
             <channel id="switch" typeId="switch-channel">
                 <label>Outlet</label>
-                <properties>
-                    <property name="smartthings-dataType">OnOff</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -828,9 +732,6 @@
        <channels>
             <channel id="pH" typeId="pH-channel">
                 <label>pH Measurement</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -855,9 +756,6 @@
         <channels>
             <channel id="power" typeId="power-channel">
                 <label>Power</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -882,9 +780,6 @@
        <channels>
             <channel id="powerSource" typeId="powerSource-channel">
                 <label>PowerSource</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -909,9 +804,6 @@
        <channels>
             <channel id="presence" typeId="presence-channel">
                 <label>presence</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -927,7 +819,7 @@
      </thing-type>
     
     <!-- Relative Humidity Measurement -->
-    <thing-type id="humiditySensor">
+    <thing-type id="relativeHumidityMeasurement">
         <supported-bridge-type-refs>
             <bridge-type-ref id="smartthings"/>
         </supported-bridge-type-refs>
@@ -936,9 +828,6 @@
        <channels>
             <channel id="humidity" typeId="humidity-channel">
                 <label>Humidity</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -953,7 +842,6 @@
         </config-description>
      </thing-type>
     
-
     <thing-type id="relaySwitch">
         <supported-bridge-type-refs>
             <bridge-type-ref id="smartthings"/>
@@ -963,9 +851,6 @@
         <channels>
             <channel id="switch" typeId="switch-channel">
                 <label>Switch</label>
-                <properties>
-                    <property name="smartthings-dataType">OnOff</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -990,9 +875,6 @@
        <channels>
             <channel id="shock" typeId="shock-channel">
                 <label>shock</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1017,15 +899,9 @@
        <channels>
             <channel id="lqi" typeId="lqi-channel">
                 <label>LinkQualityIndicator</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
             <channel id="rssi" typeId="rssi-channel">
                 <label>Received Signal Strength Indication</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1050,9 +926,6 @@
        <channels>
             <channel id="sleeping" typeId="sleeping-channel">
                 <label>sleeping value</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1077,15 +950,9 @@
        <channels>
             <channel id="smoke" typeId="smoke-channel">
                 <label>Smoke</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
             <channel id="carbonMonoxide" typeId="carbonMonoxide-channel">
                 <label>Smoke</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1110,9 +977,6 @@
        <channels>
             <channel id="soundPressureLevel" typeId="soundPressureLevel-channel">
                 <label>soundPressureLevel</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1137,9 +1001,6 @@
        <channels>
             <channel id="sound" typeId="sound-channel">
                 <label>Sound Sensor</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1164,9 +1025,6 @@
        <channels>
             <channel id="phraseSpoken" typeId="phraseSpoken-channel">
                 <label>Speech Recognition</label>
-                <properties>
-                    <property name="smartthings-dataType">Text</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1191,15 +1049,9 @@
        <channels>
             <channel id="goal" typeId="goal-channel">
                 <label>Step Goal</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
             <channel id="steps" typeId="steps-channel">
                 <label>Current Step Count</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1224,9 +1076,6 @@
         <channels>
             <channel id="switch" typeId="switch-channel">
                 <label>Switch</label>
-                <properties>
-                    <property name="smartthings-dataType">OnOff</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1251,36 +1100,6 @@
        <channels>
             <channel id="level" typeId="level-channel">
                 <label>Level</label>
-                <properties>
-                    <property name="smartthings-dataType">Percent</property>
-                </properties>
-            </channel>
-        </channels>
-        <config-description>
-            <parameter name="smartthingsName" type="text" required="true" >
-                <label>Smartthings Name</label>
-                <description>User assigned Smartthings device name</description>
-            </parameter>
-            <parameter name="smartthingsLocation" type="text" >
-                <label>Smartthings Location</label>
-                <description>Where the device is located</description>
-            </parameter>
-        </config-description>
-     </thing-type>
-    
-    <!-- Sound Pressure Level -->
-    <thing-type id="soundPressureLevel">
-        <supported-bridge-type-refs>
-            <bridge-type-ref id="smartthings"/>
-        </supported-bridge-type-refs>
-        <label>Sound Pressure Level</label>
-        <description>Sound Pressure Level</description>
-       <channels>
-            <channel id="soundPressureLevel" typeId="soundPressureLevel-channel">
-                <label>tamper</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1305,9 +1124,6 @@
        <channels>
             <channel id="tamper" typeId="tamper-channel">
                 <label>tamper</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1332,9 +1148,6 @@
         <channels>
             <channel id="temperature" typeId="temperature-channel">
                 <label>Temperature</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1359,39 +1172,21 @@
        <channels>
             <channel id="heatingSetpoint" typeId="heatingSetpoint-channel">
                 <label>Heating Setpoint</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
             <channel id="coolingSetpoint" typeId="coolingSetpoint-channel">
                 <label>Cooling Setpoint</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
             <channel id="thermostatSetpoint" typeId="thermostatSetpoint-channel">
                 <label>Thermostat Setpoint</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
             <channel id="thermostatMode" typeId="thermostatMode-channel">
                 <label>Thermostat Mode</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
             <channel id="thermostatFanMode" typeId="thermostatFanMode-channel">
                 <label>Thermostat Fan Mode</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
             <channel id="thermostatOperatingState" typeId="thermostatOperatingState-channel">
                 <label>thermostatOperatingState</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1416,9 +1211,6 @@
        <channels>
             <channel id="coolingSetpoint" typeId="coolingSetpoint-channel">
                 <label>Cooling Setpoint</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1443,9 +1235,6 @@
         <channels>
             <channel id="thermostatFanMode" typeId="thermostatFanMode-channel">
                 <label>Thermostat Fan Mode</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1470,9 +1259,6 @@
         <channels>
             <channel id="heatingSetpoint" typeId="heatingSetpoint-channel">
                 <label>Heating Setpoint</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1497,9 +1283,6 @@
         <channels>
             <channel id="thermostatMode" typeId="thermostatMode-channel">
                 <label>Thermostat Mode</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1524,9 +1307,6 @@
         <channels>
             <channel id="thermostatOperatingState" typeId="thermostatOperatingState-channel">
                 <label>thermostatOperatingState</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1551,9 +1331,6 @@
         <channels>
             <channel id="thermostatSetpoint" typeId="thermostatSetpoint-channel">
                 <label>Thermostat Setpoint</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1577,9 +1354,6 @@
         <channels>
             <channel id="threeAxis" typeId="three-axis-channel">
                 <label>Three axis</label>
-                <properties>
-                    <property name="smartthings-dataType">Vector3</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1604,15 +1378,9 @@
        <channels>
             <channel id="timeRemaining" typeId="timeRemaining-channel">
                 <label>Time Remaining</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
             <channel id="sessionStatus" typeId="sessionStatus-channel">
                 <label>Session Status</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1637,9 +1405,30 @@
        <channels>
             <channel id="touch" typeId="touch-channel">
                 <label>touch</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
+            </channel>
+        </channels>
+        <config-description>
+            <parameter name="smartthingsName" type="text" required="true" >
+                <label>Smartthings Name</label>
+                <description>User assigned Smartthings device name</description>
+            </parameter>
+            <parameter name="smartthingsLocation" type="text" >
+                <label>Smartthings Location</label>
+                <description>Where the device is located</description>
+            </parameter>
+        </config-description>
+     </thing-type>
+    
+    <!-- Ultraviolet Index -->
+    <thing-type id="ultravioletIndex">
+        <supported-bridge-type-refs>
+            <bridge-type-ref id="smartthings"/>
+        </supported-bridge-type-refs>
+        <label>Ultraviolet Index</label>
+        <description>Gives the ability to get the ultraviolet index from devices that report it</description>
+       <channels>
+            <channel id="ultravioletIndex" typeId="ultravioletIndex-channel">
+                <label>Ultraviolet Index</label>
             </channel>
         </channels>
         <config-description>
@@ -1665,40 +1454,13 @@
             <channel id="contact" typeId="contact-channel">
                 <label>__</label>
                 <properties>
-                    <property name="smartthings-dataType">OpenClosed</property>
+                    <property name="smartthings-converter">openCloseControl</property>
                 </properties>
             </channel>
             <channel id="valve" typeId="valve-channel">
                 <label>Valve</label>
                 <properties>
-                    <property name="smartthings-dataType">OpenClosed</property>
-                </properties>
-            </channel>
-        </channels>
-        <config-description>
-            <parameter name="smartthingsName" type="text" required="true" >
-                <label>Smartthings Name</label>
-                <description>User assigned Smartthings device name</description>
-            </parameter>
-            <parameter name="smartthingsLocation" type="text" >
-                <label>Smartthings Location</label>
-                <description>Where the device is located</description>
-            </parameter>
-        </config-description>
-     </thing-type>
-    
-    <!-- Ultraviolet Index -->
-    <thing-type id="ultravioletIndex">
-        <supported-bridge-type-refs>
-            <bridge-type-ref id="smartthings"/>
-        </supported-bridge-type-refs>
-        <label>Ultraviolet Index</label>
-        <description>Gives the ability to get the ultraviolet index from devices that report it</description>
-       <channels>
-            <channel id="ultravioletIndex" typeId="ultravioletIndex-channel">
-                <label>Ultraviolet Index</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
+                    <property name="smartthings-converter">openCloseControl</property>
                 </properties>
             </channel>
         </channels>
@@ -1724,9 +1486,6 @@
        <channels>
             <channel id="voltage" typeId="voltage-channel">
                 <label>Voltage</label>
-                <properties>
-                    <property name="smartthings-dataType">Number</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1751,9 +1510,6 @@
        <channels>
             <channel id="water" typeId="water-channel">
                 <label>water</label>
-                <properties>
-                    <property name="smartthings-dataType">ENUM</property>
-                </properties>
             </channel>
         </channels>
         <config-description>
@@ -1779,7 +1535,7 @@
             <channel id="windowShade" typeId="windowShade-channel">
                 <label>windowShade</label>
                 <properties>
-                    <property name="smartthings-dataType">ENUM</property>
+                    <property name="smartthings-converter">openCloseControl</property>
                 </properties>
             </channel>
         </channels>
@@ -1814,10 +1570,10 @@
     </channel-type>
 
     <channel-type id="alarm-channel">
-        <item-type>Switch</item-type>
+        <item-type>String</item-type>
         <label>Alarm</label>
         <category>Alarm</category>
-        <state readOnly="true">
+        <state>
             <options>
                 <option value="both">Both</option>
                 <option value="off">Off</option>
@@ -1842,7 +1598,7 @@
     <channel-type id="button-channel">
         <item-type>String</item-type>
         <label>Button</label>
-        <state readOnly="true">
+        <state>
             <options>
                 <option value="pushed">Pushed</option>
                 <option value="held">Held</option>
@@ -1886,10 +1642,11 @@
         <category>ColorLight</category>
     </channel-type>
  
-    <channel-type id="door-state-channel">
+    <channel-type id="door-control-channel">
         <item-type>String</item-type>
         <label>Door status</label>
         <category>Door</category>
+        <!-- 
         <state readOnly="true" pattern="%s">
             <options>
                 <option value="closed">Closed</option>
@@ -1899,6 +1656,7 @@
                 <option value="unknown">Unknown</option>
             </options>
         </state>
+         -->
     </channel-type>
  
     <channel-type id="energy-channel">
@@ -1991,6 +1749,12 @@
     </channel-type>
  
     <channel-type id="level-channel">
+        <item-type>Dimmer</item-type>
+        <label>Light level</label>
+        <category>DimmableLight</category>
+    </channel-type>
+ 
+    <channel-type id="volumeLevel-channel">
         <item-type>Number</item-type>
         <label>Volume level</label>
         <category>SoundVolume</category>
@@ -2131,7 +1895,7 @@
         <category>Temperature</category>
     </channel-type>
  
-    <channel-type id="CoolingSetpoint-channel">
+    <channel-type id="coolingSetpoint-channel">
         <item-type>Number</item-type>
         <label>Cooling setpoint</label>
         <category>Temperature</category>
@@ -2147,7 +1911,7 @@
         <item-type>String</item-type>
         <label>Thermostat mode</label>
         <category>Temperature</category>
-        <state readOnly="true">
+        <state>
             <options>
                 <option value="auto">Auto</option>
                 <option value="cool">Cool</option>
@@ -2255,7 +2019,7 @@
         <item-type>String</item-type>
         <label>Window shade</label>
         <category></category>
-        <state readOnly="true">
+        <state>
             <options>
                 <option value="closed">Closed</option>
                 <option value="closing">Closing</option>

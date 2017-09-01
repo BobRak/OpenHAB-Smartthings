@@ -1,5 +1,6 @@
 /**
  * Copyright (c) 2014-2016 by the respective copyright holders.
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -9,18 +10,22 @@ package org.openhab.binding.smartthings.internal;
 
 import static org.openhab.binding.smartthings.SmartthingsBindingConstants.*;
 
+import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.Map;
 
 import org.eclipse.smarthome.config.discovery.DiscoveryService;
 import org.eclipse.smarthome.core.thing.Bridge;
+import org.eclipse.smarthome.core.thing.Channel;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.eclipse.smarthome.core.thing.ThingUID;
 import org.eclipse.smarthome.core.thing.binding.BaseThingHandlerFactory;
 import org.eclipse.smarthome.core.thing.binding.ThingHandler;
+import org.eclipse.smarthome.core.thing.type.ChannelTypeRegistry;
 import org.openhab.binding.smartthings.discovery.SmartthingsDiscoveryService;
 import org.openhab.binding.smartthings.handler.SmartthingsBridgeHandler;
 import org.openhab.binding.smartthings.handler.SmartthingsThingHandler;
@@ -52,7 +57,10 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
     private Map<ThingUID, ServiceRegistration<?>> discoveryServiceRegs = new HashMap<>();
 
     private SmartthingsBridgeHandler bridge;
+    private ChannelTypeRegistry channelTypeRegistry;
     private Gson gson;
+    // private Map<String, SmartthingsThingHandler> handlerMap = new HashMap<String, SmartthingsThingHandler>();
+    private List<SmartthingsThingHandler> thingHandlers = new ArrayList<SmartthingsThingHandler>();
 
     @Override
     public boolean supportsThingType(ThingTypeUID thingTypeUID) {
@@ -66,7 +74,6 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
 
     @Override
     protected ThingHandler createHandler(Thing thing) {
-
         ThingTypeUID thingTypeUID = thing.getThingTypeUID();
         logger.debug("SmartthingsHandlerFactory is now processing ThingTypeUID {}", thingTypeUID.getAsString());
 
@@ -77,7 +84,15 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
         } else if (SUPPORTED_THING_TYPES_UIDS.contains(thingTypeUID)) {
             // Everything but the bridge is handled by this one handler
             logger.debug("Creating thing handler for {}", thingTypeUID.getAsString());
-            return new SmartthingsThingHandler(thing);
+            SmartthingsThingHandler thingHandler = new SmartthingsThingHandler(thing, this);
+
+            // Built map of smartthingsDisplayName:id to handler
+            // String id = thingTypeUID.getId();
+            // String key = thingHandler.getSmartthingsName() + ":" + id;
+            // handlerMap.put(key, thingHandler);
+
+            thingHandlers.add(thingHandler);
+            return thingHandler;
         }
 
         return null;
@@ -103,7 +118,6 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
      * @param handler
      */
     private void registerDeviceDiscoveryService(SmartthingsBridgeHandler handler) {
-
         SmartthingsDiscoveryService discoveryService = new SmartthingsDiscoveryService(handler);
         this.discoveryServiceRegs.put(handler.getThing().getUID(), bundleContext
                 .registerService(DiscoveryService.class.getName(), discoveryService, new Hashtable<String, Object>()));
@@ -126,12 +140,43 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
         String topic = event.getTopic();
         String data = (String) event.getProperty("data");
         logger.debug("Event received on topic: {}", topic);
-        Map<String, Object> map = new HashMap<String, Object>();
-        map = gson.fromJson(data, map.getClass());
-
-        if (bridge != null) {
-            bridge.receivedStateMessage(map);
+        SmartthingsStateData stateData = new SmartthingsStateData();
+        stateData = gson.fromJson(data, stateData.getClass());
+        // String key = stateData.getDeviceDisplayName() + ":" + stateData.getCapabilityAttribute();
+        // SmartthingsThingHandler handler = handlerMap.get(key);
+        SmartthingsThingHandler handler = findHandler(stateData.getDeviceDisplayName(),
+                stateData.getCapabilityAttribute());
+        if (handler != null) {
+            handler.handleStateMessage(stateData);
         }
+    }
+
+    private SmartthingsThingHandler findHandler(String deviceDisplayName, String attribute) {
+        for (SmartthingsThingHandler handler : thingHandlers) {
+            if (handler.getSmartthingsName().equals(deviceDisplayName)) {
+                for (Channel ch : handler.getThing().getChannels()) {
+                    String chId = ch.getUID().getId();
+                    if (chId.equals(attribute)) {
+                        return handler;
+                    }
+                }
+            }
+        }
+
+        logger.warn("Unable to locate handler for display name: {} with attribute: {}", deviceDisplayName, attribute);
+        return null;
+    }
+
+    public void setChannelTypeService(ChannelTypeRegistry registry) {
+        channelTypeRegistry = registry;
+    }
+
+    public void unsetChannelTypeService(ChannelTypeRegistry registry) {
+        channelTypeRegistry = null;
+    }
+
+    public ChannelTypeRegistry getChannelTypeRegistry() {
+        return channelTypeRegistry;
     }
 
 }

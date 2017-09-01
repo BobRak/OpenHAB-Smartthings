@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--
+Licensed to the Apache Software Foundation (ASF) under one
+or more contributor license agreements.  See the NOTICE file
+distributed with this work for additional information
+regarding copyright ownership.  The ASF licenses this file
+to you under the Apache License, Version 2.0 (the
+"License"); you may not use this file except in compliance
+with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing,
+software distributed under the License is distributed on an
+"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+KIND, either express or implied.  See the License for the
+specific language governing permissions and limitations
+under the License.
+-->
+<rss version="0.91">
+  <channel>
+    <title>Smartthings Binding - Checkstyle report</title>
+    <link>${project.url}</link>
+    <description>Smartthings Binding - Checkstyle report</description>
+    <language>en-us</language>
+    <copyright>&#169;2017 openHAB.org</copyright>
+    <item>
+      <title>File: 25,
+             Errors: 0,
+             Warnings: 0,
+             Infos: 1
+      </title>
+            <link>${project.url}/checkstyle.html</link>
+      <description>
+        <p>Click <a href="${project.url}/checkstyle.html">here</a> for the full Checkstyle report.</p>
+
+        <table summary="Files" boder="1">
+          <thead>
+            <tr>
+              <th>Files</th>
+              <th style="width:30px;"><abbr title="Info">I</abbr></th>
+              <th style="width:30px;"><abbr title="Warning">W</abbr></th>
+              <th style="width:30px;"><abbr title="Error">E</abbr></th>
+            </tr>
+          </thead>
+          <tbody>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.handler.SmartthingsBridgeHandler.java">src/main/java/org/openhab/binding/smartthings/handler/SmartthingsBridgeHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#.classpath">.classpath</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.config.SmartthingsBridgeConfig.java">src/main/java/org/openhab/binding/smartthings/config/SmartthingsBridgeConfig.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.SmartthingsStateData.java">src/main/java/org/openhab/binding/smartthings/internal/SmartthingsStateData.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ESH-INF.binding.binding.xml">ESH-INF/binding/binding.xml</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#pom.xml">pom.xml</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsDefaultConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsDefaultConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#build.properties">build.properties</a>
+                </td>
+                <td>
+                  1
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.SmartthingsServlet.java">src/main/java/org/openhab/binding/smartthings/internal/SmartthingsServlet.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsOpenCloseControlConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsOpenCloseControlConverter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#META-INF.MANIFEST.MF">META-INF/MANIFEST.MF</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#OSGI-INF.SmartthingsHandlerFactory.xml">OSGI-INF/SmartthingsHandlerFactory.xml</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#about.html">about.html</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.discovery.SmartthingsDiscoveryService.java">src/main/java/org/openhab/binding/smartthings/discovery/SmartthingsDiscoveryService.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#OSGI-INF.SmartthingsServlet.xml">OSGI-INF/SmartthingsServlet.xml</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.handler.SmartthingsThingHandler.java">src/main/java/org/openhab/binding/smartthings/handler/SmartthingsThingHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.SmartthingsBindingConstants.java">src/main/java/org/openhab/binding/smartthings/SmartthingsBindingConstants.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.discovery.SmartthingsDeviceData.java">src/main/java/org/openhab/binding/smartthings/discovery/SmartthingsDeviceData.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.handler.SmartthingsAbstractHandler.java">src/main/java/org/openhab/binding/smartthings/handler/SmartthingsAbstractHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#README.md">README.md</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.config.SmartthingsThingConfig.java">src/main/java/org/openhab/binding/smartthings/config/SmartthingsThingConfig.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.SmartthingsHandlerFactory.java">src/main/java/org/openhab/binding/smartthings/internal/SmartthingsHandlerFactory.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.SmartthingsHttpClient.java">src/main/java/org/openhab/binding/smartthings/internal/SmartthingsHttpClient.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ESH-INF.thing.thing-types.xml">ESH-INF/thing/thing-types.xml</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                      </tbody>
+        </table>
+        
+      </description>
+    </item>
+  </channel>
+</rss>
+

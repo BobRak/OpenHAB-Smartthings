@@ -1,3 +1,11 @@
+/**
+ * Copyright (c) 2014-2016 by the respective copyright holders.
+ *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ */
 package org.openhab.binding.smartthings.discovery;
 
 import java.util.ArrayList;
@@ -24,11 +32,17 @@ import org.slf4j.LoggerFactory;
 
 import com.google.gson.Gson;
 
+/**
+ * Smartthings Discovery service
+ *
+ * @author Bob Raker
+ *
+ */
 public class SmartthingsDiscoveryService extends AbstractDiscoveryService implements EventHandler {
 
-    private final static int SEARCH_TIME = 30;
-    private final static int INITIAL_DELAY = 5;
-    private final static int SCAN_INTERVAL = 180;
+    private static final int SEARCH_TIME = 30;
+    private static final int INITIAL_DELAY = 5;
+    private static final int SCAN_INTERVAL = 180;
 
     private Logger logger = LoggerFactory.getLogger(SmartthingsDiscoveryService.class);
 
@@ -80,7 +94,7 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
      */
     @Override
     public void startScan() {
-        logger.debug("starting scan on bridge " + bridgeHandler.getThing().getUID());
+        logger.debug("starting scan on bridge {}", bridgeHandler.getThing().getUID());
         sendSmartthingsDiscoveryRequest();
     }
 
@@ -151,7 +165,6 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
         for (String device : devices) {
             SmartthingsDeviceData deviceData = gson.fromJson(device, SmartthingsDeviceData.class);
             createDevice(deviceData);
-
         }
     }
 
@@ -179,7 +192,6 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
                 .build();
 
         thingDiscovered(discoveryResult);
-
     }
 
     /**
@@ -205,7 +217,7 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
          */
         @Override
         public void run() {
-            logger.debug("starting scan on bridge " + bridgeHandler.getThing().getUID());
+            logger.debug("starting scan on bridge {}", bridgeHandler.getThing().getUID());
             sendSmartthingsDiscoveryRequest();
         }
     }

@@ -1,5 +1,6 @@
 /**
  * Copyright (c) 2014-2016 by the respective copyright holders.
+ *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -24,12 +25,12 @@ public class SmartthingsBindingConstants {
     public static final String BINDING_ID = "smartthings";
 
     // List of Bridge Type UIDs
-    public final static ThingTypeUID THING_TYPE_SMARTTHINGS = new ThingTypeUID(BINDING_ID, "smartthings");
+    public static final ThingTypeUID THING_TYPE_SMARTTHINGS = new ThingTypeUID(BINDING_ID, "smartthings");
 
     // List of all Thing Type UIDs
     // I tried to replace this with a dynamic processing of the thing-types.xml file using the ThingTypeRegistry
     // But the HandlerFactory wants to start checking on things before that code runs. So, back to a hard coded list
-    public final static Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = ImmutableSet.of(
+    public static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = ImmutableSet.of(
             new ThingTypeUID(BINDING_ID, "accelerationSensor"), new ThingTypeUID(BINDING_ID, "alarm"),
             new ThingTypeUID(BINDING_ID, "battery"), new ThingTypeUID(BINDING_ID, "beacon"),
             new ThingTypeUID(BINDING_ID, "bulb"), new ThingTypeUID(BINDING_ID, "button"),
@@ -64,7 +65,7 @@ public class SmartthingsBindingConstants {
             new ThingTypeUID(BINDING_ID, "windowShade"));
 
     // Event Handler Topics
-    public final static String STATE_EVENT_TOPIC = "org/openhab/binding/smartthings/state";
-    public final static String DISCOVERY_EVENT_TOPIC = "org/openhab/binding/smartthings/discovery";
+    public static final String STATE_EVENT_TOPIC = "org/openhab/binding/smartthings/state";
+    public static final String DISCOVERY_EVENT_TOPIC = "org/openhab/binding/smartthings/discovery";
 
 }

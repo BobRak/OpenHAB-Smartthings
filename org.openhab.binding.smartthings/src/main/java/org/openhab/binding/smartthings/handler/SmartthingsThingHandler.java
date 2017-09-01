@@ -1,38 +1,38 @@
 /**
+ * Copyright (c) 2014-2016 by the respective copyright holders.
  *
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
  */
 package org.openhab.binding.smartthings.handler;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
 import org.eclipse.smarthome.config.core.Configuration;
-import org.eclipse.smarthome.core.library.types.DateTimeType;
-import org.eclipse.smarthome.core.library.types.DecimalType;
-import org.eclipse.smarthome.core.library.types.HSBType;
-import org.eclipse.smarthome.core.library.types.IncreaseDecreaseType;
-import org.eclipse.smarthome.core.library.types.NextPreviousType;
-import org.eclipse.smarthome.core.library.types.OnOffType;
-import org.eclipse.smarthome.core.library.types.OpenClosedType;
-import org.eclipse.smarthome.core.library.types.PercentType;
-import org.eclipse.smarthome.core.library.types.PlayPauseType;
-import org.eclipse.smarthome.core.library.types.PointType;
-import org.eclipse.smarthome.core.library.types.RewindFastforwardType;
-import org.eclipse.smarthome.core.library.types.StopMoveType;
-import org.eclipse.smarthome.core.library.types.StringListType;
-import org.eclipse.smarthome.core.library.types.StringType;
-import org.eclipse.smarthome.core.library.types.UpDownType;
 import org.eclipse.smarthome.core.thing.Bridge;
+import org.eclipse.smarthome.core.thing.Channel;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.ThingStatusDetail;
+import org.eclipse.smarthome.core.thing.type.ChannelType;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.RefreshType;
+import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.smartthings.config.SmartthingsThingConfig;
+import org.openhab.binding.smartthings.internal.SmartthingsHandlerFactory;
 import org.openhab.binding.smartthings.internal.SmartthingsHttpClient;
+import org.openhab.binding.smartthings.internal.SmartthingsStateData;
+import org.openhab.binding.smartthings.internal.converter.SmartthingsConverter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -45,14 +45,24 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
     private Logger logger = LoggerFactory.getLogger(SmartthingsThingHandler.class);
 
     private SmartthingsThingConfig config;
+    private String smartthingsName;
+
+    private SmartthingsHandlerFactory factory;
+
+    private List<ChannelType> channelTypes;
+
+    // private Map<ChannelUID, Object> converters = new HashMap<ChannelUID, Object>();
+    private Map<ChannelUID, SmartthingsConverter> converters = new HashMap<ChannelUID, SmartthingsConverter>();
 
     /**
      * The constructor
      *
      * @param thing The "Thing" to be handled
      */
-    public SmartthingsThingHandler(Thing thing) {
+    public SmartthingsThingHandler(Thing thing, SmartthingsHandlerFactory factory) {
         super(thing);
+
+        this.factory = factory;
     }
 
     /*
@@ -64,103 +74,48 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
      */
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
-
         Bridge bridge = getBridge();
 
-        if (bridge != null) {
-            SmartthingsBridgeHandler smartthingsBridgeHandler = (SmartthingsBridgeHandler) bridge.getHandler();
-            if (smartthingsBridgeHandler != null
-                    && smartthingsBridgeHandler.getThing().getStatus().equals(ThingStatus.ONLINE)) {
+        SmartthingsBridgeHandler smartthingsBridgeHandler = (SmartthingsBridgeHandler) bridge.getHandler();
+        if (smartthingsBridgeHandler != null
+                && smartthingsBridgeHandler.getThing().getStatus().equals(ThingStatus.ONLINE)) {
+            String thingTypeId = thing.getThingTypeUID().getId();
+            String smartthingsType = getSmartthingsAttributeFromChannel(channelUID);
 
-                String thingTypeId = thing.getThingTypeUID().getId();
-                String smartthingsName = config.smartthingsName;
-                String smartthingsType = getSmartthingsAttributeFromChannel(channelUID);
+            SmartthingsHttpClient httpClient = smartthingsBridgeHandler.getSmartthingsHttpClient();
 
-                SmartthingsHttpClient httpClient = smartthingsBridgeHandler.getSmartthingsHttpClient();
+            SmartthingsConverter converter = converters.get(channelUID);
+            if (converter == null) {
+                logger.info("No converter available for channel {} with command {}", channelUID.getAsString(),
+                        command.toFullString());
+                return;
+            }
 
-                if (command instanceof RefreshType) {
-                    // Go to ST hub and ask for current state
-                    String jsonMsg = String.format(
-                            "{\"capabilityKey\": \"%s\", \"deviceDisplayName\": \"%s\", \"capabilityAttribute\": \"%s\"}",
-                            thingTypeId, smartthingsName, smartthingsType);
-                    try {
-                        httpClient.sendDeviceCommand("/state", jsonMsg);
-                        // Smartthings will not return a response to this message but will send it's response message
-                        // which will get picked up by the SmartthingBridgeHandler.receivedPushMessage handler
-                    } catch (InterruptedException | TimeoutException | ExecutionException e) {
-                        logger.error("Attempt to send command to the Smartthings hub failed with: ", e);
-                    }
+            String path;
+            String jsonMsg;
+            if (command instanceof RefreshType) {
+                path = "/state";
+                // Go to ST hub and ask for current state
+                jsonMsg = String.format(
+                        "{\"capabilityKey\": \"%s\", \"deviceDisplayName\": \"%s\", \"capabilityAttribute\": \"%s\"}",
+                        thingTypeId, smartthingsName, smartthingsType);
+            } else {
+                // Send update to ST hub
+                path = "/update";
+                jsonMsg = converter.convertToSmartthings(channelUID, command);
 
-                } else {
-                    // Send update to ST hub
-                    String smartthingsValue = convertToSmartthingsValue(command);
-                    String jsonMsg = String.format(
-                            "{\"capabilityKey\": \"%s\", \"deviceDisplayName\": \"%s\", \"value\": %s}", thingTypeId,
-                            smartthingsName, smartthingsValue);
+                // The smartthings hub won't (can't) return a response to this call. But, it will send a separate
+                // message back to the SmartthingBridgeHandler.receivedPushMessage handler
+            }
 
-                    try {
-                        httpClient.sendDeviceCommand("/update", jsonMsg);
-                    } catch (InterruptedException | TimeoutException | ExecutionException e) {
-                        logger.error("Attempt to send command to the Smartthings hub failed with: ", e);
-                    }
-                    // The smartthings hub won't (can't) return a response to this call. But, it will send a separate
-                    // message back to the SmartthingBridgeHandler.receivedPushMessage handler
-                }
+            try {
+                httpClient.sendDeviceCommand(path, jsonMsg);
+                // Smartthings will not return a response to this message but will send it's response message
+                // which will get picked up by the SmartthingBridgeHandler.receivedPushMessage handler
+            } catch (InterruptedException | TimeoutException | ExecutionException e) {
+                logger.info("Attempt to send command to the Smartthings hub failed with: ", e);
             }
         }
-    }
-
-    /**
-     * Convert the OpenHAB command to a string that can be sent to Smartthings.
-     * If the value is a string it will be wrapped with quotes
-     *
-     * @param command
-     * @return
-     */
-    private String convertToSmartthingsValue(Command command) {
-        String value;
-
-        if (command instanceof DateTimeType) {
-            DateTimeType dt = (DateTimeType) command;
-            value = dt.format("%m/%d/%Y %H.%M.%S");
-        } else if (command instanceof DecimalType) {
-            value = command.toString();
-        } else if (command instanceof HSBType) {
-            HSBType hsb = (HSBType) command;
-            value = String.format("{\"hue\": %d, \"saturation\": %d, \"brightness\": %d }", hsb.getHue().intValue(),
-                    hsb.getSaturation().intValue(), hsb.getBrightness().intValue());
-        } else if (command instanceof IncreaseDecreaseType) { // Need to surround with double quotes
-            value = "\"" + command.toString().toLowerCase() + "\"";
-        } else if (command instanceof NextPreviousType) { // Need to surround with double quotes
-            value = "\"" + command.toString().toLowerCase() + "\"";
-        } else if (command instanceof OnOffType) { // Need to surround with double quotes
-            value = "\"" + command.toString().toLowerCase() + "\"";
-        } else if (command instanceof OpenClosedType) { // Need to surround with double quotes
-            value = "\"" + command.toString().toLowerCase() + "\"";
-        } else if (command instanceof PercentType) {
-            value = command.toString();
-        } else if (command instanceof PointType) { // Not really sure how to deal with this one and don't see a use for
-                                                   // it in Smartthings right now
-            value = command.toFullString();
-        } else if (command instanceof RefreshType) { // Need to surround with double quotes
-            value = "\"" + command.toString().toLowerCase() + "\"";
-        } else if (command instanceof RewindFastforwardType) { // Need to surround with double quotes
-            value = "\"" + command.toString().toLowerCase() + "\"";
-        } else if (command instanceof StopMoveType) { // Need to surround with double quotes
-            value = "\"" + command.toString().toLowerCase() + "\"";
-        } else if (command instanceof PlayPauseType) { // Need to surround with double quotes
-            value = "\"" + command.toString().toLowerCase() + "\"";
-        } else if (command instanceof StringListType) {
-            value = command.toString();
-        } else if (command instanceof StringType) {
-            value = command.toString();
-        } else if (command instanceof UpDownType) { // Need to surround with double quotes
-            value = "\"" + command.toString().toLowerCase() + "\"";
-        } else {
-            value = command.toString().toLowerCase();
-        }
-
-        return value;
     }
 
     /**
@@ -172,19 +127,88 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
      * @return channel id
      */
     private String getSmartthingsAttributeFromChannel(ChannelUID channelUID) {
-
         String id = channelUID.getId();
         return id;
+    }
+
+    public void handleStateMessage(SmartthingsStateData stateData) {
+        // First locate the channel
+        Channel matchingChannel = null;
+        for (Channel ch : thing.getChannels()) {
+            if (ch.getUID().getAsString().endsWith(stateData.getCapabilityAttribute())) {
+                matchingChannel = ch;
+                break;
+            }
+        }
+        if (matchingChannel == null) {
+            return;
+        }
+
+        SmartthingsConverter converter = converters.get(matchingChannel.getUID());
+
+        State state = converter.convertToOpenHab(matchingChannel.getAcceptedItemType(), stateData);
+
+        updateState(matchingChannel.getUID(), state);
+        logger.info("Smartthings updated State for channel: {} to {}", matchingChannel.getUID().getAsString(),
+                state.toString());
     }
 
     @Override
     public void initialize() {
         config = getThing().getConfiguration().as(SmartthingsThingConfig.class);
-        if (validateConfig(this.config) == false) {
+        if (!validateConfig(this.config)) {
             return;
+        }
+        smartthingsName = config.smartthingsName;
+
+        // Create converters for each channel
+        for (Channel ch : thing.getChannels()) {
+            String converterName = ch.getProperties().get("smartthings-converter");
+            if (converterName == null) {
+                // A converter was Not specified so use the channel id
+                converterName = ch.getUID().getId();
+            }
+
+            // Try to get the converter
+            SmartthingsConverter cvtr = getConverter(converterName);
+            if (cvtr == null) {
+                // If there is no channel specific converter the get the "default" converter
+                cvtr = getConverter("default");
+            }
+            converters.put(ch.getUID(), cvtr);
+
         }
 
         updateStatus(ThingStatus.ONLINE);
+    }
+
+    private SmartthingsConverter getConverter(String converterName) {
+        // Converter name will be a name such as "switch" which has to be converted into the full class name such as
+        // org.openhab.binding.smartthings.internal.converter.SmartthingsSwitchConveter
+        StringBuffer converterClassName = new StringBuffer(
+                "org.openhab.binding.smartthings.internal.converter.Smartthings");
+        converterClassName.append(Character.toUpperCase(converterName.charAt(0)));
+        converterClassName.append(converterName.substring(1));
+        converterClassName.append("Converter");
+        // logger.debug("Need to create class {} for channuel {}", converterClassName, ch.getUID());
+        try {
+            Constructor<?> constr = Class.forName(converterClassName.toString()).getDeclaredConstructor(Thing.class);
+            constr.setAccessible(true);
+            SmartthingsConverter cvtr = (SmartthingsConverter) constr.newInstance(thing);
+            logger.info("Using converter {}", converterName);
+            return cvtr;
+        } catch (ClassNotFoundException e) {
+            logger.info("No converter exists for {} ({})", converterName, converterClassName);
+        } catch (NoSuchMethodException e) {
+            logger.info("NoSuchMethodException occurred for {} ({}) {}", converterName, converterClassName, e);
+        } catch (InvocationTargetException e) {
+            logger.info("InvocationTargetException occurred for {} ({}) {}", converterName, converterClassName, e);
+        } catch (IllegalAccessException e) {
+            logger.info("IllegalAccessException occurred for {} ({}) {}", converterName, converterClassName, e);
+        } catch (InstantiationException e) {
+            logger.info("InstantiationException occurred for {} ({}) {}", converterName, converterClassName, e);
+        }
+        return null;
     }
 
     /**
@@ -247,7 +271,6 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
                 configChanged = true;
                 logger.info("Configuration updated for {} smartthingsLocation changed from {} to {}",
                         thing.getUID().getAsString(), existingValue, valueString);
-
             }
         }
 
@@ -255,7 +278,6 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
             // Persist changes
             updateConfiguration(configuration);
         }
-
     }
 
     @Override
@@ -279,4 +301,9 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
 
         return true;
     }
+
+    public String getSmartthingsName() {
+        return smartthingsName;
+    }
+
 }

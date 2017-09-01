@@ -17,4 +17,7 @@
    </service>
    <property name="event.topics" value="org/openhab/binding/smartthings/state" />
    
+   <reference bind="setChannelTypeService" cardinality="1..1" interface="org.eclipse.smarthome.core.thing.type.ChannelTypeRegistry" name="ChannelTypeService" policy="static" unbind="unsetChannelTypeService"/>
+   
+   
 </scr:component>
