@@ -140,8 +140,14 @@ public class SmartthingsServlet extends HttpServlet {
             logger.error("Smartthing servlet recieved a path that is not supported {}", pathParts[0]);
         }
 
-        // Return an http-204 - No response
-        resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+        // Respond with 200 / "OK" on success.
+        // responses with an empty body will choke response processing on the
+        // hub, resulting in a 6-8s delay in all message processing, as the hub
+        // only seems to dispatch one HubEvent at a time.
+        resp.setStatus(HttpServletResponse.SC_OK);
+        resp.getWriter().write("OK");
+        resp.getWriter().flush();
+        resp.getWriter().close();
         return;
     }
 
