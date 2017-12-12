@@ -58,7 +58,7 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
 
     public SmartthingsDiscoveryService(SmartthingsBridgeHandler bridgeHandler) {
         super(SmartthingsBindingConstants.SUPPORTED_THING_TYPES_UIDS, SEARCH_TIME);
-        logger.debug("initialize discovery service");
+        logger.debug("Initializing discovery service");
         this.bridgeHandler = bridgeHandler;
 
         // Get a Gson instance
@@ -66,7 +66,7 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
 
         this.scanningRunnable = new SmartthingsScan(this);
         if (bridgeHandler == null) {
-            logger.warn("no bridge handler for scan given");
+            logger.warn("No bridge handler for scan given");
         }
         this.activate(null);
     }
@@ -94,7 +94,7 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
      */
     @Override
     public void startScan() {
-        logger.debug("starting scan on bridge {}", bridgeHandler.getThing().getUID());
+        logger.debug("Starting discovery scan on bridge {}", bridgeHandler.getThing().getUID());
         sendSmartthingsDiscoveryRequest();
     }
 
@@ -113,11 +113,11 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
     @Override
     protected void startBackgroundDiscovery() {
         if (scanningJob == null || scanningJob.isCancelled()) {
-            logger.debug("start background scanning job");
+            logger.debug("Starting background scanning job");
             this.scanningJob = AbstractDiscoveryService.scheduler.scheduleWithFixedDelay(this.scanningRunnable,
                     INITIAL_DELAY, SCAN_INTERVAL, TimeUnit.SECONDS);
         } else {
-            logger.debug("scanningJob active");
+            logger.debug("ScanningJob active");
         }
     }
 
@@ -143,7 +143,7 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
                 // Smartthings will not return a response to this message but will send it's response message
                 // which will get picked up by the SmartthingBridgeHandler.receivedPushMessage handler
             } catch (InterruptedException | TimeoutException | ExecutionException e) {
-                logger.error("Attempt to send command to the Smartthings hub failed with: ", e);
+                logger.warn("Attempt to send command to the Smartthings hub failed with: ", e.getMessage());
             }
         }
     }
@@ -217,7 +217,7 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
          */
         @Override
         public void run() {
-            logger.debug("starting scan on bridge {}", bridgeHandler.getThing().getUID());
+            logger.debug("Starting scan on bridge {}", bridgeHandler.getThing().getUID());
             sendSmartthingsDiscoveryRequest();
         }
     }

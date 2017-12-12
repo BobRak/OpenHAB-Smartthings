@@ -28,7 +28,7 @@ under the License.
       <title>File: 25,
              Errors: 0,
              Warnings: 0,
-             Infos: 1
+             Infos: 0
       </title>
             <link>${project.url}/checkstyle.html</link>
       <description>
@@ -161,7 +161,7 @@ under the License.
                   <a href="${project.url}/checkstyle.html#build.properties">build.properties</a>
                 </td>
                 <td>
-                  1
+                  0
                 </td>
                 <td>
                   0

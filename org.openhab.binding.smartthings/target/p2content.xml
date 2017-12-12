@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <units size='1'>
-  <unit id='org.openhab.binding.smartthings' version='2.2.0.201708312359'>
-    <update id='org.openhab.binding.smartthings' range='[0.0.0,2.2.0.201708312359)' severity='0'/>
+  <unit id='org.openhab.binding.smartthings' version='2.2.0.201712120439'>
+    <update id='org.openhab.binding.smartthings' range='[0.0.0,2.2.0.201712120439)' severity='0'/>
     <properties size='5'>
       <property name='org.eclipse.equinox.p2.name' value='Smartthings Binding'/>
       <property name='org.eclipse.equinox.p2.provider' value='openHAB'/>
@@ -10,8 +10,8 @@
       <property name='maven-version' value='2.2.0-SNAPSHOT'/>
     </properties>
     <provides size='7'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='org.openhab.binding.smartthings' version='2.2.0.201708312359'/>
-      <provided namespace='osgi.bundle' name='org.openhab.binding.smartthings' version='2.2.0.201708312359'/>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.openhab.binding.smartthings' version='2.2.0.201712120439'/>
+      <provided namespace='osgi.bundle' name='org.openhab.binding.smartthings' version='2.2.0.201712120439'/>
       <provided namespace='java.package' name='org.openhab.binding.smartthings' version='0.0.0'/>
       <provided namespace='java.package' name='org.openhab.binding.smartthings.config' version='0.0.0'/>
       <provided namespace='java.package' name='org.openhab.binding.smartthings.discovery' version='0.0.0'/>
@@ -51,13 +51,13 @@
       <required namespace='java.package' name='org.slf4j' range='0.0.0'/>
     </requires>
     <artifacts size='1'>
-      <artifact classifier='osgi.bundle' id='org.openhab.binding.smartthings' version='2.2.0.201708312359'/>
+      <artifact classifier='osgi.bundle' id='org.openhab.binding.smartthings' version='2.2.0.201712120439'/>
     </artifacts>
     <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
     <touchpointData size='1'>
       <instructions size='1'>
         <instruction key='manifest'>
-          Bundle-SymbolicName: org.openhab.binding.smartthings;singleton:=true&#xA;Bundle-Version: 2.2.0.201708312359&#xA;
+          Bundle-SymbolicName: org.openhab.binding.smartthings;singleton:=true&#xA;Bundle-Version: 2.2.0.201712120439&#xA;
         </instruction>
       </instructions>
     </touchpointData>

@@ -22,11 +22,15 @@ Discovery allows OpenHAB to examine a binding and automatically find the Things 
 Discovery is not run automatically on startup. Therefore to run the discovery process perform the following:
 
 1. Start the PaperUI
-2. Click on **Inbox**
-3. At the bottom of the screen click on **SEARCH FOR THINGS**
-4. Select **Smartthings Binding**
-5. You should now see the Smartthings Things in the Inbox
-6. More information on using discovery is available in the [configuration Tutorial](http://docs.openhab.org/tutorials/beginner/configuration.html)
+2. Click on **Configuration > Things**
+3. Click on **ADD THINGS** and select the Smartthings Binding.
+4. On the displayed screen select the Smartthings Hub.
+5. In the Configurations Parameters section enter the IP of Smartthings hub and enter the port number, which is probably 39500. Click on the check mark
+6. Click on **Inbox**
+7. At the bottom of the screen click on **SEARCH FOR THINGS**
+8. Select **Smartthings Binding**
+9. You should now see the Smartthings Things in the Inbox
+10. More information on using discovery is available in the [configuration Tutorial](http://docs.openhab.org/tutorials/beginner/configuration.html)
 
 ## OpenHAB Configuration
 

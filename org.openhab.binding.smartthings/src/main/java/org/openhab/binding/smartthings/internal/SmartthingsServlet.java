@@ -53,9 +53,9 @@ public class SmartthingsServlet extends HttpServlet {
         try {
             Dictionary<String, String> servletParams = new Hashtable<String, String>();
             httpService.registerServlet(PATH, this, servletParams, httpService.createDefaultHttpContext());
-            logger.info("Started Smartthings servlet at " + PATH);
+            logger.info("Started Smartthings servlet at {}", PATH);
         } catch (Exception e) {
-            logger.error("Could not start Smartthings servlet service: {}", e.getMessage(), e);
+            logger.warn("Could not start Smartthings servlet service: {}", e.getMessage());
         }
     }
 
@@ -93,7 +93,7 @@ public class SmartthingsServlet extends HttpServlet {
         logger.debug("Smartthing servlet function requested: {} with Method: {}", pathParts[0], req.getMethod());
 
         if (pathParts.length != 1) {
-            logger.error(
+            logger.warn(
                     "Smartthing servlet recieved a path with zero or more than one parts. Only one part is allowed. path {}",
                     path);
             return;
@@ -108,7 +108,7 @@ public class SmartthingsServlet extends HttpServlet {
                 sb.append((char) c);
             }
             rdr.close();
-            logger.debug("Smartthing servlet processing \"state\" request. data: {}", sb.toString());
+            logger.debug("Smartthing servlet processing \"state\" request. data: {}", sb);
             publishEvent(STATE_EVENT_TOPIC, "data", sb.toString());
         } else if (pathParts[0].equals("discovery")) {
             // This is discovery data returned from Smartthings
@@ -119,7 +119,7 @@ public class SmartthingsServlet extends HttpServlet {
                 sb.append((char) c);
             }
             rdr.close();
-            logger.debug("Smartthing servlet processing \"discovery\" request. data: {}", sb.toString());
+            logger.debug("Smartthing servlet processing \"discovery\" request. data: {}", sb);
             publishEvent(DISCOVERY_EVENT_TOPIC, "data", sb.toString());
         } else if (pathParts[0].equals("error")) {
             // This is an error message from smartthings
@@ -130,18 +130,24 @@ public class SmartthingsServlet extends HttpServlet {
                 sb.append((char) c);
             }
             rdr.close();
-            logger.debug("Smartthing servlet processing \"error\" request. data: {}", sb.toString());
+            logger.debug("Smartthing servlet processing \"error\" request. data: {}", sb);
             Map<String, Object> map = new HashMap<String, Object>();
             map = gson.fromJson(sb.toString(), map.getClass());
             StringBuffer msg = new StringBuffer("Error message from Smartthings: ");
             msg.append(map.get("message"));
-            logger.error("{}", msg.toString());
+            logger.warn("{}", msg);
         } else {
-            logger.error("Smartthing servlet recieved a path that is not supported {}", pathParts[0]);
+            logger.warn("Smartthing servlet recieved a path that is not supported {}", pathParts[0]);
         }
 
-        // Return an http-204 - No response
-        resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+        // Respond with 200 / "OK" on success.
+        // responses with an empty body will choke response processing on the
+        // hub, resulting in a 6-8s delay in all message processing, as the hub
+        // only seems to dispatch one HubEvent at a time.
+        resp.setStatus(HttpServletResponse.SC_OK);
+        resp.getWriter().write("OK");
+        resp.getWriter().flush();
+        resp.getWriter().close();
         return;
     }
 

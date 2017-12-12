@@ -139,8 +139,8 @@ public abstract class SmartthingsConverter {
 
         switch (acceptedChannelType) {
             case "Color":
-                logger.error(
-                        "Converstion of Color Contol-color is not currently supported. Need to provide support for message {}.",
+                logger.warn(
+                        "Conversion of Color Contol-color is not currently supported. Need to provide support for message {}.",
                         deviceValue);
                 return UnDefType.UNDEF;
             case "Contact":
@@ -158,7 +158,7 @@ public abstract class SmartthingsConverter {
                 }
             case "Number":
                 if (deviceValue == null) {
-                    logger.error("Failed to convert {} because the value is null.", deviceType);
+                    logger.warn("Failed to convert Number {} because the value is null.", deviceType);
                     return UnDefType.UNDEF;
                 } else if (deviceValue instanceof String) {
                     return new DecimalType(Double.parseDouble((String) deviceValue));
@@ -167,13 +167,12 @@ public abstract class SmartthingsConverter {
                 } else if (deviceValue instanceof Long) {
                     return new DecimalType((Long) deviceValue);
                 } else {
-                    logger.error("Failed to convert {} with a value of {} from class {} to an appropriate type.",
+                    logger.warn("Failed to convert Number {} with a value of {} from class {} to an appropriate type.",
                             deviceType, deviceValue, deviceValue.getClass().getName());
                     return UnDefType.UNDEF;
                 }
             case "Player":
-                logger.error(
-                        "Converstion of Color Contol-color is not currently supported. Need to provide support for message {}.",
+                logger.warn("Conversion of Player is not currently supported. Need to provide support for message {}.",
                         deviceValue);
                 return UnDefType.UNDEF;
             case "Rollershutter":
@@ -197,13 +196,13 @@ public abstract class SmartthingsConverter {
                     String s = String.format("%.0f,%.0f,%.0f", map.get("x"), map.get("y"), map.get("z"));
                     return new StringType(s);
                 } else {
-                    logger.error(
+                    logger.warn(
                             "Unable to convert {} which should be in Smartthings Vector3 format to a string. The returned datatype from Smartthings is {}.",
                             deviceType, deviceValue.getClass().getName());
                     return UnDefType.UNDEF;
                 }
             default:
-                logger.error("No type defined to convert {} with a value of {} from class {} to an appropriate type.",
+                logger.warn("No type defined to convert {} with a value of {} from class {} to an appropriate type.",
                         deviceType, deviceValue, deviceValue.getClass().getName());
                 return UnDefType.UNDEF;
         }

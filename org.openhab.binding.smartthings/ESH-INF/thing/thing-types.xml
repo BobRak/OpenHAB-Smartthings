@@ -1708,7 +1708,7 @@
         <item-type>String</item-type>
         <label>Lock state</label>
         <category></category>
-        <state readOnly="true">
+        <state>
             <options>
                 <option value="locked">Locked</option>
                 <option value="unknown">Unknown</option>

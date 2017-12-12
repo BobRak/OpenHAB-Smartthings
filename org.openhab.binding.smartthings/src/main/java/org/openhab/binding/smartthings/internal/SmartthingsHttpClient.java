@@ -31,7 +31,7 @@ import com.google.gson.Gson;
  */
 public class SmartthingsHttpClient {
 
-    private final Logger log = LoggerFactory.getLogger(SmartthingsHttpClient.class);
+    private final Logger logger = LoggerFactory.getLogger(SmartthingsHttpClient.class);
 
     private HttpClient httpClient;
     private Gson gson;
@@ -67,8 +67,8 @@ public class SmartthingsHttpClient {
                 result = gson.fromJson(responseStr, result.getClass());
             }
         } else {
-            log.info("Sent message \"{}\" with path \"{}\" to the Smartthings hub, recieved HTTP status {}", data, path,
-                    status);
+            logger.info("Sent message \"{}\" with path \"{}\" to the Smartthings hub, recieved HTTP status {}", data,
+                    path, status);
         }
 
         return result;
@@ -77,9 +77,9 @@ public class SmartthingsHttpClient {
     public void stopHttpClient() {
         try {
             httpClient.stop();
-            log.info("HTTP Client stopped");
+            logger.info("HTTP Client stopped");
         } catch (Exception e) {
-            log.error("HTTP client failed to stop because: {}", e.getMessage());
+            logger.warn("HTTP client failed to stop because: {}", e.getMessage());
         }
     }
 }

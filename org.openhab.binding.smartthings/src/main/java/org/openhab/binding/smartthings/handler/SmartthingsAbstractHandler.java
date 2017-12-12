@@ -41,13 +41,6 @@ public abstract class SmartthingsAbstractHandler extends BaseThingHandler {
         super(thing);
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see
-     * org.eclipse.smarthome.core.thing.binding.ThingHandler#handleCommand(org.eclipse.smarthome.core.thing.ChannelUID,
-     * org.eclipse.smarthome.core.types.Command)
-     */
     @Override
     public abstract void handleCommand(ChannelUID channelUID, Command command);
 }

@@ -128,13 +128,6 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
         bundleContext.registerService(EventHandler.class.getName(), discoveryService, eventProperties);
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see org.osgi.service.event.EventHandler#handleEvent(org.osgi.service.event.Event)
-     *
-     * "state" messages from the Hub are delivered here.
-     */
     @Override
     public void handleEvent(Event event) {
         String topic = event.getTopic();

@@ -65,13 +65,6 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
         this.factory = factory;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see
-     * org.openhab.binding.smartthings.handler.SmartthingsAbstractHandler#handleCommand(org.eclipse.smarthome.core.thing
-     * .ChannelUID, org.eclipse.smarthome.core.types.Command)
-     */
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
         Bridge bridge = getBridge();
@@ -113,7 +106,7 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
                 // Smartthings will not return a response to this message but will send it's response message
                 // which will get picked up by the SmartthingBridgeHandler.receivedPushMessage handler
             } catch (InterruptedException | TimeoutException | ExecutionException e) {
-                logger.info("Attempt to send command to the Smartthings hub failed with: ", e);
+                logger.info("Attempt to send command to the Smartthings hub failed with: {}", e);
             }
         }
     }
@@ -190,7 +183,6 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
         converterClassName.append(Character.toUpperCase(converterName.charAt(0)));
         converterClassName.append(converterName.substring(1));
         converterClassName.append("Converter");
-        // logger.debug("Need to create class {} for channuel {}", converterClassName, ch.getUID());
         try {
             Constructor<?> constr = Class.forName(converterClassName.toString()).getDeclaredConstructor(Thing.class);
             constr.setAccessible(true);
