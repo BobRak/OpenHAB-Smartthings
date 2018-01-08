@@ -1376,11 +1376,11 @@
         <label>Timed Session</label>
         <description>Timed Session</description>
        <channels>
-            <channel id="timeRemaining" typeId="timeRemaining-channel">
-                <label>Time Remaining</label>
-            </channel>
             <channel id="sessionStatus" typeId="sessionStatus-channel">
                 <label>Session Status</label>
+            </channel>
+            <channel id="timeRemaining" typeId="timeRemaining-channel">
+                <label>Time Remaining</label>
             </channel>
         </channels>
         <config-description>
@@ -1613,9 +1613,15 @@
     </channel-type>
  
     <channel-type id="carbonMonoxide-channel">
-        <item-type>Number</item-type>
+        <item-type>String</item-type>
         <label>Carbon Monoxide</label>
-        <category>CarbonDioxide</category>
+        <state readOnly="true" pattern="%s">
+            <options>
+                <option value="clear">Clear</option>
+                <option value="detected">Detected</option>
+                <option value="tested">Test button activated</option>
+            </options>
+        </state>
     </channel-type>
  
     <channel-type id="hue-channel">
@@ -1640,6 +1646,21 @@
         <item-type>Number</item-type>
         <label>Color Temperature</label>
         <category>ColorLight</category>
+    </channel-type>
+ 
+    <channel-type id="consumable-channel">
+		<!-- For now assume that this will work for both the consumableStatus setConsumableStatus -->
+        <item-type>String</item-type>
+        <label>Consumable status</label>
+        <state>
+            <options>
+                <option value="good">Good</option>
+                <option value="maintenance_required">Maintenance required</option>
+                <option value="missing">Missing</option>
+                <option value="order">Order</option>
+                <option value="replace">Replace</option>
+            </options>
+        </state>
     </channel-type>
  
     <channel-type id="door-control-channel">
@@ -1858,10 +1879,33 @@
         </state>
     </channel-type>
  
+    <channel-type id="smoke-channel">
+        <item-type>String</item-type>
+        <label>Smoke</label>
+        <state readOnly="true" pattern="%s">
+            <options>
+                <option value="clear">Clear</option>
+                <option value="detected">Detected</option>
+                <option value="tested">Test button activated</option>
+            </options>
+        </state>
+    </channel-type>
+ 
     <channel-type id="soundPressureLevel-channel">
         <item-type>Number</item-type>
         <label>Sound pressure level</label>
         <category></category>
+    </channel-type>
+ 
+    <channel-type id="sound-channel">
+        <item-type>String</item-type>
+        <label>Sound detected</label>
+        <state readOnly="true" pattern="%s">
+            <options>
+                <option value="detected">Detected</option>
+                <option value="not_detected">Not detected</option>
+            </options>
+        </state>
     </channel-type>
  
     <channel-type id="phraseSpoken-channel">
@@ -1876,6 +1920,18 @@
         <category></category>
     </channel-type>
  
+    <channel-type id="goal-channel">
+        <item-type>Number</item-type>
+        <label>Current step goal</label>
+        <category></category>
+    </channel-type>
+ 
+    <channel-type id="steps-channel">
+        <item-type>Number</item-type>
+        <label>Current step count</label>
+        <category></category>
+    </channel-type>
+ 
     <channel-type id="switch-channel">
         <item-type>Switch</item-type>
         <label>Switch</label>
@@ -1883,6 +1939,18 @@
         <category>switch</category>
     </channel-type>
 
+    <channel-type id="tamper-channel">
+        <item-type>String</item-type>
+        <label>Tamper alert sensor</label>
+        <category></category>
+        <state readOnly="true">
+            <options>
+                <option value="clear">Clear</option>
+                <option value="detected">Detected</option>
+            </options>
+        </state>
+   </channel-type>
+ 
     <channel-type id="temperature-channel">
         <item-type>Number</item-type>
         <label>Current temperature</label>
@@ -1961,7 +2029,7 @@
     <channel-type id="three-axis-channel">
         <item-type>String</item-type>
         <label>Three axis channel</label>
-        <description>This is an On/Off device</description>
+        <description>This string contains the x, y, z coordinates</description>
         <category></category>
     </channel-type>
 
@@ -1995,6 +2063,18 @@
         <item-type>Number</item-type>
         <label>Ultraviolet Index</label>
         <category></category>
+    </channel-type>
+ 
+    <channel-type id="valve-channel">
+        <item-type>String</item-type>
+        <label>Valve status</label>
+        <category></category>
+        <state>
+            <options>
+                <option value="closed">Closed</option>
+                <option value="open">Open</option>
+            </options>
+        </state>
     </channel-type>
  
     <channel-type id="voltage-channel">
