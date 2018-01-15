@@ -4,7 +4,7 @@ Export-Package: org.openhab.binding.smartthings,org.openhab.binding.sm
  artthings.config,org.openhab.binding.smartthings.discovery,org.openha
  b.binding.smartthings.handler
 Bundle-Name: Smartthings Binding
-Bundle-Version: 2.2.0.201801080422
+Bundle-Version: 2.2.0.201801151705
 Bundle-ClassPath: .
 Bundle-ManifestVersion: 2
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8

@@ -35,7 +35,7 @@ public class SmartthingsBindingConstants {
             new ThingTypeUID(BINDING_ID, "battery"), new ThingTypeUID(BINDING_ID, "beacon"),
             new ThingTypeUID(BINDING_ID, "bulb"), new ThingTypeUID(BINDING_ID, "button"),
             new ThingTypeUID(BINDING_ID, "carbonDioxideMeasurement"),
-            new ThingTypeUID(BINDING_ID, "carbonMonoxideMeasurement"), new ThingTypeUID(BINDING_ID, "colorControl"),
+            new ThingTypeUID(BINDING_ID, "carbonMonoxideDetector"), new ThingTypeUID(BINDING_ID, "colorControl"),
             new ThingTypeUID(BINDING_ID, "colorTemperature"), new ThingTypeUID(BINDING_ID, "consumable"),
             new ThingTypeUID(BINDING_ID, "contactSensor"), new ThingTypeUID(BINDING_ID, "doorControl"),
             new ThingTypeUID(BINDING_ID, "energyMeter"), new ThingTypeUID(BINDING_ID, "estimatedTimeOfArrival"),

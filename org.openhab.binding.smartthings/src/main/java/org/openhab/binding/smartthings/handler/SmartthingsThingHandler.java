@@ -190,7 +190,7 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
             logger.info("Using converter {}", converterName);
             return cvtr;
         } catch (ClassNotFoundException e) {
-            logger.info("No converter exists for {} ({})", converterName, converterClassName);
+            logger.info("No Custom converter exists for {} ({})", converterName, converterClassName);
         } catch (NoSuchMethodException e) {
             logger.info("NoSuchMethodException occurred for {} ({}) {}", converterName, converterClassName, e);
         } catch (InvocationTargetException e) {

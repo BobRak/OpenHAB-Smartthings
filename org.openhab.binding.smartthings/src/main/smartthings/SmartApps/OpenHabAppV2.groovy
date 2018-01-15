@@ -677,6 +677,8 @@ def openhabUpdateHandler(evt) {
 def openhabDiscoveryHandler(evt) {
     log.debug "Entered discovery handler"
     def results = []
+    def bufferLength = 0
+    def deviceCount = 0
 
     CAPABILITY_MAP.each { key, capability ->
         capability["attributes"].each { attribute ->
@@ -684,18 +686,33 @@ def openhabDiscoveryHandler(evt) {
                 // The device info has to be returned as a string. It will be parsed into device data on the OpenHAB side
                 def deviceInfo = "{\"capability\": \"${key}\", \"attribute\": \"${attribute}\", \"name\": \"${device.displayName}\", \"id\": \"${device.id}\" }" 
                 results.push(deviceInfo)
+                deviceCount++
+                bufferLength += deviceInfo.length()
+                // Check if we have close to a full buffer and if so send it
+                if( bufferLength > 30000 ) {
+                    def json = new groovy.json.JsonOutput().toJson([
+                        path: "/smartthings/discovery",
+                        body: results
+                    ])
+                    log.debug "Discovery is returning JSON: ${json}"
+                    openhabDevice.deviceNotification(json)
+                    results = []
+                    bufferLength = 0
+                }                
             }
         }
     }
 
-    def json = new groovy.json.JsonOutput().toJson([
-        path: "/smartthings/discovery",
-        body: results
-    ])
-
-    log.debug "Discovery is returning JSON: ${json}"
-
-    openhabDevice.deviceNotification(json)
+    if( bufferLength > 0 ) {
+        def json = new groovy.json.JsonOutput().toJson([
+            path: "/smartthings/discovery",
+            body: results
+        ])
+        log.debug "Discovery is returning FINAL JSON: ${json}"
+        openhabDevice.deviceNotification(json)
+    }
+    
+    log.debug "Discovery returned data for ${deviceCount} devices."
 }
 
 // Receive an event from a device and send it onto OpenHAB

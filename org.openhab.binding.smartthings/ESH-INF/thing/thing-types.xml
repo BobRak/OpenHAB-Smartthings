@@ -188,12 +188,12 @@
         </config-description>
      </thing-type>
     
-    <thing-type id="carbonMonoxideMeasurement">
+    <thing-type id="carbonMonoxideDetector">
         <supported-bridge-type-refs>
             <bridge-type-ref id="smartthings"/>
         </supported-bridge-type-refs>
-        <label>CarbonMonoxideMeasurement</label>
-        <description>Carbon Monoxide Measurement</description>
+        <label>carbonMonoxideDetector</label>
+        <description>Carbon Monoxide Detector</description>
        <channels>
             <channel id="carbonMonoxide" typeId="carbonMonoxide-channel">
                 <label>CarbonMonoxide</label>

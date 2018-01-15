@@ -140,14 +140,23 @@ public class SmartthingsServlet extends HttpServlet {
             logger.warn("Smartthing servlet recieved a path that is not supported {}", pathParts[0]);
         }
 
-        // Respond with 200 / "OK" on success.
-        // responses with an empty body will choke response processing on the
-        // hub, resulting in a 6-8s delay in all message processing, as the hub
-        // only seems to dispatch one HubEvent at a time.
-        resp.setStatus(HttpServletResponse.SC_OK);
-        resp.getWriter().write("OK");
-        resp.getWriter().flush();
-        resp.getWriter().close();
+        // A user @fx submitted a pull request stating:
+        // It appears that the HubAction queue will choke for a timeout of 6-8s~ if a http action doesn't return a body
+        // (or possibly on the 204 http code, I didn't test them separately.)
+        // I tested the following scenarios:
+        // 1. Return status 200 with a response of OK
+        // 2. Return status 204 with no response
+        // 3. No return specified which results in a 200 with no response.
+        // In all cases the time was about the same - 3.5 sec/request
+        // Both response 200 cases resulted in the hub logging an error: received a request with an unknown path:
+        // HTTP/1.1 200 OK, content-Length: 0
+        // Therefore I am opting to return a 204 since no error message occurs.
+        resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+        // resp.setStatus(HttpServletResponse.SC_OK);
+        // resp.getWriter().write("OK");
+        // resp.getWriter().flush();
+        // resp.getWriter().close();
+        logger.debug("Smartthings servlet returning.");
         return;
     }
 

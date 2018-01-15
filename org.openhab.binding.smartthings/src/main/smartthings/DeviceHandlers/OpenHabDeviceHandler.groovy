@@ -107,7 +107,7 @@ def deviceNotification(message) {
         return
     }
     
-    log.debug "Sending '${message}' to device"
+    log.debug "Sending '${message}' to ${ip}:${port} with mac: ${mac}"
     setNetworkAddress()
 
     def slurper = new JsonSlurper()
