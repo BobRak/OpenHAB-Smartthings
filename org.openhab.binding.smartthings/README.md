@@ -17,7 +17,9 @@ Please test with your devices. When (I won't even say if) you find one that does
 
 ## Discovery
 
-Discovery allows OpenHAB to examine a binding and automatically find the Things available on binding. Discovery is supported and does work but needs more testing.
+Discovery allows OpenHAB to examine a binding and automatically find the Things available on binding. Discovery is supported and does work but needs more testing. 
+
+Remember to follow the [Smartthings Configuration insturction](SmartthingsInstallation.md) below before running discovery. 
 
 Discovery is not run automatically on startup. Therefore to run the discovery process perform the following:
 
