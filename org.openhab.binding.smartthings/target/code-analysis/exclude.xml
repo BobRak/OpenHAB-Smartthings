@@ -24,4 +24,10 @@
     <Class name="~.*Util"/>
     <Bug pattern="SLF4J_LOGGER_SHOULD_BE_NON_STATIC"/>
   </Match>
+  <Match>
+    <Bug pattern="SLF4J_UNKNOWN_ARRAY"/>
+  </Match>
+  <Match>
+    <Bug pattern="SLF4J_SIGN_ONLY_FORMAT"/>
+  </Match>
 </FindBugsFilter>

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -16,6 +16,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
+import java.util.regex.Pattern;
 
 import org.eclipse.smarthome.config.discovery.AbstractDiscoveryService;
 import org.eclipse.smarthome.config.discovery.DiscoveryResult;
@@ -35,7 +36,7 @@ import com.google.gson.Gson;
 /**
  * Smartthings Discovery service
  *
- * @author Bob Raker
+ * @author Bob Raker - Initial contribution
  *
  */
 public class SmartthingsDiscoveryService extends AbstractDiscoveryService implements EventHandler {
@@ -43,6 +44,8 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
     private static final int SEARCH_TIME = 30;
     private static final int INITIAL_DELAY = 5;
     private static final int SCAN_INTERVAL = 180;
+
+    private final Pattern findIllegalChars = Pattern.compile("[^A-Za-z0-9_-]");
 
     private Logger logger = LoggerFactory.getLogger(SmartthingsDiscoveryService.class);
 
@@ -114,8 +117,8 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
     protected void startBackgroundDiscovery() {
         if (scanningJob == null || scanningJob.isCancelled()) {
             logger.debug("Starting background scanning job");
-            this.scanningJob = AbstractDiscoveryService.scheduler.scheduleWithFixedDelay(this.scanningRunnable,
-                    INITIAL_DELAY, SCAN_INTERVAL, TimeUnit.SECONDS);
+            this.scanningJob = scheduler.scheduleWithFixedDelay(this.scanningRunnable, INITIAL_DELAY, SCAN_INTERVAL,
+                    TimeUnit.SECONDS);
         } else {
             logger.debug("ScanningJob active");
         }
@@ -178,10 +181,12 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
                 deviceData.getName());
 
         // Build the UID as a string smartthings:{ThingType}:{BridgeName}:{DeviceName}
-        String deviceNameNoSpaces = deviceData.getName().replaceAll("\\s", "");
+        String deviceNameNoSpaces = deviceData.getName().replaceAll("\\s", "_");
+        String smartthingsDeviceName = findIllegalChars.matcher(deviceNameNoSpaces).replaceAll("");
         ThingUID bridgeUid = bridgeHandler.getThing().getUID();
         String bridgeId = bridgeUid.getId();
-        String uidStr = String.format("smartthings:%s:%s:%s", deviceData.getCapability(), bridgeId, deviceNameNoSpaces);
+        String uidStr = String.format("smartthings:%s:%s:%s", deviceData.getCapability(), bridgeId,
+                smartthingsDeviceName);
 
         Map<String, Object> properties = new HashMap<>();
         properties.put("smartthingsName", deviceData.getName());

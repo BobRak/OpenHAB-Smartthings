@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -43,14 +43,6 @@ import com.google.gson.Gson;
  *
  * @author Bob Raker - Initial contribution
  */
-/**
- * @author Bob
- *
- */
-/**
- * @author Bob
- *
- */
 public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implements EventHandler {
 
     private Logger logger = LoggerFactory.getLogger(SmartthingsHandlerFactory.class);
@@ -59,7 +51,6 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
     private SmartthingsBridgeHandler bridge;
     private ChannelTypeRegistry channelTypeRegistry;
     private Gson gson;
-    // private Map<String, SmartthingsThingHandler> handlerMap = new HashMap<String, SmartthingsThingHandler>();
     private List<SmartthingsThingHandler> thingHandlers = new ArrayList<SmartthingsThingHandler>();
 
     @Override
@@ -85,12 +76,6 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
             // Everything but the bridge is handled by this one handler
             logger.debug("Creating thing handler for {}", thingTypeUID.getAsString());
             SmartthingsThingHandler thingHandler = new SmartthingsThingHandler(thing, this);
-
-            // Built map of smartthingsDisplayName:id to handler
-            // String id = thingTypeUID.getId();
-            // String key = thingHandler.getSmartthingsName() + ":" + id;
-            // handlerMap.put(key, thingHandler);
-
             thingHandlers.add(thingHandler);
             return thingHandler;
         }
@@ -128,6 +113,12 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
         bundleContext.registerService(EventHandler.class.getName(), discoveryService, eventProperties);
     }
 
+    /**
+     * Messages sent to the Smartthings binding from the hub via the SmartthingsServlet arrive here and are then
+     * dispatched to the correct thing's handleStateMessage function
+     *
+     * @param event The event sent
+     */
     @Override
     public void handleEvent(Event event) {
         String topic = event.getTopic();

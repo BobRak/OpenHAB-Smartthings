@@ -4,16 +4,7 @@ This binding integrates the Samsung Smartthings Hub into OpenHAB. This is implem
 
 ## Supported things
 
-The goal is to support all of the bindings in the [Smartthings Capabilities list](http://docs.smartthings.com/en/latest/capabilities-reference.html). However I have a very limited number of devices and have currently tested the following devices:
-
-* Acceleration
-* Indicator - This can be viewed in OpenHAB. Configuration can be done in the Smartthings App and should not need to be changed in OpenHAB.
-* Power Meter
-* Switch
-* Switch Level (i.e. dimmer)
-* Three Axis
-
-Please test with your devices. When (I won't even say if) you find one that doesn't work [follow these instructions](Troubleshooting.md) to collect the required data so I can work to support it.
+The goal is to support all of the bindings in the [Smartthings Capabilities list](http://docs.smartthings.com/en/latest/capabilities-reference.html). However all of the devices have not been tested at this time.  Please test with your devices. If you find one that doesn't work [follow these instructions](Troubleshooting.md) to collect the required data so I can work to support it.
 
 ## Discovery
 
@@ -30,7 +21,13 @@ Discovery is not run automatically on startup. Therefore to run the discovery pr
 7. At the bottom of the screen click on **SEARCH FOR THINGS**
 8. Select **Smartthings Binding**
 9. You should now see the Smartthings Things in the Inbox
-10. More information on using discovery is available in the [configuration Tutorial](http://docs.openhab.org/tutorials/beginner/configuration.html)
+10. More information on using discovery is available in the [configuration tutorial](https://www.openhab.org/docs/configuration)
+
+## Smartthings Configuration
+
+Prior to running starting the binding the Smartthings hub must have the required OpenHAB software installed. [Follow these instructions](SmartthingsInstallation.md)
+
+** The binding will not work until this part has been completed, do not skip this part of the setup. **
 
 ## OpenHAB Configuration
 
@@ -74,7 +71,7 @@ where:
 
 ## Items
 
-These are specified in the .items file. This section describes the specifics related to this binding. Please see the [Items documentation](http://docs.openhab.org/configuration/items.html) for a full explanation of configuring items.
+These are specified in the .items file. This section describes the specifics related to this binding. Please see the [Items documentation](https://www.openhab.org/docs/configuration/items.html) for a full explanation of configuring items.
 
 The most important thing is getting the **channel** specification correct. The general format is:
 
@@ -96,15 +93,11 @@ The parts (separated by :) are defined as:
     Number  MainGarageBattery    "Garage battery [%.0f]"  <battery>           { channel="smartthings:battery:Home:MainGarageBattery:battery" }  
     Switch           OfficeLight          "Office light"    <light>           { channel="smartthings:switch:Home:OfficeLight:switch" }
 
-## Smartthings Configuration
-
-Prior to running starting the binding the Smartthings hub must have the required OpenHAB software installed. [Follow these instructions](SmartthingsInstallation.md)
-
 ## Installation
 
 Until this binding has been added to the OpenHAB repository you will need to copy the binding "jar" file to your OpenHAB server.
 
-1. Locate the org.openhab.binding.smartthings-2.1.0-SNAPSHOT.jar file in the /target folder of the distribution.
+1. Locate the org.openhab.binding.smartthings-2.4.0-SNAPSHOT.jar file in the /target folder of the distribution.
 2. Copy this file to the addons directory of your OpenHAB server. If you are using Openhabian this will be in the Samba share: openHAB/addons.
 3. If openHAB is currently running it will need to be restarted (On Linux: sudo /etc/init.d/openhab2 stop followed by sudo /etc/init.d/openhab2 start)
 4. Add the appropriate configuration files (.things, .items, .sitemaps)

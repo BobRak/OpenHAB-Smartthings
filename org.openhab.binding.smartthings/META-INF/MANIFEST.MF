@@ -1,10 +1,12 @@
 Manifest-Version: 1.0
+Automatic-Module-Name: org.openhab.binding.smartthings
 Bundle-ManifestVersion: 2
 Bundle-Name: Smartthings Binding
 Bundle-SymbolicName: org.openhab.binding.smartthings;singleton:=true
 Bundle-Vendor: openHAB
-Bundle-Version: 2.2.0.qualifier
+Bundle-Version: 2.4.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
 Import-Package: 
  com.google.gson,
@@ -12,6 +14,7 @@ Import-Package:
  javax.servlet.http,
  com.google.common.collect,
  org.apache.commons.codec,
+ org.eclipse.jdt.annotation;resolution:=optional,
  org.eclipse.jetty.client,
  org.eclipse.jetty.client.api,
  org.eclipse.jetty.client.http,

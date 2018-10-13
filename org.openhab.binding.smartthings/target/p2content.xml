@@ -1,29 +1,35 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <units size='1'>
-  <unit id='org.openhab.binding.smartthings' version='2.2.0.201801151705'>
-    <update id='org.openhab.binding.smartthings' range='[0.0.0,2.2.0.201801151705)' severity='0'/>
+  <unit id='org.openhab.binding.smartthings' version='2.4.0.201810131822' generation='2'>
+    <update id='org.openhab.binding.smartthings' range='[0.0.0,2.4.0.201810131822)' severity='0'/>
     <properties size='5'>
       <property name='org.eclipse.equinox.p2.name' value='Smartthings Binding'/>
       <property name='org.eclipse.equinox.p2.provider' value='openHAB'/>
       <property name='maven-groupId' value='org.openhab.binding'/>
       <property name='maven-artifactId' value='org.openhab.binding.smartthings'/>
-      <property name='maven-version' value='2.2.0-SNAPSHOT'/>
+      <property name='maven-version' value='2.4.0-SNAPSHOT'/>
     </properties>
-    <provides size='7'>
-      <provided namespace='org.eclipse.equinox.p2.iu' name='org.openhab.binding.smartthings' version='2.2.0.201801151705'/>
-      <provided namespace='osgi.bundle' name='org.openhab.binding.smartthings' version='2.2.0.201801151705'/>
+    <provides size='8'>
+      <provided namespace='org.eclipse.equinox.p2.iu' name='org.openhab.binding.smartthings' version='2.4.0.201810131822'/>
+      <provided namespace='osgi.bundle' name='org.openhab.binding.smartthings' version='2.4.0.201810131822'/>
       <provided namespace='java.package' name='org.openhab.binding.smartthings' version='0.0.0'/>
       <provided namespace='java.package' name='org.openhab.binding.smartthings.config' version='0.0.0'/>
       <provided namespace='java.package' name='org.openhab.binding.smartthings.discovery' version='0.0.0'/>
       <provided namespace='java.package' name='org.openhab.binding.smartthings.handler' version='0.0.0'/>
+      <provided namespace='osgi.identity' name='org.openhab.binding.smartthings' version='2.4.0.201810131822'>
+        <properties size='1'>
+          <property name='type' value='osgi.bundle'/>
+        </properties>
+      </provided>
       <provided namespace='org.eclipse.equinox.p2.eclipse.type' name='bundle' version='1.0.0'/>
     </provides>
-    <requires size='30'>
+    <requires size='32'>
       <required namespace='java.package' name='com.google.gson' range='0.0.0'/>
       <required namespace='java.package' name='javax.servlet' range='0.0.0'/>
       <required namespace='java.package' name='javax.servlet.http' range='0.0.0'/>
       <required namespace='java.package' name='com.google.common.collect' range='0.0.0'/>
       <required namespace='java.package' name='org.apache.commons.codec' range='0.0.0'/>
+      <required namespace='java.package' name='org.eclipse.jdt.annotation' range='0.0.0' optional='true' greedy='false'/>
       <required namespace='java.package' name='org.eclipse.jetty.client' range='0.0.0'/>
       <required namespace='java.package' name='org.eclipse.jetty.client.api' range='0.0.0'/>
       <required namespace='java.package' name='org.eclipse.jetty.client.http' range='0.0.0'/>
@@ -49,15 +55,16 @@
       <required namespace='java.package' name='org.osgi.service.event' range='0.0.0'/>
       <required namespace='java.package' name='org.osgi.service.http' range='0.0.0'/>
       <required namespace='java.package' name='org.slf4j' range='0.0.0'/>
+      <requiredProperties namespace='osgi.ee' match='(&amp;(osgi.ee=JavaSE)(version=1.8))'/>
     </requires>
     <artifacts size='1'>
-      <artifact classifier='osgi.bundle' id='org.openhab.binding.smartthings' version='2.2.0.201801151705'/>
+      <artifact classifier='osgi.bundle' id='org.openhab.binding.smartthings' version='2.4.0.201810131822'/>
     </artifacts>
     <touchpoint id='org.eclipse.equinox.p2.osgi' version='1.0.0'/>
     <touchpointData size='1'>
       <instructions size='1'>
         <instruction key='manifest'>
-          Bundle-SymbolicName: org.openhab.binding.smartthings;singleton:=true&#xA;Bundle-Version: 2.2.0.201801151705&#xA;
+          Bundle-SymbolicName: org.openhab.binding.smartthings;singleton:=true&#xA;Bundle-Version: 2.4.0.201810131822&#xA;
         </instruction>
       </instructions>
     </touchpointData>

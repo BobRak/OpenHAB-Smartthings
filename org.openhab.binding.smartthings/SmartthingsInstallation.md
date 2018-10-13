@@ -69,6 +69,8 @@ Next the App needs to be configured using **the Smartthings App on your smartpho
 4. Click on **+ Add a SmartApp**
 5. Scroll to the bottom and select **My Apps**
 6. Select **OpenHabAppV2**
-7. In the selection screen select the devices you want to interact with OpenHAB. **Warning** devices not selected can not be used with OpenHAB. Near the bottom of the screen is **Notify this virtual device**, click on it and select **OpenHabDevice**. Finally click **Done** on the upper right.
+     * In the selection screen select the devices you want to interact with OpenHAB. **Warning** devices not selected can not be used with OpenHAB. 
+     * Near the bottom of the screen is **Notify this virtual device**, click on it and select **OpenHabDevice**. 
+     * Finally click **Done** on the upper right.
 
 

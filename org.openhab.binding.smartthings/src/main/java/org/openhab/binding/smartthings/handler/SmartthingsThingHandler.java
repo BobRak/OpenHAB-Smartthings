@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2014-2016 by the respective copyright holders.
+ * Copyright (c) 2010-2018 by the respective copyright holders.
  *
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
@@ -37,7 +37,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * @author Bob
+ * @author Bob Raker - Initial contribution
  *
  */
 public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
@@ -51,7 +51,6 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
 
     private List<ChannelType> channelTypes;
 
-    // private Map<ChannelUID, Object> converters = new HashMap<ChannelUID, Object>();
     private Map<ChannelUID, SmartthingsConverter> converters = new HashMap<ChannelUID, SmartthingsConverter>();
 
     /**
@@ -65,6 +64,12 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
         this.factory = factory;
     }
 
+    /**
+     * Called when openHAB receives a command for this handler
+     *
+     * @param channelUID The channel the command was sent to
+     * @param command    The command sent
+     */
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
         Bridge bridge = getBridge();
@@ -79,8 +84,8 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
 
             SmartthingsConverter converter = converters.get(channelUID);
             if (converter == null) {
-                logger.info("No converter available for channel {} with command {}", channelUID.getAsString(),
-                        command.toFullString());
+                logger.info("No converter available for channel {} with command {}. OpenHab can not update the device.",
+                        channelUID.getAsString(), command.toFullString());
                 return;
             }
 
@@ -124,6 +129,11 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
         return id;
     }
 
+    /**
+     * State messages sent from the hub arrive here, are processed and the openHab state is updated.
+     *
+     * @param stateData
+     */
     public void handleStateMessage(SmartthingsStateData stateData) {
         // First locate the channel
         Channel matchingChannel = null;
@@ -187,10 +197,10 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
             Constructor<?> constr = Class.forName(converterClassName.toString()).getDeclaredConstructor(Thing.class);
             constr.setAccessible(true);
             SmartthingsConverter cvtr = (SmartthingsConverter) constr.newInstance(thing);
-            logger.info("Using converter {}", converterName);
+            logger.debug("Using converter {}", converterName);
             return cvtr;
         } catch (ClassNotFoundException e) {
-            logger.info("No Custom converter exists for {} ({})", converterName, converterClassName);
+            logger.debug("No Custom converter exists for {} ({})", converterName, converterClassName);
         } catch (NoSuchMethodException e) {
             logger.info("NoSuchMethodException occurred for {} ({}) {}", converterName, converterClassName, e);
         } catch (InvocationTargetException e) {

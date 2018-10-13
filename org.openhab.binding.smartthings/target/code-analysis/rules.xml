@@ -53,10 +53,10 @@
     <priority>3</priority>
   </rule>
   <rule ref="rulesets/java/logging-java.xml/AvoidPrintStackTrace">
-    <priority>3</priority>
+    <priority>1</priority>
   </rule>
   <rule ref="rulesets/java/logging-java.xml/SystemPrintln">
-    <priority>3</priority>
+    <priority>2</priority>
   </rule>
   
   <!-- See http://pmd.sourceforge.net/pmd-5.0.0/rules/java/strictexception.html -->

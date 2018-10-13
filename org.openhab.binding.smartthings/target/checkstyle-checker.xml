@@ -13,6 +13,12 @@
 
 <module name="Checker">
 
+  <!-- Allow to skip parsing of files, see https://github.com/checkstyle/checkstyle/issues/5629#issuecomment-375126473 -->
+  <!-- Add default to skip unhandled Java 9 sources -->
+  <module name="BeforeExecutionExclusionFileFilter">
+    <property name="fileNamePattern" value="${checkstyle.beforeExecutionExclusionFileFilter.fileNamePattern}" default="module\-info\.java$" />
+  </module>
+
   <!-- Rules for Code Formatting -->
   <module name="FileTabCharacter">
     <property name="severity" value="error" />
@@ -20,7 +26,7 @@
   </module>
 
   <!--See http://checkstyle.sourceforge.net/config_header.html#Header -->
-  <module name="RegexpHeader">
+  <module name="org.openhab.tools.analysis.checkstyle.ParameterizedRegexpHeaderCheck">
     <!--  This property represents the severity level of a check violation. The valid options are:
         -ignore
         -info
@@ -30,9 +36,10 @@
     <!-- See http://checkstyle.sourceforge.net/config.html#Severity -->
     <property name="severity" value="error" />
     <property name="fileExtensions" value="java"/>
+    <property name="values" value="${checkstyle.headerCheck.values}" default="2010,2018"/>
     <property name="header"
         value="${checkstyle.headerCheck.content}"
-        default="^/\*\*$\n^ \* Copyright \(c\) \d\d\d\d-\d\d\d\d by the respective copyright holders\.$\n^ \*$\n^ \* All rights reserved\. This program and the accompanying materials$\n^ \* are made available under the terms of the Eclipse Public License v1\.0$\n^ \* which accompanies this distribution, and is available at$\n^ \* http://www.eclipse.org/legal/epl\-v10\.html$"/>
+        default="^/\*\*$\n^ \* Copyright \(c\) {0}-{1} by the respective copyright holders\.$\n^ \*$\n^ \* All rights reserved\. This program and the accompanying materials$\n^ \* are made available under the terms of the Eclipse Public License v1\.0$\n^ \* which accompanies this distribution, and is available at$\n^ \* http://www.eclipse.org/legal/epl\-v10\.html$"/>
   </module>
   
   <module name="NewlineAtEndOfFile">
@@ -66,6 +73,11 @@
 
   <module name="org.openhab.tools.analysis.checkstyle.OverridingParentPomConfigurationCheck">
     <property name="severity" value="warning" />
+  </module>
+  
+  <module name="org.openhab.tools.analysis.checkstyle.OnlyTabIndentationInXmlFilesCheck">
+    <property name="severity" value="warning" />
+    <property name="onlyShowFirstWarning" value="true" />
   </module>
 
   <module name="org.openhab.tools.analysis.checkstyle.RequireBundleCheck">
@@ -122,7 +134,7 @@
     <property name="severity" value="error" />
     <property name="thingSchema" value="http://eclipse.org/smarthome/schemas/thing-description-1.0.0.xsd" />
     <property name="bindingSchema" value="http://www.eclipse.org/smarthome/schemas/binding-1.0.0.xsd" />
-    <property name="configSchema" value="https://www.eclipse.org/smarthome/schemas/config-description-1.0.0.xsd" />
+    <property name="configSchema" value="http://www.eclipse.org/smarthome/schemas/config-description-1.0.0.xsd" />
   </module>
   
   <module name="org.openhab.tools.analysis.checkstyle.EshInfXmlUsageCheck">
@@ -131,12 +143,22 @@
   
   <module name="org.openhab.tools.analysis.checkstyle.PomXmlCheck">
     <property name="severity" value="error" />
+    <property name="manifestVersionRegularExpression" value="${checkstyle.pomXmlCheck.currentVersionRegex}" default="^2\.3\.0"/>
   </module>
   
   <module name="org.openhab.tools.analysis.checkstyle.PackageExportsNameCheck">
-    <property name="severity" value="warning" />
+    <property name="severity" value="error" />
     <property name="sourceDirectories" value="src/main/java" />
     <property name="excludedPackages" value=".*.internal.*" />
+  </module>
+  
+  <module name="org.openhab.tools.analysis.checkstyle.KarafFeatureCheck">
+    <property name="severity" value="${checkstyle.karafFeatureCheck.severity}" default="ignore" />
+    <property name="featureXmlPath" value="${checkstyle.karafFeatureCheck.featureXmlPath}" default="features/openhab-addons/src/main/feature/feature.xml" />
+  </module>
+  
+  <module name="org.openhab.tools.analysis.checkstyle.AnnotationDependencyCheck">
+    <property name="severity" value="warning" />
   </module>
 
   <module name="TreeWalker">
@@ -169,6 +191,9 @@
     <module name="org.openhab.tools.analysis.checkstyle.DeclarativeServicesDependencyInjectionCheck">
       <property name="severity" value="warning" />
     </module>
+    <module name="org.openhab.tools.analysis.checkstyle.InheritDocCheck">
+      <property name="severity" value="warning" />
+    </module>
     <module name="UnusedImports">
       <property name="processJavadoc" value="true"/>
       <property name="severity" value="info" />
@@ -186,9 +211,24 @@
     <module name="org.openhab.tools.analysis.checkstyle.NoEmptyLineSeparatorCheck">
       <property name="severity" value="info"/>
     </module>
+    
+    <module name="org.openhab.tools.analysis.checkstyle.AvoidScheduleAtFixedRateCheck">
+        <property name="severity" value="warning" />
+    </module>
+    
+    <module name="org.openhab.tools.analysis.checkstyle.JavadocMethodStyleCheck">
+      <property name="severity" value="info"/>
+      <property name="allowMissingPropertyJavadoc" value="true"/>
+    </module>
+    
+    <module name="org.openhab.tools.analysis.checkstyle.AuthorContributionDescriptionCheck">
+       <property name="severity" value="warning"/>
+       <property name="requiredContributionDescriptions" value="Initial contribution"/>
+       <property name="checkInnerUnits" value="false"/>
+    </module>
 
     <!-- Rules for Java Naming Convention -->
-
+    
     <module name="PackageName">
       <property name="format"
               value="^[a-z]+(\.[a-z][a-z0-9]*)*$"/>
@@ -212,6 +252,9 @@
       <property name="severity" value="info" />
     </module>
     <module name="StaticVariableName">
+      <property name="severity" value="info" />
+    </module>
+    <module name="MemberName">
       <property name="severity" value="info" />
     </module>
   </module>
