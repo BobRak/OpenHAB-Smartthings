@@ -137,6 +137,19 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
 
     private SmartthingsThingHandler findHandler(String deviceDisplayName, String attribute) {
         for (SmartthingsThingHandler handler : thingHandlers) {
+            // There have been some reports of handler.getSmartthingsName() returning a null.
+            // Need to find out where null is coming from
+            if (handler == null) {
+                logger.warn("A thing handler is unexpectedly null: for display name: {} with attribute: {}",
+                        deviceDisplayName, attribute);
+                return null;
+            }
+            if (handler.getSmartthingsName() == null) {
+                logger.warn(
+                        "A thing handler \"smartthings name\" is unexpectedly null: for thing {} with display name: {} and with attribute: {}",
+                        handler.toString(), deviceDisplayName, attribute);
+                return null;
+            }
             if (handler.getSmartthingsName().equals(deviceDisplayName)) {
                 for (Channel ch : handler.getThing().getChannels()) {
                     String chId = ch.getUID().getId();

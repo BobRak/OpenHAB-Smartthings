@@ -308,4 +308,14 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
         return smartthingsName;
     }
 
+    @Override
+    public String toString() {
+        StringBuffer sb = new StringBuffer();
+        sb.append("smartthingsName :").append(smartthingsName);
+        sb.append(", smartthingsDeviceName :").append(smartthingsDeviceName);
+        sb.append(", thing UID: ").append(this.thing.getUID());
+        sb.append(", thing label: ").append(this.thing.getLabel());
+        return sb.toString();
+    }
+
 }
