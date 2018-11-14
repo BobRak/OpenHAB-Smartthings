@@ -26,6 +26,9 @@
 </file>
 <file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\discovery\SmartthingsDeviceData.java">
 </file>
+<file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\discovery\SmartthingsDiscoveryData.java">
+<error line="0" severity="info" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
+</file>
 <file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\discovery\SmartthingsDiscoveryService.java">
 </file>
 <file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\handler\SmartthingsAbstractHandler.java">
@@ -33,6 +36,8 @@
 <file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\handler\SmartthingsBridgeHandler.java">
 </file>
 <file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\handler\SmartthingsThingHandler.java">
+</file>
+<file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsColorConverter.java">
 </file>
 <file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsConverter.java">
 </file>

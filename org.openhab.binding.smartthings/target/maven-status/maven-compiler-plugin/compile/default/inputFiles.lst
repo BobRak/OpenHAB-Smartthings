@@ -8,7 +8,9 @@ D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openha
 D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\discovery\SmartthingsDeviceData.java
 D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\handler\SmartthingsBridgeHandler.java
 D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\handler\SmartthingsThingHandler.java
+D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsColorConverter.java
 D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\discovery\SmartthingsDiscoveryService.java
+D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\discovery\SmartthingsDiscoveryData.java
 D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsConverter.java
 D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsOpenCloseControlConverter.java
 D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\SmartthingsHandlerFactory.java

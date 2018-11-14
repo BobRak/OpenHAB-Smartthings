@@ -2,6 +2,8 @@
 
 This binding integrates the Samsung Smartthings Hub into OpenHAB. This is implemented as an OpenHAB 2 binding.
 
+** Warning - The jar file deployed after 11/13/18 will require that you deploy the revised OpenHabAppV2.groovy file on your hub **
+
 ## Supported things
 
 The goal is to support all of the bindings in the [Smartthings Capabilities list](http://docs.smartthings.com/en/latest/capabilities-reference.html). However all of the devices have not been tested at this time.  Please test with your devices. If you find one that doesn't work [follow these instructions](Troubleshooting.md) to collect the required data so I can work to support it.

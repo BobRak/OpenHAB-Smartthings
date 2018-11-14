@@ -8,9 +8,7 @@
  */
 package org.openhab.binding.smartthings.discovery;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledFuture;
@@ -142,7 +140,9 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
         httpClient = bridgeHandler.getSmartthingsHttpClient();
         if (httpClient != null) {
             try {
-                httpClient.sendDeviceCommand("/discovery", "{\"discovery\": \"yes\"}"); // this is a dummy message,
+                String discoveryMsg = String.format("{\"discovery\": \"yes\", \"openHabStartTime\": %d}",
+                        System.currentTimeMillis());
+                httpClient.sendDeviceCommand("/discovery", discoveryMsg);
                 // Smartthings will not return a response to this message but will send it's response message
                 // which will get picked up by the SmartthingBridgeHandler.receivedPushMessage handler
             } catch (InterruptedException | TimeoutException | ExecutionException e) {
@@ -161,14 +161,25 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
         String data = (String) event.getProperty("data");
         logger.debug("Event received on topic: {}", topic);
 
-        // The data returned from the Smartthings hub is a list of strings where each
-        // element is the data for one device. That device string is another json object
-        List<String> devices = new ArrayList<String>();
-        devices = gson.fromJson(data, devices.getClass());
-        for (String device : devices) {
-            SmartthingsDeviceData deviceData = gson.fromJson(device, SmartthingsDeviceData.class);
+        // Two classes are required.
+        // 1. SmarthingsDiscoveryData contains timing info and the discovery data which is sent as an array of Strings
+        // 2. SmartthingDeviceData contains the device data for one device.
+        // First the SmarthingsDiscoveryData is converted from json to java. Then each data string is converted into
+        // device data
+        SmartthingsDiscoveryData discoveryData = gson.fromJson(data, SmartthingsDiscoveryData.class);
+        long openHabStartTime = discoveryData.getOpenHabStartTime();
+        long hubTime = discoveryData.getHubTime();
+        long transmissionCompleteTime = System.currentTimeMillis();
+
+        for (String deviceStr : discoveryData.getData()) {
+            SmartthingsDeviceData deviceData = gson.fromJson(deviceStr, SmartthingsDeviceData.class);
             createDevice(deviceData);
         }
+
+        // Log processing time
+        logger.info(
+                "Discovery timing data, Request time until data received {}, Request time until data recieved and processed {}, Hub processing time: {} ",
+                transmissionCompleteTime - openHabStartTime, System.currentTimeMillis() - openHabStartTime, hubTime);
     }
 
     /**

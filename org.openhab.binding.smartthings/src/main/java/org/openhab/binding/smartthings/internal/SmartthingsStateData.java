@@ -18,6 +18,9 @@ public class SmartthingsStateData {
     private String deviceDisplayName;
     private String capabilityAttribute;
     private String value;
+    private long hubTime;
+    private long openHabStartTime;
+    private long hubEndTime;
 
     SmartthingsStateData() {
     }
@@ -34,12 +37,27 @@ public class SmartthingsStateData {
         return value;
     }
 
+    public long getHubTime() {
+        return hubTime;
+    }
+
+    public long getOpenHabStartTime() {
+        return openHabStartTime;
+    }
+
+    public long getHubEndTime() {
+        return hubEndTime;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("State message: Display Name:\"").append(deviceDisplayName);
-        sb.append("\", Attribute: \"").append(capabilityAttribute);
-        sb.append("\", Value: \"").append(value).append("\"");
+        sb.append("State message: display Name:\"").append(deviceDisplayName);
+        sb.append("\", attribute: \"").append(capabilityAttribute);
+        sb.append("\", value: \"").append(value).append("\"");
+        sb.append("\", hubTime: \"").append(hubTime).append("\"");
+        sb.append("\", hpenHabStartTime: \"").append(openHabStartTime).append("\"");
+        sb.append("\", hubEndTime: \"").append(hubEndTime).append("\"");
         return sb.toString();
     }
 }

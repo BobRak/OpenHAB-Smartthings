@@ -12,10 +12,10 @@
  *    /smartthings/push - When an event occurs on a monitored device the new value is sent to OpenHAB
  *
  *  Authors
- *   - rjraker@gmail.com - 1/30/17 - 
+ *   - rjraker@gmail.com - 1/30/17 - Modified for use with Smartthings
  *   - st.john.johnson@gmail.com and jeremiah.wuenschel@gmail.com- original code for interface with another device
  *
- *  Copyright 2016, 2017
+ *  Copyright 2016 - 2018
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  *  in compliance with the License. You may obtain a copy of the License at:
@@ -577,17 +577,19 @@ def openhabMessageHandler(evt) {
 
 // Handler for "current" state requests
 def openhabStateHandler(evt) {
-    def json = new JsonSlurper().parseText(evt.value)
-    log.debug "Received state event from openhabDevice: ${json}"
+    def mapIn = new JsonSlurper().parseText(evt.value)
+    log.debug "Received state event from openhabDevice: ${mapIn}"
+    def hubStartTime = mapIn.hubStartTime
+    def openHabStartTime = mapIn.openHabStartTime
 
     // Get the CAPABILITY_MAP entry for this device type
-    def capability = CAPABILITY_MAP[json.capabilityKey]
+    def capability = CAPABILITY_MAP[mapIn.capabilityKey]
     if (capability == null) {
-        log.error "No capability: \"${json.capabilityKey}\" exists, make sure there is a CAPABILITY_MAP entry for this capability."
+        log.error "No capability: \"${mapIn.capabilityKey}\" exists, make sure there is a CAPABILITY_MAP entry for this capability."
         def jsonOut = new JsonOutput().toJson([
             path: "/smartthings/error",
             body: [
-                message: "Requested current state information for CAPABILITY: \"${json.capabilityKey}\" but this is not defined in the SmartApp"
+                message: "Requested current state information for CAPABILITY: \"${mapIn.capabilityKey}\" but this is not defined in the SmartApp"
             ]
         ]) 
         log.debug "Returning ${jsonOut}"
@@ -596,32 +598,46 @@ def openhabStateHandler(evt) {
     }
     
     // Verify the attribute is on this capability
-    if (! capability.attributes.contains(json.capabilityAttribute) ) {
-        log.error "Capability \"${json.capabilityKey}\" does NOT contain the expected attribute: \"${json.capabilityAttribute}\", make sure the a CAPABILITY_MAP for this capability contains the missing attribte."
+    if (! capability.attributes.contains(mapIn.capabilityAttribute) ) {
+        log.error "Capability \"${mapIn.capabilityKey}\" does NOT contain the expected attribute: \"${mapIn.capabilityAttribute}\", make sure the a CAPABILITY_MAP for this capability contains the missing attribte."
         def jsonOut = new JsonOutput().toJson([
             path: "/smartthings/error",
+            startTime: json.StartTime,
             body: [
-                message: "Requested current state information for CAPABILITY: \"${json.capabilityKey}\" with attribute: \"${json.capabilityAttribute}\" but this is attribute not defined for this capability in the SmartApp"
+                message: "Requested current state information for CAPABILITY: \"${mapIn.capabilityKey}\" with attribute: \"${mapIn.capabilityAttribute}\" but this is attribute not defined for this capability in the SmartApp"
             ]
         ]) 
         log.debug "Returning ${jsonOut}"
         openhabDevice.deviceNotification(jsonOut)
+        log.debug "Return complete ${jsonOut}"
         return
     }
     
     
     // Look for the device associated with this capability and return the value of the specified attribute
-    settings[json.capabilityKey].each {device ->
-        if (device.displayName == json.deviceDisplayName) {
+    settings[mapIn.capabilityKey].each {device ->
+        if (device.displayName == mapIn.deviceDisplayName) {
             // Have the device, get the value and return the correct message
-            def currentState = device.currentValue(json.capabilityAttribute)
+            def currentState = device.currentValue(mapIn.capabilityAttribute)
+            // Have to handle special values. Ones that are not numeric or string
+            // This switch statement should just be considered a beginning. There are other cases that I dont have devices to test
+            def capabilityAttr = mapIn.capabilityAttribute
+            switch (capabilityAttr) {
+            	case 'threeAxis' :
+                	currentState = "${currentState}"
+                    break
+				default :
+                	break
+            }
             def jsonOut = new JsonOutput().toJson([
                 path: "/smartthings/state",
+		        hubStartTime: hubStartTime,
                 body: [
                     deviceDisplayName: device.displayName,
-                    capabilityAttribute: json.capabilityAttribute,
-                    value: currentState
-                ]
+                    capabilityAttribute: capabilityAttr,
+                    value: currentState,
+                    openHabStartTime : openHabStartTime,
+    				hubTime : "--hubTime--",]
             ]) 
 
             log.debug "Returning ${jsonOut}"
@@ -662,7 +678,7 @@ def openhabUpdateHandler(evt) {
     // Look for the device associated with this capability and perform the requested action
     settings[json.capabilityKey].each {device ->
         if (device.displayName == json.deviceDisplayName) {
-            // log.debug "openhabUpdateHandler - found device for ${json.deviceDisplayName}"
+            log.debug "openhabUpdateHandler - found device for ${json.deviceDisplayName}"
             if (capability.containsKey("action")) {
                 log.debug "openhabUpdateHandler - Capability ${capability.name} with device name ${device.displayName} changed to ${json.value} using action ${capability.action}"
                 def action = capability["action"]
@@ -674,8 +690,13 @@ def openhabUpdateHandler(evt) {
 }
 
 // Send a list of all devices to OpenHAB - used during OpenHAB's discovery process
+// The hub is only capable of sending back a buffer of ~40,000 bytes. This routine
+// will send multiple responses anytime the buffer exceeds 30,000 bytes
 def openhabDiscoveryHandler(evt) {
-    log.debug "Entered discovery handler"
+    def mapIn = new JsonSlurper().parseText(evt.value)
+    def hubStartTime = mapIn.hubStartTime
+    def openHabStartTime = mapIn.openHabStartTime
+    log.debug "Entered discovery handler with hubStartTime: ${hubStartTime}, openHabStartTime: ${openHabStartTime}, and mapIn: ${mapIn}"
     def results = []
     def bufferLength = 0
     def deviceCount = 0
@@ -690,42 +711,52 @@ def openhabDiscoveryHandler(evt) {
                 bufferLength += deviceInfo.length()
                 // Check if we have close to a full buffer and if so send it
                 if( bufferLength > 30000 ) {
-                    def json = new groovy.json.JsonOutput().toJson([
-                        path: "/smartthings/discovery",
-                        body: results
-                    ])
+				    def json = prepareDiscoveryResult( results, openHabStartTime, hubStartTime)
                     log.debug "Discovery is returning JSON: ${json}"
-                    openhabDevice.deviceNotification(json)
-                    results = []
+			        openhabDevice.deviceNotification(json)
+            	    results = []
                     bufferLength = 0
-                }                
+				}                
             }
         }
     }
-
-    if( bufferLength > 0 ) {
-        def json = new groovy.json.JsonOutput().toJson([
-            path: "/smartthings/discovery",
-            body: results
-        ])
+    
+	if( bufferLength > 0 ) {
+	    def json = prepareDiscoveryResult( results, openHabStartTime, hubStartTime)
         log.debug "Discovery is returning FINAL JSON: ${json}"
-        openhabDevice.deviceNotification(json)
-    }
+	    openhabDevice.deviceNotification(json)
+	}
     
     log.debug "Discovery returned data for ${deviceCount} devices."
 }
 
+// Prepare the discovery result (done in a method since this is needed in multiple places)
+def prepareDiscoveryResult( results, openHabStartTime, hubStartTime) {
+    def resultsWithTimes = [ openHabStartTime : openHabStartTime,
+    						 hubTime : "--hubTime--",
+                             data : results]
+    def json = new groovy.json.JsonOutput().toJson([
+        path: "/smartthings/discovery",
+        hubStartTime: hubStartTime,
+        body: resultsWithTimes
+    ])
+	json
+}
+
 // Receive an event from a device and send it onto OpenHAB
 def inputHandler(evt) {
+	def startTime = now()
     def device = evt.device
     def capabilities = device.capabilities
-    
+    log.debug "Entered input handler for ${evt.displayName} with attribute ${evt.name} changed to ${evt.value}"
     def json = new JsonOutput().toJson([
         path: "/smartthings/state",
+		hubStartTime: startTime,
         body: [
             deviceDisplayName: evt.displayName,
             value: evt.value,
-            capabilityAttribute: evt.name
+            capabilityAttribute: evt.name,
+    		hubTime : "--hubTime--"
         ]
     ])
 
@@ -767,8 +798,7 @@ def actionColor(device, attribute, value) {
             device.setSaturation(value as float)
         break
         case "color":
-            def values = value.split(',')
-            def colormap = ["hue": values[0] as float, "saturation": values[1] as float]
+			def colormap = ["hue": value[0] as float, "saturation": value[1] as float]
             device.setColor(colormap)
         break
     }

@@ -123,7 +123,7 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
     public void handleEvent(Event event) {
         String topic = event.getTopic();
         String data = (String) event.getProperty("data");
-        logger.debug("Event received on topic: {}", topic);
+        logger.trace("Event received on topic: {}", topic);
         SmartthingsStateData stateData = new SmartthingsStateData();
         stateData = gson.fromJson(data, stateData.getClass());
         // String key = stateData.getDeviceDisplayName() + ":" + stateData.getCapabilityAttribute();
@@ -160,7 +160,9 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
             }
         }
 
-        logger.warn("Unable to locate handler for display name: {} with attribute: {}", deviceDisplayName, attribute);
+        logger.warn(
+                "Unable to locate handler for display name: {} with attribute: {}. If this thing is included in your OpenHabAppV2 SmartApp in the Smartthings App on your phone it must also be configured in openHAB",
+                deviceDisplayName, attribute);
         return null;
     }
 

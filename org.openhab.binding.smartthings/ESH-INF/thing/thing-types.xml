@@ -224,15 +224,9 @@
 			</channel>
 			<channel id="saturation" typeId="saturation-channel">
 				<label>Saturation</label>
-				<properties>
-					<property name="smartthings-dataType">Percent</property>
-				</properties>
 			</channel>
 			<channel id="color" typeId="color-channel">
-				<label>Hue</label>
-				<properties>
-					<property name="smartthings-dataType">Color</property>
-				</properties>
+				<label>Color</label>
 			</channel>
 		</channels>
 		<config-description>
@@ -1638,7 +1632,7 @@
 	</channel-type>
 
 	<channel-type id="color-channel">
-		<item-type>Number</item-type>
+		<item-type>Color</item-type>
 		<label>color</label>
 		<category>Color</category>
 	</channel-type>

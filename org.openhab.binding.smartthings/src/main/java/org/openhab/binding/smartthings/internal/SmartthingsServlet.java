@@ -108,7 +108,7 @@ public class SmartthingsServlet extends HttpServlet {
                 sb.append((char) c);
             }
             rdr.close();
-            logger.debug("Smartthing servlet processing \"state\" request. data: {}", sb);
+            logger.trace("Smartthing servlet processing \"state\" request. data: {}", sb);
             publishEvent(STATE_EVENT_TOPIC, "data", sb.toString());
         } else if (pathParts[0].equals("discovery")) {
             // This is discovery data returned from Smartthings
@@ -119,7 +119,7 @@ public class SmartthingsServlet extends HttpServlet {
                 sb.append((char) c);
             }
             rdr.close();
-            logger.debug("Smartthing servlet processing \"discovery\" request. data: {}", sb);
+            logger.trace("Smartthing servlet processing \"discovery\" request. data: {}", sb);
             publishEvent(DISCOVERY_EVENT_TOPIC, "data", sb.toString());
         } else if (pathParts[0].equals("error")) {
             // This is an error message from smartthings
@@ -130,7 +130,7 @@ public class SmartthingsServlet extends HttpServlet {
                 sb.append((char) c);
             }
             rdr.close();
-            logger.debug("Smartthing servlet processing \"error\" request. data: {}", sb);
+            logger.trace("Smartthing servlet processing \"error\" request. data: {}", sb);
             Map<String, Object> map = new HashMap<String, Object>();
             map = gson.fromJson(sb.toString(), map.getClass());
             StringBuffer msg = new StringBuffer("Error message from Smartthings: ");
@@ -144,19 +144,19 @@ public class SmartthingsServlet extends HttpServlet {
         // It appears that the HubAction queue will choke for a timeout of 6-8s~ if a http action doesn't return a body
         // (or possibly on the 204 http code, I didn't test them separately.)
         // I tested the following scenarios:
-        // 1. Return status 200 with a response of OK
-        // 2. Return status 204 with no response
-        // 3. No return specified which results in a 200 with no response.
+        // 1. Return status 204 with a response of OK
+        // 2. Return status 202 with no response
+        // 3. No response.
         // In all cases the time was about the same - 3.5 sec/request
-        // Both response 200 cases resulted in the hub logging an error: received a request with an unknown path:
+        // Both the 202 and 204 responses resulted in the hub logging an error: received a request with an unknown path:
         // HTTP/1.1 200 OK, content-Length: 0
-        // Therefore I am opting to return a 204 since no error message occurs.
-        resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
+        // Therefore I am opting to return nothing since no error message occurs.
+        // resp.setStatus(HttpServletResponse.SC_NO_CONTENT);
         // resp.setStatus(HttpServletResponse.SC_OK);
         // resp.getWriter().write("OK");
         // resp.getWriter().flush();
         // resp.getWriter().close();
-        logger.debug("Smartthings servlet returning.");
+        logger.trace("Smartthings servlet returning.");
         return;
     }
 

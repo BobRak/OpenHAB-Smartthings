@@ -74,6 +74,14 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
     public void handleCommand(ChannelUID channelUID, Command command) {
         Bridge bridge = getBridge();
 
+        // Check if the bridge has not been initialized yet
+        if (bridge == null) {
+            logger.debug(
+                    "The bridge has not been initialized yet. Can not process command for channel {} with command {}.",
+                    channelUID.getAsString(), command.toFullString());
+            return;
+        }
+
         SmartthingsBridgeHandler smartthingsBridgeHandler = (SmartthingsBridgeHandler) bridge.getHandler();
         if (smartthingsBridgeHandler != null
                 && smartthingsBridgeHandler.getThing().getStatus().equals(ThingStatus.ONLINE)) {
@@ -95,8 +103,8 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
                 path = "/state";
                 // Go to ST hub and ask for current state
                 jsonMsg = String.format(
-                        "{\"capabilityKey\": \"%s\", \"deviceDisplayName\": \"%s\", \"capabilityAttribute\": \"%s\"}",
-                        thingTypeId, smartthingsName, smartthingsType);
+                        "{\"capabilityKey\": \"%s\", \"deviceDisplayName\": \"%s\", \"capabilityAttribute\": \"%s\", \"openHabStartTime\": %d}",
+                        thingTypeId, smartthingsName, smartthingsType, System.currentTimeMillis());
             } else {
                 // Send update to ST hub
                 path = "/update";
@@ -154,6 +162,13 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
         updateState(matchingChannel.getUID(), state);
         logger.info("Smartthings updated State for channel: {} to {}", matchingChannel.getUID().getAsString(),
                 state.toString());
+
+        // Output timing information
+        long openHabTime = (stateData.getOpenHabStartTime() > 0)
+                ? System.currentTimeMillis() - stateData.getOpenHabStartTime()
+                : 0;
+        logger.info("State timing data, Request time until data recieved and processed {}, Hub processing time: {} ",
+                openHabTime, stateData.getHubTime());
     }
 
     @Override

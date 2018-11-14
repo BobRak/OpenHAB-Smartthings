@@ -76,12 +76,12 @@ public abstract class SmartthingsConverter {
         if (command instanceof DateTimeType) {
             DateTimeType dt = (DateTimeType) command;
             value = dt.format("%m/%d/%Y %H.%M.%S");
-        } else if (command instanceof DecimalType) {
-            value = command.toString();
         } else if (command instanceof HSBType) {
             HSBType hsb = (HSBType) command;
-            value = String.format("{\"hue\": %d, \"saturation\": %d, \"brightness\": %d }", hsb.getHue().intValue(),
-                    hsb.getSaturation().intValue(), hsb.getBrightness().intValue());
+            value = String.format("[%d, %d, %d ]", hsb.getHue().intValue(), hsb.getSaturation().intValue(),
+                    hsb.getBrightness().intValue());
+        } else if (command instanceof DecimalType) {
+            value = command.toString();
         } else if (command instanceof IncreaseDecreaseType) { // Need to surround with double quotes
             value = surroundWithQuotes(command.toString().toLowerCase());
         } else if (command instanceof NextPreviousType) { // Need to surround with double quotes

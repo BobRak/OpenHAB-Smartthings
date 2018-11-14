@@ -12,6 +12,10 @@
 
 
 
+   <file name="org.openhab.binding.smartthings.discovery.SmartthingsDiscoveryData.java">
+      <message tool="checkstyle" line="0" message="File does not end with a newline." priority="3" rule="NewlineAtEndOfFileCheck" category="style"/>
+   </file>
+
 
 
 

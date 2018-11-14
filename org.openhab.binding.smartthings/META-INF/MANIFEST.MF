@@ -13,7 +13,6 @@ Import-Package:
  javax.servlet,
  javax.servlet.http,
  com.google.common.collect,
- org.apache.commons.codec,
  org.eclipse.jdt.annotation;resolution:=optional,
  org.eclipse.jetty.client,
  org.eclipse.jetty.client.api,
