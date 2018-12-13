@@ -1,7 +1,7 @@
 /**
  *  OpenHAB Bridge
  *
- * 	Authors
+ *  Authors
  *   - st.john.johnson@gmail.com
  *   - jeremiah.wuenschel@gmail.com
  *   - rjraker@gmail.com - 1/30/17 - modified to work with OpenHAB
@@ -68,19 +68,19 @@ def setNetworkAddress() {
 }
 
 def installed() {
-	def ip = device.hub.getDataValue("localIP")
+    def ip = device.hub.getDataValue("localIP")
     def port = device.hub.getDataValue("localSrvPortTCP")
-	log.debug "HTTP Bridge device handler installed. Listening on ${ip} + ":" + ${port}"
+    log.debug "HTTP Bridge device handler installed. Listening on ${ip} + ":" + ${port}"
 }
 
 // Parse events from OpenHAB
 def parse(String description) {
-	def startTime = now()
+    def startTime = now()
     
     setNetworkAddress()
 
     def msg = parseLanMessage(description)
-	log.debug "Msg '${msg}'"
+    log.debug "Msg '${msg}'"
 
     if (msg.header.contains(' /update ')) {
         msg.data.path = "update"
@@ -89,8 +89,8 @@ def parse(String description) {
      } else if (msg.header.contains(' /discovery ')) {
         msg.data = [path: "discovery"]
      } else {
-     	if ( msg.status == 200 ) {
-        	// This would be a response from OpenHAB to the last message - it return 200 since there is nothing to do
+        if ( msg.status == 200 ) {
+            // This would be a response from OpenHAB to the last message - it return 200 since there is nothing to do
             return
         }
         log.error "received a request with an unknown path: ${msg.header}"
@@ -99,7 +99,7 @@ def parse(String description) {
      
      // Add start time to message so we can see how long the message is in the hub
      msg.data.hubStartTime = startTime
-     msg.data.openHabStartTime = msg.json.openHabStartTime	// Must get openHabStartTime from json object, not data object
+     msg.data.openHabStartTime = msg.json.openHabStartTime  // Must get openHabStartTime from json object, not data object
      
      log.debug "Creating event with message: ${msg.data}"
      // Setting parameter isStateChange to true causes the event to be propigated even if the state has not changed.
@@ -128,8 +128,11 @@ def deviceNotification(message) {
     def hubStartTime = parsed.hubStartTime;
     def elapsedTime = null
     if(hubStartTime != null) {
-    	elapsedTime = hubTime - hubStartTime
-    	parsed.body.hubTime = elapsedTime
+        elapsedTime = hubTime - hubStartTime
+        parsed.body.hubTime = elapsedTime
+    } else {
+        // We should not ever get here unless an older version of the OpenHab binding is running
+        parsed.body.hubTime = 0
     }
     parsed.body.hubEndTime = hubTime
     log.debug "hub elapsed time is ${elapsedTime}"

@@ -1096,6 +1096,9 @@
 			<channel id="level" typeId="level-channel">
 				<label>Level</label>
 			</channel>
+            <channel id="switch" typeId="switch-channel">
+                <label>Switch</label>
+            </channel>
 		</channels>
 		<config-description>
 			<parameter name="smartthingsName" type="text" required="true">

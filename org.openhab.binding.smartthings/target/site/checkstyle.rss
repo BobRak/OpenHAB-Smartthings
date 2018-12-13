@@ -27,8 +27,8 @@ under the License.
     <item>
       <title>File: 27,
              Errors: 0,
-             Warnings: 0,
-             Infos: 1
+             Warnings: 1,
+             Infos: 0
       </title>
             <link>${project.url}/checkstyle.html</link>
       <description>
@@ -371,7 +371,7 @@ under the License.
                   <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.discovery.SmartthingsDiscoveryData.java">src/main/java/org/openhab/binding/smartthings/discovery/SmartthingsDiscoveryData.java</a>
                 </td>
                 <td>
-                  1
+                  0
                 </td>
                 <td>
                   0
@@ -416,7 +416,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
+                  1
                 </td>
                 <td>
                   0

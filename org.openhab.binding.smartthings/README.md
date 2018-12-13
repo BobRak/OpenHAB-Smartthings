@@ -10,7 +10,7 @@ The goal is to support all of the bindings in the [Smartthings Capabilities list
 
 ## Discovery
 
-Discovery allows OpenHAB to examine a binding and automatically find the Things available on binding. Discovery is supported and does work but needs more testing.
+Discovery allows OpenHAB to examine a binding and automatically find the Things available on that binding. Discovery is supported and has been extensively tested.
 
 Discovery is not run automatically on startup. Therefore to run the discovery process perform the following:
 
@@ -27,7 +27,7 @@ Discovery is not run automatically on startup. Therefore to run the discovery pr
 
 ## Smartthings Configuration
 
-Prior to running starting the binding the Smartthings hub must have the required OpenHAB software installed. [Follow these instructions](SmartthingsInstallation.md)
+Prior to running the binding the Smartthings hub must have the required OpenHAB software installed. [Follow these instructions](SmartthingsInstallation.md)
 
 ** The binding will not work until this part has been completed, do not skip this part of the setup. **
 
@@ -50,7 +50,7 @@ where:
 
 ### Thing Configuration
 
-Each attached thing must specify the type of device and it's Smartthings device name. The formart of the Thing description is:
+Each attached thing must specify the type of device and it's Smartthings device name. The format of the Thing description is:
 
     Thing <thingTypeId> name [ smartthingsName="<deviceName>" ]
     
@@ -61,7 +61,7 @@ where:
 * **deviceName** is the name you assigned to the device when you discovered and connected to it in the Smartthings App
 
 
-### Example
+**Example**
 
     Bridge smartthings:smartthings:Home    [ smartthingsIp="192.168.1.12", smartthingsPort=39500 ] {
         Thing switchLevel              KitchenLights           [ smartthingsName="Kitchen lights" ]
@@ -87,13 +87,17 @@ The parts (separated by :) are defined as:
 4. **thingName** identifes the thing this is attached to and is the "name" you specified in the **Thing** definition.
 5. **channelId** corresponds the the attribute in the [Smartthings Capabilities list](http://docs.smartthings.com/en/latest/capabilities-reference.html). for switch it would be "switch".
 
-### Example
+**Example**
 
-    Dimmer  KitchenLights        "Kitchen lights"           <slider>          { channel="smartthings:switchLevel:Home:KitchenLights:level" }
+    Dimmer  KitchenLights        "Kitchen lights level"     <slider>          { channel="smartthings:switchLevel:Home:KitchenLights:level" }
+    Switch  KitchenLightSwitch   "Kitchen lights switch"    <light>           { channel="smartthings:switchLevel:Home:KitchenLights:switch" }
     Contact MainGarageDoor       "Garage door status [%s]" <garagedoor>       { channel="smartthings:contactSensor:Home:MainGarageDoor:contact" }  
     Number  MainGarageTemp       "Garage temperature [%.0f]"  <temperature>   { channel="smartthings:temperatureMeasurement:Home:MainGarageTemp:temperature" }  
     Number  MainGarageBattery    "Garage battery [%.0f]"  <battery>           { channel="smartthings:battery:Home:MainGarageBattery:battery" }  
-    Switch           OfficeLight          "Office light"    <light>           { channel="smartthings:switch:Home:OfficeLight:switch" }
+    Switch  OfficeLight          "Office light"    <light>                    { channel="smartthings:switch:Home:OfficeLight:switch" }
+
+**Special note about Dimmers**
+There is a conceptual difference between how openHAB and Smartthings configures the dimmer and switch parts of a Dimmer. The Smartthings dimmer (capability name: switchLevel) is only able to accept a numeric value between 0 and 100 representing the brightness percentage. The openHAB dimmer is able to accept both the percentage and on/off. The openHAB PaperUI shows a dimmer with both a slider and switch. The Off/On part of the level is not able to track changes made in the Smartthings App. However the openHab Dimmer has been defined with both level and switch channels. Therefore the dimmer and associated switch will work well together if the swithLevel Thing is selected in the discovery inbox. The Switch Thing can be left in the inbox. For an example see the KitchenLights thing and items above.
 
 ## Installation
 
@@ -103,15 +107,11 @@ Until this binding has been added to the OpenHAB repository you will need to cop
 2. Copy this file to the addons directory of your OpenHAB server. If you are using Openhabian this will be in the Samba share: openHAB/addons.
 3. If openHAB is currently running it will need to be restarted (On Linux: sudo /etc/init.d/openhab2 stop followed by sudo /etc/init.d/openhab2 start)
 4. Add the appropriate configuration files (.things, .items, .sitemaps)
-
-## Known issues 
-
-1. An exception is thrown when the the .things file is changed. Needs further research
-2. Testing has been limited to the small set of devices I own.
+5. Make sure to perform the **Smartthings** installation described above.
 
 ## How to report issues
 
-Testing has been limited to the small number of devices I own which are listed near the top of this document. If you discover one of your devices doesn't work as expected please follow the instructions in the [Troubleshooting file](Troubleshooting.md) and raise an issue on my Github Repo [BobRak](https://github.com/BobRak/)
+If you discover one of your devices doesn't work as expected please follow the instructions in the [Troubleshooting file](Troubleshooting.md) and raise an issue on my Github Repo [BobRak](https://github.com/BobRak/)
 
 ## References
 

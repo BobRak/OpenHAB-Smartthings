@@ -3,18 +3,18 @@
 
 
 
-
-
-
-
-
-
-
-
-
-   <file name="org.openhab.binding.smartthings.discovery.SmartthingsDiscoveryData.java">
-      <message tool="checkstyle" line="0" message="File does not end with a newline." priority="3" rule="NewlineAtEndOfFileCheck" category="style"/>
+   <file name=".binding.smartthings\ESH-INF\thing\thing-types.xml">
+      <message tool="checkstyle" line="1099" message="There were whitespace characters used for indentation. Please use tab characters instead" priority="2" rule="OnlyTabIndentationInXmlFilesCheck" category="style"/>
    </file>
+
+
+
+
+
+
+
+
+
 
 
 

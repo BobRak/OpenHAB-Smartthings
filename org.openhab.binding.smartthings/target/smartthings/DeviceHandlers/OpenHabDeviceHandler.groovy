@@ -6,7 +6,7 @@
  *   - jeremiah.wuenschel@gmail.com
  *   - rjraker@gmail.com - 1/30/17 - modified to work with OpenHAB
  *
- *  Copyright 2016
+ *  Copyright 2016 - 2018
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  *  in compliance with the License. You may obtain a copy of the License at:
@@ -67,8 +67,16 @@ def setNetworkAddress() {
     }
 }
 
+def installed() {
+    def ip = device.hub.getDataValue("localIP")
+    def port = device.hub.getDataValue("localSrvPortTCP")
+    log.debug "HTTP Bridge device handler installed. Listening on ${ip} + ":" + ${port}"
+}
+
 // Parse events from OpenHAB
 def parse(String description) {
+    def startTime = now()
+    
     setNetworkAddress()
 
     def msg = parseLanMessage(description)
@@ -81,23 +89,22 @@ def parse(String description) {
      } else if (msg.header.contains(' /discovery ')) {
         msg.data = [path: "discovery"]
      } else {
-        if ( msg.status == 204 ) {
-            // This would be a response from OpenHAB to the last message - it return 204 since there is nothing to do
+        if ( msg.status == 200 ) {
+            // This would be a response from OpenHAB to the last message - it return 200 since there is nothing to do
             return
         }
         log.error "received a request with an unknown path: ${msg.header}"
         return
      }
      
+     // Add start time to message so we can see how long the message is in the hub
+     msg.data.hubStartTime = startTime
+     msg.data.openHabStartTime = msg.json.openHabStartTime  // Must get openHabStartTime from json object, not data object
+     
      log.debug "Creating event with message: ${msg.data}"
      // Setting parameter isStateChange to true causes the event to be propigated even if the state has not changed.
-     return createEvent(name: 'message', value: new JsonOutput().toJson(msg.data), isStateChange: true)
-}
-
-def installed() {
-    def ip = device.hub.getDataValue("localIP")
-    def port = device.hub.getDataValue("localSrvPortTCP")
-    log.debug "HTTP Bridge device handler installed. Listening on ${ip} + ":" + ${port}"
+     //return createEvent(name: 'message', value: new JsonOutput().toJson(msg.data), isStateChange: true)
+     return createEvent(name: 'message', value: new JsonOutput().toJson(msg.data))
 }
 
 // Send message to OpenHAB
@@ -116,6 +123,19 @@ def deviceNotification(message) {
     def headers = [:]
     headers.put("HOST", "$ip:$port")
     headers.put("Content-Type", "application/json")
+    
+    def hubTime = now()
+    def hubStartTime = parsed.hubStartTime;
+    def elapsedTime = null
+    if(hubStartTime != null) {
+        elapsedTime = hubTime - hubStartTime
+        parsed.body.hubTime = elapsedTime
+    } else {
+        // We should not ever get here unless an older version of the OpenHab binding is running
+        parsed.body.hubTime = 0
+    }
+    parsed.body.hubEndTime = hubTime
+    log.debug "hub elapsed time is ${elapsedTime}"
 
     def hubAction = new physicalgraph.device.HubAction(
         method: "POST",

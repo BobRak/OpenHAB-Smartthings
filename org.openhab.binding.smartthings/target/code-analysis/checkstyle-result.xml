@@ -9,6 +9,7 @@
 <file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\ESH-INF\binding\binding.xml">
 </file>
 <file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\ESH-INF\thing\thing-types.xml">
+<error line="1099" severity="warning" message="There were whitespace characters used for indentation. Please use tab characters instead" source="org.openhab.tools.analysis.checkstyle.OnlyTabIndentationInXmlFilesCheck"/>
 </file>
 <file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\META-INF\MANIFEST.MF">
 </file>
@@ -27,7 +28,6 @@
 <file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\discovery\SmartthingsDeviceData.java">
 </file>
 <file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\discovery\SmartthingsDiscoveryData.java">
-<error line="0" severity="info" message="File does not end with a newline." source="com.puppycrawl.tools.checkstyle.checks.NewlineAtEndOfFileCheck"/>
 </file>
 <file name="D:\eclipse-oxygen\openhab2-master3\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\discovery\SmartthingsDiscoveryService.java">
 </file>
