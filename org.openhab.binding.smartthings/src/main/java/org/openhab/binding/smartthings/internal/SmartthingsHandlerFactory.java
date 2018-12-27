@@ -75,7 +75,7 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
         } else if (SUPPORTED_THING_TYPES_UIDS.contains(thingTypeUID)) {
             // Everything but the bridge is handled by this one handler
             logger.debug("Creating thing handler for {}", thingTypeUID.getAsString());
-            SmartthingsThingHandler thingHandler = new SmartthingsThingHandler(thing, this);
+            SmartthingsThingHandler thingHandler = new SmartthingsThingHandler(thing);
             thingHandlers.add(thingHandler);
             return thingHandler;
         }

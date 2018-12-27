@@ -69,6 +69,7 @@ where:
         Thing temperatureMeasurement   MainGarageTemp          [ smartthingsName="Garage Door Open Sensor" ]
         Thing battery                  MainGarageBattery       [ smartthingsName="Garage Door Open Sensor" ]
         Thing switch                   OfficeLight             [ smartthingsName="Family Room" ]
+        Thing valve                    SimulatedValve          [ smartthingsName="Simulated Valve" ]
     }
 
 ## Items
@@ -95,9 +96,15 @@ The parts (separated by :) are defined as:
     Number  MainGarageTemp       "Garage temperature [%.0f]"  <temperature>   { channel="smartthings:temperatureMeasurement:Home:MainGarageTemp:temperature" }  
     Number  MainGarageBattery    "Garage battery [%.0f]"  <battery>           { channel="smartthings:battery:Home:MainGarageBattery:battery" }  
     Switch  OfficeLight          "Office light"    <light>                    { channel="smartthings:switch:Home:OfficeLight:switch" }
+    String  SimulatedValve       "Simulated valve"                            { channel="smartthings:valve:Home:SimulatedValve:valve" }
 
 **Special note about Dimmers**
 There is a conceptual difference between how openHAB and Smartthings configures the dimmer and switch parts of a Dimmer. The Smartthings dimmer (capability name: switchLevel) is only able to accept a numeric value between 0 and 100 representing the brightness percentage. The openHAB dimmer is able to accept both the percentage and on/off. The openHAB PaperUI shows a dimmer with both a slider and switch. The Off/On part of the level is not able to track changes made in the Smartthings App. However the openHab Dimmer has been defined with both level and switch channels. Therefore the dimmer and associated switch will work well together if the swithLevel Thing is selected in the discovery inbox. The Switch Thing can be left in the inbox. For an example see the KitchenLights thing and items above.
+
+**Special note about Valves**
+Smarttings includes a **valve** which can be Open or Closed but openHAB does not include a Valve item type. Therefore, the valve is defined as a having an item type of String. And, therefore the item needs to be defined with an item type of string. It can be controlled in the sitemap by specifying the Element type of Switch and providing a mapping of: mappings=[open="Open", closed="Close"]. Such as:
+
+    Switch item=SimulatedValve mappings=[open="Open", closed="Close"]
 
 ## Installation
 

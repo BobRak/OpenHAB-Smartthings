@@ -1449,13 +1449,15 @@
 		<label>Valve</label>
 		<description>Allows for the control of a valve device</description>
 		<channels>
+<!-- 		
 			<channel id="contact" typeId="contact-channel">
-				<label>__</label>
+				<label>Valve as Contact</label>
 				<properties>
 					<property name="smartthings-converter">openCloseControl</property>
 				</properties>
 			</channel>
-			<channel id="valve" typeId="valve-channel">
+ -->
+ 			<channel id="valve" typeId="valve-channel">
 				<label>Valve</label>
 				<properties>
 					<property name="smartthings-converter">openCloseControl</property>
@@ -1901,12 +1903,6 @@
 	<channel-type id="phraseSpoken-channel">
 		<item-type>String</item-type>
 		<label>Spoken phrase</label>
-		<category></category>
-	</channel-type>
-
-	<channel-type id="level-channel">
-		<item-type>Number</item-type>
-		<label>Level</label>
 		<category></category>
 	</channel-type>
 

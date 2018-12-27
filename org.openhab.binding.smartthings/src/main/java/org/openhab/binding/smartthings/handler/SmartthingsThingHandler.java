@@ -11,7 +11,6 @@ package org.openhab.binding.smartthings.handler;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.concurrent.ExecutionException;
@@ -24,12 +23,10 @@ import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.ThingStatusDetail;
-import org.eclipse.smarthome.core.thing.type.ChannelType;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.RefreshType;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.smartthings.config.SmartthingsThingConfig;
-import org.openhab.binding.smartthings.internal.SmartthingsHandlerFactory;
 import org.openhab.binding.smartthings.internal.SmartthingsHttpClient;
 import org.openhab.binding.smartthings.internal.SmartthingsStateData;
 import org.openhab.binding.smartthings.internal.converter.SmartthingsConverter;
@@ -47,10 +44,6 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
     private SmartthingsThingConfig config;
     private String smartthingsName;
 
-    private SmartthingsHandlerFactory factory;
-
-    private List<ChannelType> channelTypes;
-
     private Map<ChannelUID, SmartthingsConverter> converters = new HashMap<ChannelUID, SmartthingsConverter>();
 
     /**
@@ -58,10 +51,8 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
      *
      * @param thing The "Thing" to be handled
      */
-    public SmartthingsThingHandler(Thing thing, SmartthingsHandlerFactory factory) {
+    public SmartthingsThingHandler(Thing thing) {
         super(thing);
-
-        this.factory = factory;
     }
 
     /**
