@@ -151,14 +151,14 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
         State state = converter.convertToOpenHab(matchingChannel.getAcceptedItemType(), stateData);
 
         updateState(matchingChannel.getUID(), state);
-        logger.info("Smartthings updated State for channel: {} to {}", matchingChannel.getUID().getAsString(),
+        logger.debug("Smartthings updated State for channel: {} to {}", matchingChannel.getUID().getAsString(),
                 state.toString());
 
         // Output timing information
         long openHabTime = (stateData.getOpenHabStartTime() > 0)
                 ? System.currentTimeMillis() - stateData.getOpenHabStartTime()
                 : 0;
-        logger.info("State timing data, Request time until data recieved and processed {}, Hub processing time: {} ",
+        logger.debug("State timing data, Request time until data recieved and processed {}, Hub processing time: {} ",
                 openHabTime, stateData.getHubTime());
     }
 

@@ -23,7 +23,7 @@ under the License.
     <link>${project.url}</link>
     <description>Smartthings Binding - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2018 openHAB.org</copyright>
+    <copyright>&#169;2019 openHAB.org</copyright>
     <item>
       <title>File: 27,
              Errors: 0,

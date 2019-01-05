@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <?artifactRepository version='1.1.0'?>
 <artifacts size='1'>
-  <artifact classifier='osgi.bundle' id='org.openhab.binding.smartthings' version='2.4.0.201812271934'>
+  <artifact classifier='osgi.bundle' id='org.openhab.binding.smartthings' version='2.4.0.201901052342'>
     <properties size='5'>
       <property name='artifact.size' value='47211'/>
       <property name='download.size' value='47211'/>
