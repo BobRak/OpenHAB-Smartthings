@@ -63,8 +63,8 @@ The files are located within the **target** directory structure. The following f
      * port: 8080 (This is the port of the OpenHAB application on your server)
      * Save the preferences
 
-## Configuration in the Smartthings App
-Next the App needs to be configured using **the Smartthings App on your smartphone**.
+## Configuration in the Smartthings Classic App
+Next the App needs to be configured using **the [Smartthings Classic App](https://play.google.com/store/apps/details?id=com.smartthings.android&hl=en_US) on your smartphone**.
 1. Start the Smartthings App on your phone
 2. Select **Automation** from the bottom menu
 3. Select **SmartApps** from the top menu
