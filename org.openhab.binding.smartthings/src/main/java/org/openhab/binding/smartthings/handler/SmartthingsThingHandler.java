@@ -158,7 +158,7 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
         long openHabTime = (stateData.getOpenHabStartTime() > 0)
                 ? System.currentTimeMillis() - stateData.getOpenHabStartTime()
                 : 0;
-        logger.debug("State timing data, Request time until data recieved and processed {}, Hub processing time: {} ",
+        logger.debug("State timing data, Request time until data received and processed {}, Hub processing time: {} ",
                 openHabTime, stateData.getHubTime());
     }
 

@@ -10,6 +10,8 @@ The following steps need to be done on the Smartthings hub using the web based [
 These steps assume you already have a Smartthings Hub and have set it up. And, you have created an account.
 1. Open the developers website using the link above.
 2. Logon using the same email and password as on your Smartthings phone app.
+3. Click on locations
+4. Verify your hub is listed.
 
 ### Copying files
 The files are located within the **target** directory structure. The following files need to be deployed
@@ -61,8 +63,8 @@ The files are located within the **target** directory structure. The following f
      * port: 8080 (This is the port of the OpenHAB application on your server)
      * Save the preferences
 
-## Configuration in the Smartthings App
-Next the App needs to be configured using **the Smartthings App on your smartphone**.
+## Configuration in the Smartthings Classic App
+Next the App needs to be configured using **the Smartthings Classic App on your smartphone**.
 1. Start the Smartthings App on your phone
 2. Select **Automation** from the bottom menu
 3. Select **SmartApps** from the top menu
