@@ -24,6 +24,6 @@ Export-Package: org.openhab.binding.smartthings,org.openhab.binding.sm
  artthings.config,org.openhab.binding.smartthings.discovery,org.openha
  b.binding.smartthings.handler
 Bundle-Name: Smartthings Binding
-Bundle-Version: 2.4.0.201901100633
+Bundle-Version: 2.5.0.201903021918
 Bundle-ClassPath: .
 

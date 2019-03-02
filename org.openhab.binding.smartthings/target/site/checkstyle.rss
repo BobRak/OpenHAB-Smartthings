@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2019 openHAB.org</copyright>
     <item>
-      <title>File: 27,
+      <title>File: 28,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -173,6 +173,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#build.properties">build.properties</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#ESH-INF.i18n.smartthings_xx_XX.properties">ESH-INF/i18n/smartthings_xx_XX.properties</a>
                 </td>
                 <td>
                   0

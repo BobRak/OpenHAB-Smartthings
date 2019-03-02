@@ -2,11 +2,11 @@
 
 This binding integrates the Samsung Smartthings Hub into OpenHAB. This is implemented as an OpenHAB 2 binding.
 
-** Warning - The jar file deployed after 11/13/18 will require that you deploy the revised OpenHabAppV2.groovy file on your hub **
+** This binding only works with the Smartthings Classic App **
 
 ## Supported things
 
-The goal is to support all of the bindings in the [Smartthings Capabilities list](http://docs.smartthings.com/en/latest/capabilities-reference.html). However all of the devices have not been tested at this time.  Please test with your devices. If you find one that doesn't work [follow these instructions](Troubleshooting.md) to collect the required data so I can work to support it.
+This binding supports all of the Smartthings devices that are defined in the [Smartthings Capabilities list](http://docs.smartthings.com/en/latest/capabilities-reference.html). If you find a device that doesn't work [follow these instructions](Troubleshooting.md) to collect the required data so I can be added in a future release.
 
 ## Discovery
 
@@ -105,20 +105,6 @@ There is a conceptual difference between how openHAB and Smartthings configures 
 Smarttings includes a **valve** which can be Open or Closed but openHAB does not include a Valve item type. Therefore, the valve is defined as a having an item type of String. And, therefore the item needs to be defined with an item type of string. It can be controlled in the sitemap by specifying the Element type of Switch and providing a mapping of: mappings=[open="Open", closed="Close"]. Such as:
 
     Switch item=SimulatedValve mappings=[open="Open", closed="Close"]
-
-## Installation
-
-Until this binding has been added to the OpenHAB repository you will need to copy the binding "jar" file to your OpenHAB server.
-
-1. Locate the org.openhab.binding.smartthings-2.4.0-SNAPSHOT.jar file in the /target folder of the distribution.
-2. Copy this file to the addons directory of your OpenHAB server. If you are using Openhabian this will be in the Samba share: openHAB/addons.
-3. If openHAB is currently running it will need to be restarted (On Linux: sudo /etc/init.d/openhab2 stop followed by sudo /etc/init.d/openhab2 start)
-4. Add the appropriate configuration files (.things, .items, .sitemaps)
-5. Make sure to perform the **Smartthings** installation described above.
-
-## How to report issues
-
-If you discover one of your devices doesn't work as expected please follow the instructions in the [Troubleshooting file](Troubleshooting.md) and raise an issue on my Github Repo [BobRak](https://github.com/BobRak/)
 
 ## References
 

@@ -8,9 +8,10 @@ I am assuming you are running on Linux or Raspbian
 
 Follow these steps on your OpenHAB server:
 1. If logged on to the server: cd /var/lib/openhab2/etc or if using Samba open file explorer to \\OPENHABIANPI\openHAB-userdata\etc
-2. edit the file org.ops4j.pax.logging.cfg
-      * In the Root logger section near the top of the file add the line:
-      * log4j.logger.org.openhab.binding.smartthings = DEBUG
+2. Edit the file org.ops4j.pax.logging.cfg
+      * Just ** before ** the line "log4j2.logger.openhab.name = org.openhab" add the following lines:
+      * log4j2.logger.smartthings.name=org.openhab.binding.smartthings
+      * log4j2.logger.smartthings.level=DEBUG
       * Save the file
 3. Restart the server (i.e. sudo shutdown -r now)
       
