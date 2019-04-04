@@ -27,7 +27,7 @@ under the License.
     <item>
       <title>File: 28,
              Errors: 0,
-             Warnings: 0,
+             Warnings: 1,
              Infos: 0
       </title>
             <link>${project.url}/checkstyle.html</link>
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsColorConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsColorConverter.java</a>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsColor100Converter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsColor100Converter.java</a>
                 </td>
                 <td>
                   0
@@ -103,20 +103,6 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.config.SmartthingsBridgeConfig.java">src/main/java/org/openhab/binding/smartthings/config/SmartthingsBridgeConfig.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.SmartthingsStateData.java">src/main/java/org/openhab/binding/smartthings/internal/SmartthingsStateData.java</a>
                 </td>
                 <td>
                   0
@@ -256,7 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#about.html">about.html</a>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.dto.SmartthingsDiscoveryData.java">src/main/java/org/openhab/binding/smartthings/internal/dto/SmartthingsDiscoveryData.java</a>
                 </td>
                 <td>
                   0
@@ -318,21 +304,7 @@ under the License.
                   0
                 </td>
                 <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.discovery.SmartthingsDeviceData.java">src/main/java/org/openhab/binding/smartthings/discovery/SmartthingsDeviceData.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
+                  1
                 </td>
                 <td>
                   0
@@ -341,6 +313,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.handler.SmartthingsAbstractHandler.java">src/main/java/org/openhab/binding/smartthings/handler/SmartthingsAbstractHandler.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.dto.SmartthingsStateData.java">src/main/java/org/openhab/binding/smartthings/internal/dto/SmartthingsStateData.java</a>
                 </td>
                 <td>
                   0
@@ -382,7 +368,21 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.discovery.SmartthingsDiscoveryData.java">src/main/java/org/openhab/binding/smartthings/discovery/SmartthingsDiscoveryData.java</a>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsHue100Converter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsHue100Converter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.dto.SmartthingsDeviceData.java">src/main/java/org/openhab/binding/smartthings/internal/dto/SmartthingsDeviceData.java</a>
                 </td>
                 <td>
                   0

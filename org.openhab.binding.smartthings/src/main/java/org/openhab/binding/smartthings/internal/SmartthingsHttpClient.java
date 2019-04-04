@@ -18,6 +18,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.client.api.ContentResponse;
 import org.eclipse.jetty.client.util.StringContentProvider;
@@ -31,8 +32,8 @@ import com.google.gson.Gson;
  * HTTP client used to send messages to smartthings hub
  *
  * @author Bob Raker - Initial contribution
- *
  */
+@NonNullByDefault
 public class SmartthingsHttpClient {
 
     private final Logger logger = LoggerFactory.getLogger(SmartthingsHttpClient.class);

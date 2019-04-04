@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><sca xmlns:functx="http://www.functx.com">
+<?xml version="1.0" encoding="UTF-8"?><sca xmlns:pmdns="http://pmd.sourceforge.net/report/2.0.0" xmlns:functx="http://www.functx.com">
 
 
 
@@ -26,5 +26,7 @@
 
 
 
-
+   <file name="org.openhab.binding.smartthings.SmartthingsBindingConstants.java">
+      <message tool="checkstyle" line="20" message="The package com.google.common.collect.ImmutableSet should not be used." priority="2" rule="ForbiddenPackageUsageCheck" category="style"/>
+   </file>
 </sca>

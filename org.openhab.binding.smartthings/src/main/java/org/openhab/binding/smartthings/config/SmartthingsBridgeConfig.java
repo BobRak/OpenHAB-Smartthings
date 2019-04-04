@@ -12,13 +12,14 @@
  */
 package org.openhab.binding.smartthings.config;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
+
 /**
  * Configuration data for Smartthings hub
  *
  * @author Bob Raker - Initial contribution
- *
  */
-
+@NonNullByDefault
 public class SmartthingsBridgeConfig {
 
     /**

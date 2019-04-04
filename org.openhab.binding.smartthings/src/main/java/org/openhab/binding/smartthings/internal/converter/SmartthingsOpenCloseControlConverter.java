@@ -12,11 +12,12 @@
  */
 package org.openhab.binding.smartthings.internal.converter;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
-import org.openhab.binding.smartthings.internal.SmartthingsStateData;
+import org.openhab.binding.smartthings.internal.dto.SmartthingsStateData;
 
 /**
  * Converter class for Door Control.
@@ -24,8 +25,8 @@ import org.openhab.binding.smartthings.internal.SmartthingsStateData;
  * sent to Smartthings
  *
  * @author Bob Raker - Initial contribution
- *
  */
+@NonNullByDefault
 public class SmartthingsOpenCloseControlConverter extends SmartthingsConverter {
 
     SmartthingsOpenCloseControlConverter(String name) {

@@ -20,6 +20,7 @@ import java.util.Map.Entry;
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeoutException;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.config.core.Configuration;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.Channel;
@@ -32,15 +33,15 @@ import org.eclipse.smarthome.core.types.RefreshType;
 import org.eclipse.smarthome.core.types.State;
 import org.openhab.binding.smartthings.config.SmartthingsThingConfig;
 import org.openhab.binding.smartthings.internal.SmartthingsHttpClient;
-import org.openhab.binding.smartthings.internal.SmartthingsStateData;
 import org.openhab.binding.smartthings.internal.converter.SmartthingsConverter;
+import org.openhab.binding.smartthings.internal.dto.SmartthingsStateData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
  * @author Bob Raker - Initial contribution
- *
  */
+@NonNullByDefault
 public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
 
     private Logger logger = LoggerFactory.getLogger(SmartthingsThingHandler.class);
@@ -63,7 +64,7 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
      * Called when openHAB receives a command for this handler
      *
      * @param channelUID The channel the command was sent to
-     * @param command    The command sent
+     * @param command The command sent
      */
     @Override
     public void handleCommand(ChannelUID channelUID, Command command) {
@@ -141,7 +142,7 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
         // First locate the channel
         Channel matchingChannel = null;
         for (Channel ch : thing.getChannels()) {
-            if (ch.getUID().getAsString().endsWith(stateData.getCapabilityAttribute())) {
+            if (ch.getUID().getAsString().endsWith(stateData.capabilityAttribute)) {
                 matchingChannel = ch;
                 break;
             }
@@ -152,6 +153,11 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
 
         SmartthingsConverter converter = converters.get(matchingChannel.getUID());
 
+        // If value from Smartthings is null then stop here
+        if (stateData.value == null) {
+            return;
+        }
+
         State state = converter.convertToOpenHab(matchingChannel.getAcceptedItemType(), stateData);
 
         updateState(matchingChannel.getUID(), state);
@@ -159,11 +165,10 @@ public class SmartthingsThingHandler extends SmartthingsAbstractHandler {
                 state.toString());
 
         // Output timing information
-        long openHabTime = (stateData.getOpenHabStartTime() > 0)
-                ? System.currentTimeMillis() - stateData.getOpenHabStartTime()
+        long openHabTime = (stateData.openHabStartTime > 0) ? System.currentTimeMillis() - stateData.openHabStartTime
                 : 0;
         logger.debug("State timing data, Request time until data received and processed {}, Hub processing time: {} ",
-                openHabTime, stateData.getHubTime());
+                openHabTime, stateData.hubTime);
     }
 
     @Override

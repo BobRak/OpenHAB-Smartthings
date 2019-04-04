@@ -12,20 +12,24 @@
  */
 package org.openhab.binding.smartthings.internal.converter;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
-import org.openhab.binding.smartthings.internal.SmartthingsStateData;
+import org.openhab.binding.smartthings.internal.dto.SmartthingsStateData;
 
 /**
- * Base converter class.
- * The converter classes are responsible for converting "state" messages from the smartthings hub into openHAB States.
- * And, converting handler.handleCommand() into messages to be sent to smartthings
+ * This "Converter" is assigned to a channel when a special converter is not needed.
+ * A channel specific converter is specified in the thing-type channel property smartthings-converter then that channel
+ * is used.
+ * If a channel specific converter is not found a convert based on the channel ID is used.
+ * If there is no convert found then this Default converter is used/
+ * See SmartthingsThingHandler.initialize() for details
  *
  * @author Bob Raker - Initial contribution
- *
  */
+@NonNullByDefault
 public class SmartthingsDefaultConverter extends SmartthingsConverter {
 
     public SmartthingsDefaultConverter(Thing thing) {

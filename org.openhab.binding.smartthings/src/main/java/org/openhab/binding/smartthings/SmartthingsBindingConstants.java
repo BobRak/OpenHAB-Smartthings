@@ -14,6 +14,7 @@ package org.openhab.binding.smartthings;
 
 import java.util.Set;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
 
 import com.google.common.collect.ImmutableSet;
@@ -24,6 +25,7 @@ import com.google.common.collect.ImmutableSet;
  *
  * @author Bob Raker - Initial contribution
  */
+@NonNullByDefault
 public class SmartthingsBindingConstants {
 
     public static final String BINDING_ID = "smartthings";
@@ -39,27 +41,27 @@ public class SmartthingsBindingConstants {
             new ThingTypeUID(BINDING_ID, "battery"), new ThingTypeUID(BINDING_ID, "beacon"),
             new ThingTypeUID(BINDING_ID, "bulb"), new ThingTypeUID(BINDING_ID, "button"),
             new ThingTypeUID(BINDING_ID, "carbonDioxideMeasurement"),
-            new ThingTypeUID(BINDING_ID, "carbonMonoxideDetector"), new ThingTypeUID(BINDING_ID, "colorControl"),
-            new ThingTypeUID(BINDING_ID, "colorTemperature"), new ThingTypeUID(BINDING_ID, "consumable"),
-            new ThingTypeUID(BINDING_ID, "contactSensor"), new ThingTypeUID(BINDING_ID, "doorControl"),
-            new ThingTypeUID(BINDING_ID, "energyMeter"), new ThingTypeUID(BINDING_ID, "estimatedTimeOfArrival"),
-            new ThingTypeUID(BINDING_ID, "garageDoorControl"), new ThingTypeUID(BINDING_ID, "holdableButton"),
-            new ThingTypeUID(BINDING_ID, "illuminanceMeasurement"), new ThingTypeUID(BINDING_ID, "imageCapture"),
-            new ThingTypeUID(BINDING_ID, "indicator"), new ThingTypeUID(BINDING_ID, "infraredLevel"),
-            new ThingTypeUID(BINDING_ID, "light"), new ThingTypeUID(BINDING_ID, "lock"),
-            new ThingTypeUID(BINDING_ID, "lockOnly"), new ThingTypeUID(BINDING_ID, "mediaController"),
-            new ThingTypeUID(BINDING_ID, "motionSensor"), new ThingTypeUID(BINDING_ID, "musicPlayer"),
-            new ThingTypeUID(BINDING_ID, "outlet"), new ThingTypeUID(BINDING_ID, "pHMeasurement"),
-            new ThingTypeUID(BINDING_ID, "powerMeter"), new ThingTypeUID(BINDING_ID, "powerSource"),
-            new ThingTypeUID(BINDING_ID, "presenceSensor"), new ThingTypeUID(BINDING_ID, "relativeHumidityMeasurement"),
-            new ThingTypeUID(BINDING_ID, "relaySwitch"), new ThingTypeUID(BINDING_ID, "shockSensor"),
-            new ThingTypeUID(BINDING_ID, "signalStrength"), new ThingTypeUID(BINDING_ID, "sleepSensor"),
-            new ThingTypeUID(BINDING_ID, "smokeDetector"), new ThingTypeUID(BINDING_ID, "soundPressureLevel"),
-            new ThingTypeUID(BINDING_ID, "soundSensor"), new ThingTypeUID(BINDING_ID, "speechRecognition"),
-            new ThingTypeUID(BINDING_ID, "stepSensor"), new ThingTypeUID(BINDING_ID, "switch"),
-            new ThingTypeUID(BINDING_ID, "switchLevel"), new ThingTypeUID(BINDING_ID, "tamperAlert"),
-            new ThingTypeUID(BINDING_ID, "temperatureMeasurement"), new ThingTypeUID(BINDING_ID, "thermostat"),
-            new ThingTypeUID(BINDING_ID, "thermostatCoolingSetpoint"),
+            new ThingTypeUID(BINDING_ID, "carbonMonoxideDetector"), new ThingTypeUID(BINDING_ID, "color"),
+            new ThingTypeUID(BINDING_ID, "colorControl"), new ThingTypeUID(BINDING_ID, "colorTemperature"),
+            new ThingTypeUID(BINDING_ID, "consumable"), new ThingTypeUID(BINDING_ID, "contactSensor"),
+            new ThingTypeUID(BINDING_ID, "doorControl"), new ThingTypeUID(BINDING_ID, "energyMeter"),
+            new ThingTypeUID(BINDING_ID, "estimatedTimeOfArrival"), new ThingTypeUID(BINDING_ID, "garageDoorControl"),
+            new ThingTypeUID(BINDING_ID, "holdableButton"), new ThingTypeUID(BINDING_ID, "illuminanceMeasurement"),
+            new ThingTypeUID(BINDING_ID, "imageCapture"), new ThingTypeUID(BINDING_ID, "indicator"),
+            new ThingTypeUID(BINDING_ID, "infraredLevel"), new ThingTypeUID(BINDING_ID, "light"),
+            new ThingTypeUID(BINDING_ID, "lock"), new ThingTypeUID(BINDING_ID, "lockOnly"),
+            new ThingTypeUID(BINDING_ID, "mediaController"), new ThingTypeUID(BINDING_ID, "motionSensor"),
+            new ThingTypeUID(BINDING_ID, "musicPlayer"), new ThingTypeUID(BINDING_ID, "outlet"),
+            new ThingTypeUID(BINDING_ID, "pHMeasurement"), new ThingTypeUID(BINDING_ID, "powerMeter"),
+            new ThingTypeUID(BINDING_ID, "powerSource"), new ThingTypeUID(BINDING_ID, "presenceSensor"),
+            new ThingTypeUID(BINDING_ID, "relativeHumidityMeasurement"), new ThingTypeUID(BINDING_ID, "relaySwitch"),
+            new ThingTypeUID(BINDING_ID, "shockSensor"), new ThingTypeUID(BINDING_ID, "signalStrength"),
+            new ThingTypeUID(BINDING_ID, "sleepSensor"), new ThingTypeUID(BINDING_ID, "smokeDetector"),
+            new ThingTypeUID(BINDING_ID, "soundPressureLevel"), new ThingTypeUID(BINDING_ID, "soundSensor"),
+            new ThingTypeUID(BINDING_ID, "speechRecognition"), new ThingTypeUID(BINDING_ID, "stepSensor"),
+            new ThingTypeUID(BINDING_ID, "switch"), new ThingTypeUID(BINDING_ID, "switchLevel"),
+            new ThingTypeUID(BINDING_ID, "tamperAlert"), new ThingTypeUID(BINDING_ID, "temperatureMeasurement"),
+            new ThingTypeUID(BINDING_ID, "thermostat"), new ThingTypeUID(BINDING_ID, "thermostatCoolingSetpoint"),
             new ThingTypeUID(BINDING_ID, "thermostatFanMode"),
             new ThingTypeUID(BINDING_ID, "thermostatHeatingSetpoint"), new ThingTypeUID(BINDING_ID, "thermostatMode"),
             new ThingTypeUID(BINDING_ID, "thermostatOperatingState"),

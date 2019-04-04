@@ -10,24 +10,19 @@
  *
  * SPDX-License-Identifier: EPL-2.0
  */
-package org.openhab.binding.smartthings.config;
+package org.openhab.binding.smartthings.internal.dto;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
 
 /**
- * Configuration data for Smartthings device
+ * Mapping object for data returned from smartthings hub
  *
  * @author Bob Raker - Initial contribution
  */
 @NonNullByDefault
-public class SmartthingsThingConfig {
-
-    /**
-     * The user assigned name used in the Smartthings hub (required)
-     */
-    public String smartthingsName = null;
-    /**
-     * The device location (optional)
-     */
-    public String smartthingsLocation = null;
+public class SmartthingsDeviceData {
+    public String capability;
+    public String attribute;
+    public String name;
+    public String id;
 }

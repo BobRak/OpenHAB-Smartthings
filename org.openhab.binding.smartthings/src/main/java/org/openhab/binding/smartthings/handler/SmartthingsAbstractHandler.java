@@ -12,6 +12,7 @@
  */
 package org.openhab.binding.smartthings.handler;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.thing.binding.BaseThingHandler;
@@ -22,8 +23,8 @@ import org.eclipse.smarthome.core.types.Command;
  * It is not used the the Bridge handler (SmartthingsBridgeHandler)
  *
  * @author Bob Raker - Initial contribution
- *
  */
+@NonNullByDefault
 public abstract class SmartthingsAbstractHandler extends BaseThingHandler {
 
     /**

@@ -14,6 +14,7 @@ package org.openhab.binding.smartthings.internal.converter;
 
 import java.util.Map;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.core.library.types.DateTimeType;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.HSBType;
@@ -36,7 +37,7 @@ import org.eclipse.smarthome.core.types.RefreshType;
 import org.eclipse.smarthome.core.types.State;
 import org.eclipse.smarthome.core.types.UnDefType;
 import org.openhab.binding.smartthings.config.SmartthingsThingConfig;
-import org.openhab.binding.smartthings.internal.SmartthingsStateData;
+import org.openhab.binding.smartthings.internal.dto.SmartthingsStateData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -46,8 +47,8 @@ import org.slf4j.LoggerFactory;
  * And, converting handler.handleCommand() into messages to be sent to smartthings
  *
  * @author Bob Raker - Initial contribution
- *
  */
+@NonNullByDefault
 public abstract class SmartthingsConverter {
 
     private Logger logger = LoggerFactory.getLogger(SmartthingsConverter.class);
@@ -138,8 +139,8 @@ public abstract class SmartthingsConverter {
             return UnDefType.NULL;
         }
 
-        String deviceType = dataFromSmartthings.getCapabilityAttribute();
-        Object deviceValue = dataFromSmartthings.getValue();
+        String deviceType = dataFromSmartthings.capabilityAttribute;
+        Object deviceValue = dataFromSmartthings.value;
 
         switch (acceptedChannelType) {
             case "Color":

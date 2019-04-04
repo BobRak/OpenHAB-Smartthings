@@ -21,6 +21,7 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.config.discovery.DiscoveryService;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.Channel;
@@ -33,6 +34,7 @@ import org.eclipse.smarthome.core.thing.type.ChannelTypeRegistry;
 import org.openhab.binding.smartthings.discovery.SmartthingsDiscoveryService;
 import org.openhab.binding.smartthings.handler.SmartthingsBridgeHandler;
 import org.openhab.binding.smartthings.handler.SmartthingsThingHandler;
+import org.openhab.binding.smartthings.internal.dto.SmartthingsStateData;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
@@ -47,6 +49,7 @@ import com.google.gson.Gson;
  *
  * @author Bob Raker - Initial contribution
  */
+@NonNullByDefault
 public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implements EventHandler {
 
     private Logger logger = LoggerFactory.getLogger(SmartthingsHandlerFactory.class);
@@ -132,8 +135,7 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
         stateData = gson.fromJson(data, stateData.getClass());
         // String key = stateData.getDeviceDisplayName() + ":" + stateData.getCapabilityAttribute();
         // SmartthingsThingHandler handler = handlerMap.get(key);
-        SmartthingsThingHandler handler = findHandler(stateData.getDeviceDisplayName(),
-                stateData.getCapabilityAttribute());
+        SmartthingsThingHandler handler = findHandler(stateData.deviceDisplayName, stateData.capabilityAttribute);
         if (handler != null) {
             handler.handleStateMessage(stateData);
         }

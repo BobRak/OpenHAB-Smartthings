@@ -105,6 +105,37 @@ There is a conceptual difference between how openHAB and Smartthings configures 
 Smarttings includes a **valve** which can be Open or Closed but openHAB does not include a Valve item type. Therefore, the valve is defined as a having an item type of String. And, therefore the item needs to be defined with an item type of string. It can be controlled in the sitemap by specifying the Element type of Switch and providing a mapping of: mappings=[open="Open", closed="Close"]. Such as:
 
     Switch item=SimulatedValve mappings=[open="Open", closed="Close"]
+    
+**RGB Bulb example**
+Here is a sample configuration for a RGB bulb, such as a Sengled model E11-N1EA bulb. Currently this binding does not have a RGB specific bulb therefore a Thing is required for each part of the bulb.
+
+**Example**
+
+**things file**
+
+    colorControl            SengledColorControl         [ smartthingsName="Sengled Bulb"]
+    colorTemperature        SengledColorTemperature     [ smartthingsName="Sengled Bulb"]
+    switch                  SengledSwitch               [ smartthingsName="Sengled Bulb"]
+    switchLevel             SengledSwitchLevel          [ smartthingsName="Sengled Bulb"]
+
+**items file**
+
+    Color  SengledColorControl    "Sengled bulb color"   <colorpicker>   {channel="smartthings:colorControl:Home:SengledColorControl:color"}
+    Number SengledTemperature     "Sengled bulb color temperature"       {channel="smartthings:colorTemperature:Home:SengledColorTemperature:colorTemperature"}
+    Switch SengledSwitch          "Sengled bulb switch"   <switch>       {channel="smartthings:switch:Home:SengledSwitch:switch"}
+    Dimmer SengledDimmer          "Sengled bulb dimmer"   <slider>       {channel="smartthings:switchLevel:Home:SengledSwitchLevel:level"}
+
+**sitemap file**
+
+    Frame label="Sengled RGBW Bulb" {
+        Switch item=SengledSwitch label="Switch"
+        Slider  item=SengledDimmer label="Level [%d]"
+        Text item=SengledTemperature label="Color Temperature [%d]"
+        Colorpicker item=SengledColorControl label="Color [%s]"  icon="colorwheel"
+    }
+
+
+
 
 ## References
 

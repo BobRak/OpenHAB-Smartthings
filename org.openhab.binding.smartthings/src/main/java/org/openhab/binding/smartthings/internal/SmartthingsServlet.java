@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.openhab.binding.smartthings.handler.SmartthingsBridgeHandler;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.event.Event;
@@ -40,8 +41,8 @@ import com.google.gson.Gson;
  * Receives all Http data from the Smartthings Hub
  *
  * @author Bob Raker - Initial contribution
- *
  */
+@NonNullByDefault
 @SuppressWarnings("serial")
 public class SmartthingsServlet extends HttpServlet {
     private static final String PATH = "/smartthings";

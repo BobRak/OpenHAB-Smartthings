@@ -20,6 +20,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 import java.util.regex.Pattern;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.config.discovery.AbstractDiscoveryService;
 import org.eclipse.smarthome.config.discovery.DiscoveryResult;
 import org.eclipse.smarthome.config.discovery.DiscoveryResultBuilder;
@@ -27,6 +28,8 @@ import org.eclipse.smarthome.core.thing.ThingUID;
 import org.openhab.binding.smartthings.SmartthingsBindingConstants;
 import org.openhab.binding.smartthings.handler.SmartthingsBridgeHandler;
 import org.openhab.binding.smartthings.internal.SmartthingsHttpClient;
+import org.openhab.binding.smartthings.internal.dto.SmartthingsDeviceData;
+import org.openhab.binding.smartthings.internal.dto.SmartthingsDiscoveryData;
 import org.osgi.service.component.ComponentContext;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventHandler;
@@ -39,8 +42,8 @@ import com.google.gson.Gson;
  * Smartthings Discovery service
  *
  * @author Bob Raker - Initial contribution
- *
  */
+@NonNullByDefault
 public class SmartthingsDiscoveryService extends AbstractDiscoveryService implements EventHandler {
 
     private static final int SEARCH_TIME = 30;
@@ -50,24 +53,16 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
     private final Pattern findIllegalChars = Pattern.compile("[^A-Za-z0-9_-]");
 
     private Logger logger = LoggerFactory.getLogger(SmartthingsDiscoveryService.class);
-
     private SmartthingsBridgeHandler bridgeHandler;
-
-    private Gson gson;
-
+    private Gson gson = new Gson();
     private SmartthingsHttpClient httpClient = null;
-
     private SmartthingsScan scanningRunnable;
-
     private ScheduledFuture<?> scanningJob;
 
     public SmartthingsDiscoveryService(SmartthingsBridgeHandler bridgeHandler) {
         super(SmartthingsBindingConstants.SUPPORTED_THING_TYPES_UIDS, SEARCH_TIME);
         logger.debug("Initializing discovery service");
         this.bridgeHandler = bridgeHandler;
-
-        // Get a Gson instance
-        gson = new Gson();
 
         this.scanningRunnable = new SmartthingsScan(this);
         if (bridgeHandler == null) {
@@ -171,11 +166,11 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
         // First the SmarthingsDiscoveryData is converted from json to java. Then each data string is converted into
         // device data
         SmartthingsDiscoveryData discoveryData = gson.fromJson(data, SmartthingsDiscoveryData.class);
-        long openHabStartTime = discoveryData.getOpenHabStartTime();
-        long hubTime = discoveryData.getHubTime();
+        long openHabStartTime = discoveryData.openHabStartTime;
+        long hubTime = discoveryData.hubTime;
         long transmissionCompleteTime = System.currentTimeMillis();
 
-        for (String deviceStr : discoveryData.getData()) {
+        for (String deviceStr : discoveryData.data) {
             SmartthingsDeviceData deviceData = gson.fromJson(deviceStr, SmartthingsDeviceData.class);
             createDevice(deviceData);
         }
@@ -192,24 +187,21 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
      * @param deviceData
      */
     private void createDevice(SmartthingsDeviceData deviceData) {
-        logger.info("Discovery: Creating device: ThingType {} with name {}", deviceData.getCapability(),
-                deviceData.getName());
+        logger.info("Discovery: Creating device: ThingType {} with name {}", deviceData.capability, deviceData.name);
 
         // Build the UID as a string smartthings:{ThingType}:{BridgeName}:{DeviceName}
-        String deviceNameNoSpaces = deviceData.getName().replaceAll("\\s", "_");
+        String deviceNameNoSpaces = deviceData.name.replaceAll("\\s", "_");
         String smartthingsDeviceName = findIllegalChars.matcher(deviceNameNoSpaces).replaceAll("");
         ThingUID bridgeUid = bridgeHandler.getThing().getUID();
         String bridgeId = bridgeUid.getId();
-        String uidStr = String.format("smartthings:%s:%s:%s", deviceData.getCapability(), bridgeId,
-                smartthingsDeviceName);
+        String uidStr = String.format("smartthings:%s:%s:%s", deviceData.capability, bridgeId, smartthingsDeviceName);
 
         Map<String, Object> properties = new HashMap<>();
-        properties.put("smartthingsName", deviceData.getName());
-        properties.put("deviceId", deviceData.getId());
+        properties.put("smartthingsName", deviceData.name);
+        properties.put("deviceId", deviceData.id);
 
         DiscoveryResult discoveryResult = DiscoveryResultBuilder.create(new ThingUID(uidStr)).withProperties(properties)
-                .withRepresentationProperty(deviceData.getId()).withBridge(bridgeUid).withLabel(deviceData.getName())
-                .build();
+                .withRepresentationProperty(deviceData.id).withBridge(bridgeUid).withLabel(deviceData.name).build();
 
         thingDiscovered(discoveryResult);
     }
@@ -217,6 +209,7 @@ public class SmartthingsDiscoveryService extends AbstractDiscoveryService implem
     /**
      * Scanning worker class.
      */
+    @NonNullByDefault
     public class SmartthingsScan implements Runnable {
         /**
          * Handler for delegation to callbacks.

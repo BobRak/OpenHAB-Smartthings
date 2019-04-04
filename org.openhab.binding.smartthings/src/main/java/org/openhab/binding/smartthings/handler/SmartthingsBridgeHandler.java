@@ -12,6 +12,7 @@
  */
 package org.openhab.binding.smartthings.handler;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.core.thing.Bridge;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.ThingStatus;
@@ -30,6 +31,7 @@ import org.slf4j.LoggerFactory;
  *
  * @author Bob Raker - Initial contribution
  */
+@NonNullByDefault
 public class SmartthingsBridgeHandler extends BaseBridgeHandler {
     private Logger logger = LoggerFactory.getLogger(SmartthingsBridgeHandler.class);
 

@@ -49,6 +49,30 @@
 		</config-description>
 	</thing-type>
 
+	<thing-type id="airConditionerMode">
+		<!-- This does not have the necessary code to function. Need to have an appropriate simulator to finish -->
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="smartthings" />
+		</supported-bridge-type-refs>
+		<label>Air Conditioner Mode</label>
+		<description>Air Conditioner Mode</description>
+		<channels>
+			<channel id="airConditionerMode" typeId="airConditionerMode-channel">
+				<label></label>
+			</channel>
+		</channels>
+		<config-description>
+			<parameter name="smartthingsName" type="text" required="true">
+				<label>Smartthings Name</label>
+				<description>User assigned Smartthings device name</description>
+			</parameter>
+			<parameter name="smartthingsLocation" type="text">
+				<label>Smartthings Location</label>
+				<description>Where the device is located</description>
+			</parameter>
+		</config-description>
+	</thing-type>
+
 	<thing-type id="alarm">
 		<supported-bridge-type-refs>
 			<bridge-type-ref id="smartthings" />
@@ -221,12 +245,51 @@
 		<channels>
 			<channel id="hue" typeId="hue-channel">
 				<label>Hue</label>
+				<properties>
+					<!-- The Smartthings colorControl:hue hsa a range of 0-100% where OH2 uses the normal 0-360 degrees -->
+					<property name="smartthings-converter">hue100</property>
+				</properties>
 			</channel>
 			<channel id="saturation" typeId="saturation-channel">
 				<label>Saturation</label>
 			</channel>
 			<channel id="color" typeId="color-channel">
 				<label>Color</label>
+				<properties>
+					<!-- The Smartthings colorControl:color hsa a hue component range of 0-100% where OH2 uses the normal 0-360 degrees -->
+					<property name="smartthings-converter">color100</property>
+				</properties>
+			</channel>
+		</channels>
+		<config-description>
+			<parameter name="smartthingsName" type="text" required="true">
+				<label>Smartthings Name</label>
+				<description>User assigned Smartthings device name</description>
+			</parameter>
+			<parameter name="smartthingsLocation" type="text">
+				<label>Smartthings Location</label>
+				<description>Where the device is located</description>
+			</parameter>
+		</config-description>
+	</thing-type>
+
+	<!-- This is the new "proposed" color control -->
+	<thing-type id="color">
+		<supported-bridge-type-refs>
+			<bridge-type-ref id="smartthings" />
+		</supported-bridge-type-refs>
+		<label>Color</label>
+		<description>Color</description>
+		<channels>
+			<channel id="colorValue" typeId="colorValue-channel">
+				<label>Color Value</label>
+				<properties>
+					<!-- This converter handles both color and colorValue channels -->
+					<property name="smartthings-converter">color</property>
+				</properties>
+			</channel>
+			<channel id="switchlevel" typeId="level-channel">
+				<label>Switch Level</label>
 			</channel>
 		</channels>
 		<config-description>
@@ -1563,6 +1626,24 @@
 		</state>
 	</channel-type>
 
+	<channel-type id="airConditionerMode-channel">
+		<item-type>String</item-type>
+		<label>Air Conditioner Mode</label>
+		<state>
+			<options>
+				<option value="auto">Auto</option>
+				<option value="cool">Cool</option>
+				<option value="dry">Dry</option>
+				<option value="coolClean">Cool clean</option>
+				<option value="dryClean">Dry clean</option>
+				<option value="fanOnly">Fan only</option>
+				<option value="heat">Heat</option>
+				<option value="heatClean">Heat clean</option>
+				<option value="notSupported">Not supported</option>
+			</options>
+		</state>
+	</channel-type>
+
 	<channel-type id="alarm-channel">
 		<item-type>String</item-type>
 		<label>Alarm</label>
@@ -1633,6 +1714,12 @@
 	<channel-type id="color-channel">
 		<item-type>Color</item-type>
 		<label>color</label>
+		<category>Color</category>
+	</channel-type>
+
+	<channel-type id="colorValue-channel">
+		<item-type>Color</item-type>
+		<label>color value</label>
 		<category>Color</category>
 	</channel-type>
 

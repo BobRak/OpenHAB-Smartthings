@@ -4,107 +4,104 @@
 
   <description>Default set of PMD rules used for checking all bundles Eclipse SmartHome project</description>
 
-  <rule ref="rulesets/java/empty.xml/EmptyIfStmt">
-    <!-- See http://pmd.sourceforge.net/pmd-5.0.0/rules/java/empty.html for all below -->
+  <rule ref="category/java/errorprone.xml/EmptyIfStmt">
+    <!-- See https://pmd.github.io/pmd-6.7.0/pmd_rules_java_errorprone.html for all below -->
     <!-- Priorities range in value from 1 to 5, with 5 being the lowest priority -->
     <!--  We will use only priority 1,2 and 3 so the results of PMD can be comparable with the results of the other tools -->
     
     <!-- See http://pmd.github.io/pmd-5.0.1/apidocs/net/sourceforge/pmd/RulePriority.html -->
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/empty.xml/EmptyWhileStmt">
+  <rule ref="category/java/errorprone.xml/EmptyWhileStmt">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/empty.xml/EmptyTryBlock">
+  <rule ref="category/java/errorprone.xml/EmptyTryBlock">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/empty.xml/EmptyFinallyBlock">
+  <rule ref="category/java/errorprone.xml/EmptyFinallyBlock">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/empty.xml/EmptySwitchStatements">
+  <rule ref="category/java/errorprone.xml/EmptySwitchStatements">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/empty.xml/EmptySynchronizedBlock">
+  <rule ref="category/java/errorprone.xml/EmptySynchronizedBlock">
     <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/empty.xml/EmptyStaticInitializer">
+  <rule ref="category/java/errorprone.xml/EmptyInitializer">
+    <priority>3</priority>
+  </rule>
+  <rule ref="category/java/errorprone.xml/MisplacedNullCheck">
+    <priority>1</priority>
+  </rule>
+  <rule ref="category/java/errorprone.xml/BrokenNullCheck">
+    <priority>1</priority>
+  </rule>
+  <rule ref="category/java/errorprone.xml/JumbledIncrementer">
+    <priority>2</priority>
+  </rule>
+  <rule ref="category/java/errorprone.xml/ClassCastExceptionWithToArray">
+    <priority>2</priority>
+  </rule>  
+  <rule ref="category/java/errorprone.xml/MoreThanOneLogger">
+    <priority>3</priority>
+  </rule>
+  <rule ref="category/java/errorprone.xml/AvoidCatchingNPE">
+    <priority>2</priority>
+  </rule>
+  <rule ref="category/java/errorprone.xml/AvoidCatchingThrowable">
+    <priority>2</priority>
+  </rule>
+  <rule ref="category/java/errorprone.xml/DoNotThrowExceptionInFinally">
+    <priority>2</priority>
+  </rule>
+  <rule ref="category/java/errorprone.xml/EqualsNull">
+    <priority>1</priority>
+  </rule>
+  <rule ref="category/java/errorprone.xml/InstantiationToGetClass">
+    <priority>3</priority>
+  </rule>
+  <rule ref="category/java/errorprone.xml/AvoidInstanceofChecksInCatchClause">
+    <priority>2</priority>
+  </rule>
+   <rule ref="category/java/errorprone.xml/CompareObjectsWithEquals">
     <priority>3</priority>
   </rule>
   
-  <!-- See  http://pmd.sourceforge.net/pmd-5.0.0/rules/java/basic.html -->
-  <rule ref="rulesets/java/basic.xml/MisplacedNullCheck">
-    <priority>1</priority>
-  </rule>
-  <rule ref="rulesets/java/basic.xml/BrokenNullCheck">
-    <priority>1</priority>
-  </rule>
-  <rule ref="rulesets/java/basic.xml/JumbledIncrementer">
+  <!-- See https://pmd.github.io/pmd-6.7.0/pmd_rules_java_multithreading.html -->
+  <rule ref="category/java/multithreading.xml/DontCallThreadRun">
     <priority>2</priority>
   </rule>
-  <rule ref="rulesets/java/basic.xml/ClassCastExceptionWithToArray">
-    <priority>2</priority>
+  <rule ref="category/java/multithreading.xml/NonThreadSafeSingleton">
+    <priority>3</priority>
   </rule>
-  <rule ref="rulesets/java/basic.xml/DontCallThreadRun">
-    <priority>2</priority>
+  <rule ref="category/java/multithreading.xml/UnsynchronizedStaticDateFormatter">
+    <priority>3</priority>
   </rule>
   
-  <!-- See http://pmd.sourceforge.net/pmd-5.0.0/rules/java/logging-java.html -->
-  <rule ref="rulesets/java/logging-java.xml/MoreThanOneLogger">
-    <priority>3</priority>
-  </rule>
-  <rule ref="rulesets/java/logging-java.xml/AvoidPrintStackTrace">
+    <!-- See https://pmd.github.io/pmd-6.7.0/pmd_rules_java_bestpractices.html -->
+  <rule ref="category/java/bestpractices.xml/AvoidPrintStackTrace">
     <priority>1</priority>
   </rule>
-  <rule ref="rulesets/java/logging-java.xml/SystemPrintln">
+  <rule ref="category/java/bestpractices.xml/SystemPrintln">
     <priority>2</priority>
-  </rule>
-  
-  <!-- See http://pmd.sourceforge.net/pmd-5.0.0/rules/java/strictexception.html -->
-  <rule ref="rulesets/java/strictexception.xml/AvoidCatchingNPE">
-    <priority>2</priority>
-  </rule>
-  <rule ref="rulesets/java/strictexception.xml/AvoidCatchingThrowable">
-    <priority>2</priority>
-  </rule>
-  <rule ref="rulesets/java/strictexception.xml/AvoidThrowingRawExceptionTypes">
-    <priority>2</priority>
-  </rule>
-  <rule ref="rulesets/java/strictexception.xml/AvoidThrowingNullPointerException">
-    <priority>1</priority>
-  </rule>
-  <rule ref="rulesets/java/strictexception.xml/DoNotThrowExceptionInFinally">
-    <priority>2</priority>
-  </rule>
-  <rule ref="rulesets/java/strictexception.xml/DoNotExtendJavaLangError">
-    <priority>1</priority>
-  </rule>
-  
-  <!-- See http://pmd.sourceforge.net/pmd-5.0.0/rules/java/design.html -->
-  <rule ref="rulesets/java/design.xml/EqualsNull">
-    <priority>1</priority>
-  </rule>
-  <rule ref="rulesets/java/design.xml/InstantiationToGetClass">
-    <priority>3</priority>
-  </rule>
-  <rule ref="rulesets/java/design.xml/AvoidInstanceofChecksInCatchClause">
-    <priority>2</priority>
-  </rule>
-   <rule ref="rulesets/java/design.xml/CompareObjectsWithEquals">
-    <priority>3</priority>
-  </rule>
-  <rule ref="rulesets/java/design.xml/NonThreadSafeSingleton">
-    <priority>3</priority>
-  </rule>
-  <rule ref="rulesets/java/design.xml/UnsynchronizedStaticDateFormatter">
-    <priority>3</priority>
-  </rule>
-  <rule ref="rulesets/java/design.xml/SimplifyBooleanExpressions">
-    <priority>3</priority>
   </rule>
 
+  <!-- See https://pmd.github.io/pmd-6.7.0/pmd_rules_java_design.html -->
+  <rule ref="category/java/design.xml/AvoidThrowingRawExceptionTypes">
+    <priority>2</priority>
+  </rule>
+  <rule ref="category/java/design.xml/AvoidThrowingNullPointerException">
+    <priority>1</priority>
+  </rule>
+  <rule ref="category/java/design.xml/DoNotExtendJavaLangError">
+    <priority>1</priority>
+  </rule>
+  <rule ref="category/java/design.xml/SimplifyBooleanExpressions">
+    <priority>3</priority>
+  </rule>
   
-  <!-- See http://pmd.sourceforge.net/pmd-5.0.0/rules/java/optimizations.html -->
-  <rule ref="rulesets/java/optimizations.xml/AvoidArrayLoops">
+  <!-- See https://pmd.github.io/pmd-6.7.0/pmd_rules_java_performance.html -->
+  <rule ref="category/java/performance.xml/AvoidArrayLoops">
     <priority>3</priority>
   </rule>
 </ruleset>
