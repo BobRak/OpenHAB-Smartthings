@@ -39,6 +39,14 @@ import groovy.transform.Field
             "acceleration"
         ]
     ],
+    "airConditionerMode": [
+        name: "Air Conditioner Mode",
+        capability: "capability.airConditionerMode",
+        attributes: [
+            "airConditionerMode"
+        ],
+        action: "actionEnum"
+    ],
     "alarm": [
         name: "Alarm",
         capability: "capability.alarm",
@@ -97,6 +105,14 @@ import groovy.transform.Field
             "hue",
             "saturation",
             "color"
+        ],
+        action: "actionColorControl"
+    ],
+    "color": [
+        name: "Color (proposed)",
+        capability: "capability.color",
+        attributes: [
+            "colorValue"
         ],
         action: "actionColor"
     ],
@@ -480,7 +496,7 @@ import groovy.transform.Field
         attributes: [
             "voltage"
         ]
-    ],
+    ], 
     "waterSensor": [
         name: "Water Sensor",
         capability: "capability.waterSensor",
@@ -591,7 +607,7 @@ def openhabStateHandler(evt) {
             body: [
                 message: "Requested current state information for CAPABILITY: \"${mapIn.capabilityKey}\" but this is not defined in the SmartApp"
             ]
-        ])
+        ]) 
         log.debug "Returning ${jsonOut}"
         openhabDevice.deviceNotification(jsonOut)
         return
@@ -606,7 +622,7 @@ def openhabStateHandler(evt) {
             body: [
                 message: "Requested current state information for CAPABILITY: \"${mapIn.capabilityKey}\" with attribute: \"${mapIn.capabilityAttribute}\" but this is attribute not defined for this capability in the SmartApp"
             ]
-        ])
+        ]) 
         openhabDevice.deviceNotification(jsonOut)
         return
     }
@@ -636,7 +652,7 @@ def openhabStateHandler(evt) {
                     value: currentState,
                     openHabStartTime : openHabStartTime,
                     hubTime : "--hubTime--",]
-            ])
+            ]) 
 
             log.debug "State Handler is returning ${jsonOut}"
             openhabDevice.deviceNotification(jsonOut)
@@ -667,7 +683,7 @@ def openhabUpdateHandler(evt) {
             body: [
                 message: "Update failed device displayName of: \"${json.deviceDisplayName}\" with CAPABILITY: \"${json.capabilityKey}\" because that CAPABILTY does not exist in the SmartApp"
             ]
-        ])
+        ]) 
         openhabDevice.deviceNotification(jsonOut)
         return
     }
@@ -702,7 +718,7 @@ def openhabDiscoveryHandler(evt) {
         capability["attributes"].each { attribute ->
             settings[key].each {device ->
                 // The device info has to be returned as a string. It will be parsed into device data on the OpenHAB side
-                def deviceInfo = "{\"capability\": \"${key}\", \"attribute\": \"${attribute}\", \"name\": \"${device.displayName}\", \"id\": \"${device.id}\" }"
+                def deviceInfo = "{\"capability\": \"${key}\", \"attribute\": \"${attribute}\", \"name\": \"${device.displayName}\", \"id\": \"${device.id}\" }" 
                 results.push(deviceInfo)
                 deviceCount++
                 bufferLength += deviceInfo.length()
@@ -713,7 +729,7 @@ def openhabDiscoveryHandler(evt) {
                     openhabDevice.deviceNotification(json)
                     results = []
                     bufferLength = 0
-                }
+                }                
             }
         }
     }
@@ -765,9 +781,15 @@ def inputHandler(evt) {
 // +---------------------------------+
 // | WARNING, BEYOND HERE BE DRAGONS |
 // +---------------------------------+
-// These are the functions that handle incoming messages from MQTT.
+// These are the functions that handle incoming messages from OpenHAB.
 // I tried to put them in closures but apparently SmartThings Groovy sandbox
-// restricts you from running clsures from an object (it's not safe).
+// restricts you from running closures from an object (it's not safe).
+
+// This handles the basic case where there is one attribute and one action that sets the attribute.
+// And, the value is always an ENUM
+def actionEnum(device, attribute, value) {
+    device."$attribute"(value)
+}
 
 def actionAlarm(device, attribute, value) {
     switch (value) {
@@ -786,17 +808,40 @@ def actionAlarm(device, attribute, value) {
     }
 }
 
-def actionColor(device, attribute, value) {
+// This is the original color control
+def actionColorControl(device, attribute, value) {
+    log.debug "actionColor: attribute \"${attribute}\", value \"${value}\""
     switch (attribute) {
         case "hue":
-            device.setHue(value as float)
+            device.setHue(value as int)
         break
         case "saturation":
-            device.setSaturation(value as float)
+            device.setSaturation(value as int)
         break
         case "color":
-            def colormap = ["hue": value[0] as float, "saturation": value[1] as float]
+            def colormap = ["hue": value[0] as int, "saturation": value[1] as int]
+            // log.debug "actionColor: Setting device \"${device}\" with attribute \"${attribute}\" to colormap \"${colormap}\""
             device.setColor(colormap)
+            device.setLevel(value[2] as int)
+        break
+    }
+}
+
+// This is the new "proposed" color. Here hue is 0-360
+def actionColor(device, attribute, value) {
+    log.debug "actionColor: attribute \"${attribute}\", value \"${value}\""
+    switch (attribute) {
+        case "hue":
+            device.setHue(value as int)
+        break
+        case "saturation":
+            device.setSaturation(value as int)
+        break
+        case "colorValue":
+            def colormap = ["hue": value[0] as int, "saturation": value[1] as int]
+            // log.debug "actionColor: Setting device \"${device}\" with attribute \"${attribute}\" to colormap \"${colormap}\""
+            device.setColor(colormap)
+            device.setLevel(value[2] as int)
         break
     }
 }
@@ -876,7 +921,7 @@ def actionLevel(device, attribute, value) {
          } else {
             device.off()
          }
-    }
+    }    
 }
 
 def actionConsumable(device, attribute, value) {
