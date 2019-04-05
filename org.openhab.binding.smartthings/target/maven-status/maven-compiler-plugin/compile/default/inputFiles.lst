@@ -15,4 +15,5 @@ D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab
 D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\dto\SmartthingsDeviceData.java
 D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\SmartthingsHandlerFactory.java
 D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\discovery\SmartthingsDiscoveryService.java
+D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsColorConverter.java
 D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\dto\SmartthingsStateData.java

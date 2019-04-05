@@ -26,6 +26,7 @@
 
 
 
+
    <file name="org.openhab.binding.smartthings.SmartthingsBindingConstants.java">
       <message tool="checkstyle" line="20" message="The package com.google.common.collect.ImmutableSet should not be used." priority="2" rule="ForbiddenPackageUsageCheck" category="style"/>
    </file>

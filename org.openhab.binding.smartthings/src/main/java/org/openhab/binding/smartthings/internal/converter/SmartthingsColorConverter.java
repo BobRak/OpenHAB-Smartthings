@@ -15,13 +15,14 @@ package org.openhab.binding.smartthings.internal.converter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.core.library.types.HSBType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.State;
 import org.eclipse.smarthome.core.types.UnDefType;
-import org.openhab.binding.smartthings.internal.SmartthingsStateData;
+import org.openhab.binding.smartthings.internal.dto.SmartthingsStateData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,8 +32,8 @@ import org.slf4j.LoggerFactory;
  * sent to Smartthings
  *
  * @author Bob Raker - Initial contribution
- *
  */
+@NonNullByDefault
 public class SmartthingsColorConverter extends SmartthingsConverter {
 
     private Pattern rgbInputPattern = Pattern.compile("^#[0-9a-fA-F]{6}");
@@ -63,7 +64,7 @@ public class SmartthingsColorConverter extends SmartthingsConverter {
     public State convertToOpenHab(String acceptedChannelType, SmartthingsStateData dataFromSmartthings) {
         // The color value from Smartthings will look like "#123456" which is the RGB color
         // This needs to be converted into HSB type
-        String value = dataFromSmartthings.getValue();
+        String value = dataFromSmartthings.value;
 
         // First verify the format the string is valid
         Matcher matcher = rgbInputPattern.matcher(value);

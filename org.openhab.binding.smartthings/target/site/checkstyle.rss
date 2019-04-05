@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2019 openHAB.org</copyright>
     <item>
-      <title>File: 28,
+      <title>File: 29,
              Errors: 0,
              Warnings: 1,
              Infos: 0
@@ -61,6 +61,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsColor100Converter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsColor100Converter.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsColorConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsColorConverter.java</a>
                 </td>
                 <td>
                   0
