@@ -21,3 +21,7 @@ If you discover one of your devices doesn't work as expected please follow the i
 1. This update requires that you redeploy the smartthings code as described in the [Smartthings Installation document](https://github.com/BobRak/OpenHAB-Smartthings/blob/master/org.openhab.binding.smartthings/SmartthingsInstallation.md). **The location of the smartthings code has changed.** It is now [here](https://github.com/BobRak/OpenHAB-Smartthings/tree/master/org.openhab.binding.smartthings/contrib)
 2. The RGB bulb wasn't previously working. I recently purchased a Sengled bulb just to test this. I discovered that Samrtthings defines the hue as 0-100 and openHAB defines hue in the industry standard range of 0-360. The code has been updated. The README file has been updated with an example configuration for the Sengled RGB bulb.
 3. Since I started development of this binding Samsung has added capabilties for many of their appliances. I have had some requests to add that to this binding. I will do that but not until I complete code changes requested bu openHAB and it has been added to the base openHAB system. One reason for this delay is because I don't own any of these appliances and will have to build simulators first. So overall this will be a considerable amount of work.
+
+## 4/5/2019 Release notes
+
+Right after the 4/5 release I had reports that Discovery was no longer working. I retested discovery in my development environment and found it working. I also discovered some files that should have been deleted were still present so I removed them.
