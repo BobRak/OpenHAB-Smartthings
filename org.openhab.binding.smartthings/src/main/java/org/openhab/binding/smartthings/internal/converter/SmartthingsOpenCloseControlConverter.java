@@ -13,6 +13,7 @@
 package org.openhab.binding.smartthings.internal.converter;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.types.Command;
@@ -28,10 +29,6 @@ import org.openhab.binding.smartthings.internal.dto.SmartthingsStateData;
  */
 @NonNullByDefault
 public class SmartthingsOpenCloseControlConverter extends SmartthingsConverter {
-
-    SmartthingsOpenCloseControlConverter(String name) {
-        super(name);
-    }
 
     public SmartthingsOpenCloseControlConverter(Thing thing) {
         super(thing);
@@ -49,7 +46,7 @@ public class SmartthingsOpenCloseControlConverter extends SmartthingsConverter {
     }
 
     @Override
-    public State convertToOpenHab(String acceptedChannelType, SmartthingsStateData dataFromSmartthings) {
+    public State convertToOpenHab(@Nullable String acceptedChannelType, SmartthingsStateData dataFromSmartthings) {
         State state = defaultConvertToOpenHab(acceptedChannelType, dataFromSmartthings);
 
         return state;

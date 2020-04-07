@@ -67,10 +67,6 @@
     <property name="severity" value="warning" />
   </module>  
   
-  <module name="org.openhab.tools.analysis.checkstyle.MavenPomderivedInClasspathCheck">
-    <property name="severity" value="warning" />
-  </module>
-
   <module name="org.openhab.tools.analysis.checkstyle.OverridingParentPomConfigurationCheck">
     <property name="severity" value="warning" />
   </module>
@@ -154,7 +150,7 @@
   
   <module name="org.openhab.tools.analysis.checkstyle.KarafFeatureCheck">
     <property name="severity" value="${checkstyle.karafFeatureCheck.severity}" default="ignore" />
-    <property name="featureXmlPath" value="${checkstyle.karafFeatureCheck.featureXmlPath}" default="features/openhab-addons/src/main/feature/feature.xml" />
+    <property name="featureXmlPath" value="${checkstyle.karafFeatureCheck.featureXmlPath}" default="features/karaf/openhab-addons/src/main/feature/feature.xml" />
   </module>
   
   <module name="org.openhab.tools.analysis.checkstyle.AnnotationDependencyCheck">

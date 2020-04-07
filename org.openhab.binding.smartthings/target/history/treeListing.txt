@@ -1,0 +1,1 @@
+local:org.apache.karaf.features:framework:kar:4.2.7 (compile?)

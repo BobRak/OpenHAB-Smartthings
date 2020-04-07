@@ -13,6 +13,7 @@
 package org.openhab.binding.smartthings.internal.converter;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.smarthome.core.thing.ChannelUID;
 import org.eclipse.smarthome.core.thing.Thing;
 import org.eclipse.smarthome.core.types.Command;
@@ -24,7 +25,9 @@ import org.openhab.binding.smartthings.internal.dto.SmartthingsStateData;
  * A channel specific converter is specified in the thing-type channel property smartthings-converter then that channel
  * is used.
  * If a channel specific converter is not found a convert based on the channel ID is used.
- * If there is no convert found then this Default converter is used/
+ * If there is no convert found then this Default converter is used.
+ * Yes, it would be possible to change the SamrtthingsConverter class to not being abstract and implement these methods
+ * there. But, this makes it explicit that the default converter is being used.
  * See SmartthingsThingHandler.initialize() for details
  *
  * @author Bob Raker - Initial contribution
@@ -39,14 +42,12 @@ public class SmartthingsDefaultConverter extends SmartthingsConverter {
     @Override
     public String convertToSmartthings(ChannelUID channelUid, Command command) {
         String jsonMsg = defaultConvertToSmartthings(channelUid, command);
-
         return jsonMsg;
     }
 
     @Override
-    public State convertToOpenHab(String acceptedChannelType, SmartthingsStateData dataFromSmartthings) {
+    public State convertToOpenHab(@Nullable String acceptedChannelType, SmartthingsStateData dataFromSmartthings) {
         State state = defaultConvertToOpenHab(acceptedChannelType, dataFromSmartthings);
-
         return state;
     }
 

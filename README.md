@@ -25,3 +25,7 @@ If you discover one of your devices doesn't work as expected please follow the i
 ## 4/5/2019 Release notes
 
 Right after the 4/5 release I had reports that Discovery was no longer working. I retested discovery in my development environment and found it working. I also discovered some files that should have been deleted were still present so I removed them.
+
+## 4/7/2020 Release notes
+
+Added support for some of the proposed capabilities in the [Samsung Smartthings Capabilities document](https://docs.smartthings.com/en/latest/capabilities-reference.html). In particular support was added for the DryerOperatingState and DryerMode capabilitles. Sample config files can be found in my repo: **Smartthings-SimulatedDryer**. This addition included changes to the Smartthings Hub code so make sure you reinstall the SmartApp.

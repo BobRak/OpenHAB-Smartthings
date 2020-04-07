@@ -16,6 +16,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.HSBType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
@@ -39,11 +40,7 @@ public class SmartthingsColor100Converter extends SmartthingsConverter {
 
     private Pattern rgbInputPattern = Pattern.compile("^#[0-9a-fA-F]{6}");
 
-    private Logger logger = LoggerFactory.getLogger(SmartthingsConverter.class);
-
-    SmartthingsColor100Converter(String name) {
-        super(name);
-    }
+    private Logger logger = LoggerFactory.getLogger(SmartthingsColor100Converter.class);
 
     public SmartthingsColor100Converter(Thing thing) {
         super(thing);
@@ -75,36 +72,36 @@ public class SmartthingsColor100Converter extends SmartthingsConverter {
      * org.openhab.binding.smartthings.internal.SmartthingsStateData)
      */
     @Override
-    public State convertToOpenHab(String acceptedChannelType, SmartthingsStateData dataFromSmartthings) {
+    public State convertToOpenHab(@Nullable String acceptedChannelType, SmartthingsStateData dataFromSmartthings) {
         // The color value from Smartthings will look like "#123456" which is the RGB color
         // This needs to be converted into HSB type
         String value = dataFromSmartthings.value;
+        if (value == null) {
+            logger.warn("Failed to convert color {} because Smartthings returned a null value.",
+                    dataFromSmartthings.deviceDisplayName);
+            return UnDefType.UNDEF;
+        }
 
         // If the bulb is off the value maybe null, so better check
         State state;
-        if (value != null) {
-            // First verify the format the string is valid
-            Matcher matcher = rgbInputPattern.matcher(value);
-            if (!matcher.matches()) {
-                logger.warn(
-                        "The \"value\" in the following message is not a valid color. Expected a value like \"#123456\" instead of {}",
-                        dataFromSmartthings.toString());
-                return UnDefType.UNDEF;
-            }
-
-            // Get the RGB colors
-            int rgb[] = new int[3];
-            for (int i = 0, pos = 1; i < 3; i++, pos += 2) {
-                String c = value.substring(pos, pos + 2);
-                rgb[i] = Integer.parseInt(c, 16);
-            }
-
-            // Convert to state
-            state = HSBType.fromRGB(rgb[0], rgb[1], rgb[2]);
-        } else {
-            // Lets set the state to undefined
-            state = UnDefType.UNDEF;
+        // First verify the format the string is valid
+        Matcher matcher = rgbInputPattern.matcher(value);
+        if (!matcher.matches()) {
+            logger.warn(
+                    "The \"value\" in the following message is not a valid color. Expected a value like \"#123456\" instead of {}",
+                    dataFromSmartthings.toString());
+            return UnDefType.UNDEF;
         }
+
+        // Get the RGB colors
+        int rgb[] = new int[3];
+        for (int i = 0, pos = 1; i < 3; i++, pos += 2) {
+            String c = value.substring(pos, pos + 2);
+            rgb[i] = Integer.parseInt(c, 16);
+        }
+
+        // Convert to state
+        state = HSBType.fromRGB(rgb[0], rgb[1], rgb[2]);
         return state;
     }
 

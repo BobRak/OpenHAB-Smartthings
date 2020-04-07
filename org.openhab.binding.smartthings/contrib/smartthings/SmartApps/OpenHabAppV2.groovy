@@ -154,6 +154,23 @@ import groovy.transform.Field
             "energy"
         ]
     ],
+    "dryerMode": [
+        name: "Dryer Mode",
+        capability: "capability.dryerMode",
+        attributes: [
+            "dryerMode"
+        ],
+        action: "actionDryerMode"
+    ],
+    "dryerOperatingState": [
+        name: "Dryer Operating State",
+        capability: "capability.dryerOperatingState",
+        attributes: [
+            "machineState",
+            "dryerJobState"
+        ],
+        action: "actionMachineState"
+    ],
     "estimatedTimeOfArrival": [
         name: "Estimated Time Of Arrival",
         capability: "capability.estimatedTimeOfArrival",
@@ -955,6 +972,42 @@ def actionThermostatMode(device, attribute, value) {
 def actionTimedSession(device, attribute, value) {
     if (attribute == "timeRemaining") {
         device.setTimeRemaining(value)
+    }
+}
+
+def actionDryerMode(device, attribute, value) {
+    //log.debug "actionDryeMode: attribute: ${attribute} value: ${value}"
+    // Through trial and error I figured out that changing the dryerMode requires the following code
+    switch (value) {
+        case "regular":
+            device.regular()
+        break
+        case "lowHeat":
+            device.lowHeat()
+        break
+        case "highHeat":
+            device.highHeat()
+        break
+    }
+}
+
+def actionMachineState(device, attribute, value) {
+    //log.debug "actionMachineState: attribute: ${attribute} value: ${value}"
+    // Through trial and error I figured out that changing the machineState requires the following code
+    switch (value) {
+        case "run":
+            device.start()
+        break
+        case "stop":
+            device.stop()
+        break
+        case "pause":
+            device.pause()
+        break
+        // I'm not sure if unpause() is valid. I saw an error message that included unpause as a valid command but it is not included in the Capabilities for MachineState
+        case "unpause":
+            device.unpause()
+        break
     }
 }
 

@@ -13,6 +13,7 @@
 package org.openhab.binding.smartthings.internal.converter;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.HSBType;
 import org.eclipse.smarthome.core.thing.ChannelUID;
@@ -51,7 +52,7 @@ public class SmartthingsHue100Converter extends SmartthingsConverter {
             String logMsg = String.format("OpenHAB HSB = %s, Smartthings HSB = %s, RGB = #%6X (%.0f, %.0f, %.0f)",
                     hsb.toString(), value, hsb.getRGB(), hsb.getRed().doubleValue() * 3.6,
                     hsb.getGreen().doubleValue() * 3.6, hsb.getBlue().doubleValue() * 3.6);
-            logger.debug(logMsg);
+            logger.debug("{}", logMsg);
 
             jsonMsg = String.format(
                     "{\"capabilityKey\": \"%s\", \"deviceDisplayName\": \"%s\", \"capabilityAttribute\": \"%s\", \"value\": %s}",
@@ -65,21 +66,18 @@ public class SmartthingsHue100Converter extends SmartthingsConverter {
     }
 
     @Override
-    public State convertToOpenHab(String acceptedChannelType, SmartthingsStateData dataFromSmartthings) {
+    public State convertToOpenHab(@Nullable String acceptedChannelType, SmartthingsStateData dataFromSmartthings) {
         // Here we have to multiply the value from Smartthings by 3.6 to convert from 0-100 to 0-360
-
-        // If there is no dataFromSmartthings then just return null State
-        if (dataFromSmartthings == null) {
-            return UnDefType.NULL;
-        }
-
         String deviceType = dataFromSmartthings.capabilityAttribute;
         Object deviceValue = dataFromSmartthings.value;
+
+        if (deviceValue == null) {
+            logger.warn("Failed to convert Number {} because Smartthings returned a null value.", deviceType);
+            return UnDefType.UNDEF;
+        }
+
         if ("Number".contentEquals(acceptedChannelType)) {
-            if (deviceValue == null) {
-                logger.warn("Failed to convert Number {} because the value is null.", deviceType);
-                return UnDefType.UNDEF;
-            } else if (deviceValue instanceof String) {
+            if (deviceValue instanceof String) {
                 double d = Double.parseDouble((String) deviceValue);
                 d *= 3.6;
                 return new DecimalType(d);

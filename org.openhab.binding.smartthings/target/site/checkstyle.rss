@@ -19,20 +19,20 @@ under the License.
 -->
 <rss version="0.91">
   <channel>
-    <title>Smartthings Binding - Checkstyle report</title>
-    <link>${project.url}</link>
-    <description>Smartthings Binding - Checkstyle report</description>
+    <title>openHAB Add-ons :: Bundles :: Samsung Smartthings Binding - Checkstyle report</title>
+    <link>https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings</link>
+    <description>openHAB Add-ons :: Bundles :: Samsung Smartthings Binding - Checkstyle report</description>
     <language>en-us</language>
-    <copyright>&#169;2019 openHAB.org</copyright>
+    <copyright>&#169;2020 openHAB.org</copyright>
     <item>
-      <title>File: 29,
+      <title>File: 25,
              Errors: 0,
              Warnings: 1,
              Infos: 0
       </title>
-            <link>${project.url}/checkstyle.html</link>
+            <link>https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html</link>
       <description>
-        <p>Click <a href="${project.url}/checkstyle.html">here</a> for the full Checkstyle report.</p>
+        <p>Click <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html">here</a> for the full Checkstyle report.</p>
 
         <table summary="Files" boder="1">
           <thead>
@@ -46,7 +46,7 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.handler.SmartthingsBridgeHandler.java">src/main/java/org/openhab/binding/smartthings/handler/SmartthingsBridgeHandler.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsColor100Converter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsColor100Converter.java</a>
                 </td>
                 <td>
                   0
@@ -60,7 +60,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsColor100Converter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsColor100Converter.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsColorConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsColorConverter.java</a>
                 </td>
                 <td>
                   0
@@ -74,7 +74,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsColorConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsColorConverter.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsConverter.java</a>
                 </td>
                 <td>
                   0
@@ -88,7 +88,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsConverter.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#.classpath">.classpath</a>
                 </td>
                 <td>
                   0
@@ -102,7 +102,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#.classpath">.classpath</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.handler.SmartthingsBridgeConfigStatusMessage.java">src/main/java/org/openhab/binding/smartthings/internal/handler/SmartthingsBridgeConfigStatusMessage.java</a>
                 </td>
                 <td>
                   0
@@ -116,7 +116,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.config.SmartthingsBridgeConfig.java">src/main/java/org/openhab/binding/smartthings/config/SmartthingsBridgeConfig.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#pom.xml">pom.xml</a>
                 </td>
                 <td>
                   0
@@ -130,7 +130,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ESH-INF.binding.binding.xml">ESH-INF/binding/binding.xml</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsDefaultConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsDefaultConverter.java</a>
                 </td>
                 <td>
                   0
@@ -144,7 +144,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#pom.xml">pom.xml</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.handler.SmartthingsThingHandler.java">src/main/java/org/openhab/binding/smartthings/internal/handler/SmartthingsThingHandler.java</a>
                 </td>
                 <td>
                   0
@@ -158,7 +158,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsDefaultConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsDefaultConverter.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.SmartthingsServlet.java">src/main/java/org/openhab/binding/smartthings/internal/SmartthingsServlet.java</a>
                 </td>
                 <td>
                   0
@@ -172,7 +172,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#build.properties">build.properties</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.SmartthingsBindingConstants.java">src/main/java/org/openhab/binding/smartthings/internal/SmartthingsBindingConstants.java</a>
                 </td>
                 <td>
                   0
@@ -186,7 +186,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#ESH-INF.i18n.smartthings_xx_XX.properties">ESH-INF/i18n/smartthings_xx_XX.properties</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsOpenCloseControlConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsOpenCloseControlConverter.java</a>
                 </td>
                 <td>
                   0
@@ -200,7 +200,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.SmartthingsServlet.java">src/main/java/org/openhab/binding/smartthings/internal/SmartthingsServlet.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.dto.SmartthingsDiscoveryData.java">src/main/java/org/openhab/binding/smartthings/internal/dto/SmartthingsDiscoveryData.java</a>
                 </td>
                 <td>
                   0
@@ -214,7 +214,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsOpenCloseControlConverter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsOpenCloseControlConverter.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.resources.ESH-INF.i18n.smartthings.properties">src/main/resources/ESH-INF/i18n/smartthings.properties</a>
                 </td>
                 <td>
                   0
@@ -228,7 +228,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#META-INF.MANIFEST.MF">META-INF/MANIFEST.MF</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.handler.SmartthingsThingConfigStatusMessage.java">src/main/java/org/openhab/binding/smartthings/internal/handler/SmartthingsThingConfigStatusMessage.java</a>
                 </td>
                 <td>
                   0
@@ -242,7 +242,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#OSGI-INF.SmartthingsHandlerFactory.xml">OSGI-INF/SmartthingsHandlerFactory.xml</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.dto.SmartthingsStateData.java">src/main/java/org/openhab/binding/smartthings/internal/dto/SmartthingsStateData.java</a>
                 </td>
                 <td>
                   0
@@ -256,7 +256,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.dto.SmartthingsDiscoveryData.java">src/main/java/org/openhab/binding/smartthings/internal/dto/SmartthingsDiscoveryData.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.handler.SmartthingsThingConfig.java">src/main/java/org/openhab/binding/smartthings/internal/handler/SmartthingsThingConfig.java</a>
                 </td>
                 <td>
                   0
@@ -270,7 +270,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.discovery.SmartthingsDiscoveryService.java">src/main/java/org/openhab/binding/smartthings/discovery/SmartthingsDiscoveryService.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#README.md">README.md</a>
                 </td>
                 <td>
                   0
@@ -284,7 +284,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#OSGI-INF.SmartthingsServlet.xml">OSGI-INF/SmartthingsServlet.xml</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.resources.ESH-INF.binding.binding.xml">src/main/resources/ESH-INF/binding/binding.xml</a>
                 </td>
                 <td>
                   0
@@ -298,7 +298,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.handler.SmartthingsThingHandler.java">src/main/java/org/openhab/binding/smartthings/handler/SmartthingsThingHandler.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsHue100Converter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsHue100Converter.java</a>
                 </td>
                 <td>
                   0
@@ -312,7 +312,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.SmartthingsBindingConstants.java">src/main/java/org/openhab/binding/smartthings/SmartthingsBindingConstants.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.dto.SmartthingsDeviceData.java">src/main/java/org/openhab/binding/smartthings/internal/dto/SmartthingsDeviceData.java</a>
                 </td>
                 <td>
                   0
@@ -326,7 +326,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.handler.SmartthingsAbstractHandler.java">src/main/java/org/openhab/binding/smartthings/handler/SmartthingsAbstractHandler.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.handler.SmartthingsBridgeHandler.java">src/main/java/org/openhab/binding/smartthings/internal/handler/SmartthingsBridgeHandler.java</a>
                 </td>
                 <td>
                   0
@@ -340,7 +340,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.dto.SmartthingsStateData.java">src/main/java/org/openhab/binding/smartthings/internal/dto/SmartthingsStateData.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.SmartthingsHandlerFactory.java">src/main/java/org/openhab/binding/smartthings/internal/SmartthingsHandlerFactory.java</a>
                 </td>
                 <td>
                   0
@@ -354,7 +354,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#README.md">README.md</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.resources.ESH-INF.thing.thing-types.xml">src/main/resources/ESH-INF/thing/thing-types.xml</a>
                 </td>
                 <td>
                   0
@@ -368,7 +368,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.config.SmartthingsThingConfig.java">src/main/java/org/openhab/binding/smartthings/config/SmartthingsThingConfig.java</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.discovery.SmartthingsDiscoveryService.java">src/main/java/org/openhab/binding/smartthings/internal/discovery/SmartthingsDiscoveryService.java</a>
                 </td>
                 <td>
                   0
@@ -382,63 +382,7 @@ under the License.
               </tr>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.converter.SmartthingsHue100Converter.java">src/main/java/org/openhab/binding/smartthings/internal/converter/SmartthingsHue100Converter.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.dto.SmartthingsDeviceData.java">src/main/java/org/openhab/binding/smartthings/internal/dto/SmartthingsDeviceData.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.SmartthingsHandlerFactory.java">src/main/java/org/openhab/binding/smartthings/internal/SmartthingsHandlerFactory.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.SmartthingsHttpClient.java">src/main/java/org/openhab/binding/smartthings/internal/SmartthingsHttpClient.java</a>
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-                <td>
-                  0
-                </td>
-              </tr>
-                          <tr>
-                <td>
-                  <a href="${project.url}/checkstyle.html#ESH-INF.thing.thing-types.xml">ESH-INF/thing/thing-types.xml</a>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.handler.SmartthingsBridgeConfig.java">src/main/java/org/openhab/binding/smartthings/internal/handler/SmartthingsBridgeConfig.java</a>
                 </td>
                 <td>
                   0

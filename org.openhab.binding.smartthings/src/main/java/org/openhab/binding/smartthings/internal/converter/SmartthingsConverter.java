@@ -15,6 +15,7 @@ package org.openhab.binding.smartthings.internal.converter;
 import java.util.Map;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
+import org.eclipse.jdt.annotation.Nullable;
 import org.eclipse.smarthome.core.library.types.DateTimeType;
 import org.eclipse.smarthome.core.library.types.DecimalType;
 import org.eclipse.smarthome.core.library.types.HSBType;
@@ -36,8 +37,8 @@ import org.eclipse.smarthome.core.types.Command;
 import org.eclipse.smarthome.core.types.RefreshType;
 import org.eclipse.smarthome.core.types.State;
 import org.eclipse.smarthome.core.types.UnDefType;
-import org.openhab.binding.smartthings.config.SmartthingsThingConfig;
 import org.openhab.binding.smartthings.internal.dto.SmartthingsStateData;
+import org.openhab.binding.smartthings.internal.handler.SmartthingsThingConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,11 +55,8 @@ public abstract class SmartthingsConverter {
     private Logger logger = LoggerFactory.getLogger(SmartthingsConverter.class);
 
     protected String smartthingsName;
+    @Nullable
     protected String thingTypeId;
-
-    SmartthingsConverter(String name) {
-        smartthingsName = name;
-    }
 
     SmartthingsConverter(Thing thing) {
         smartthingsName = thing.getConfiguration().as(SmartthingsThingConfig.class).smartthingsName;
@@ -67,7 +65,8 @@ public abstract class SmartthingsConverter {
 
     public abstract String convertToSmartthings(ChannelUID channelUid, Command command);
 
-    public abstract State convertToOpenHab(String acceptedChannelType, SmartthingsStateData dataFromSmartthings);
+    public abstract State convertToOpenHab(@Nullable String acceptedChannelType,
+            SmartthingsStateData dataFromSmartthings);
 
     /**
      * Provide a default converter in the base call so it can be used in sub-classes if needed
@@ -133,14 +132,20 @@ public abstract class SmartthingsConverter {
         return (new StringBuilder()).append('"').append(param).append('"').toString();
     }
 
-    protected State defaultConvertToOpenHab(String acceptedChannelType, SmartthingsStateData dataFromSmartthings) {
+    protected State defaultConvertToOpenHab(@Nullable String acceptedChannelType,
+            SmartthingsStateData dataFromSmartthings) {
         // If there is no stateMap the just return null State
-        if (dataFromSmartthings == null) {
+        if (acceptedChannelType == null) {
             return UnDefType.NULL;
         }
 
         String deviceType = dataFromSmartthings.capabilityAttribute;
         Object deviceValue = dataFromSmartthings.value;
+
+        // deviceValue can be null, handle that up front
+        if (deviceValue == null) {
+            return UnDefType.NULL;
+        }
 
         switch (acceptedChannelType) {
             case "Color":
@@ -162,10 +167,7 @@ public abstract class SmartthingsConverter {
                     return UnDefType.UNDEF;
                 }
             case "Number":
-                if (deviceValue == null) {
-                    logger.warn("Failed to convert Number {} because the value is null.", deviceType);
-                    return UnDefType.UNDEF;
-                } else if (deviceValue instanceof String) {
+                if (deviceValue instanceof String) {
                     return new DecimalType(Double.parseDouble((String) deviceValue));
                 } else if (deviceValue instanceof Double) {
                     return new DecimalType((Double) deviceValue);
@@ -197,7 +199,7 @@ public abstract class SmartthingsConverter {
                 if (deviceValue instanceof String) {
                     return new StringType((String) deviceValue);
                 } else if (deviceValue instanceof Map) {
-                    Map map = (Map) deviceValue;
+                    Map<String, String> map = (Map<String, String>) deviceValue;
                     String s = String.format("%.0f,%.0f,%.0f", map.get("x"), map.get("y"), map.get("z"));
                     return new StringType(s);
                 } else {

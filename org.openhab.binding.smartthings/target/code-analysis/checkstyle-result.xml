@@ -1,62 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <checkstyle version="8.12">
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\.classpath">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\.classpath">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\build.properties">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\pom.xml">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\ESH-INF\binding\binding.xml">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\README.md">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\ESH-INF\i18n\smartthings_xx_XX.properties">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsColor100Converter.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\ESH-INF\thing\thing-types.xml">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsColorConverter.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\META-INF\MANIFEST.MF">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsConverter.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\OSGI-INF\SmartthingsHandlerFactory.xml">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsDefaultConverter.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\OSGI-INF\SmartthingsServlet.xml">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsHue100Converter.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\pom.xml">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsOpenCloseControlConverter.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\README.md">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\discovery\SmartthingsDiscoveryService.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\config\SmartthingsBridgeConfig.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\dto\SmartthingsDeviceData.java">
+<error line="45" severity="warning" message="There is no need for a @NonNull annotation because it is set as default. Only @Nullable should be used" source="org.openhab.tools.analysis.checkstyle.NullAnnotationsCheck"/>
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\config\SmartthingsThingConfig.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\dto\SmartthingsDiscoveryData.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\discovery\SmartthingsDiscoveryService.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\dto\SmartthingsStateData.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\handler\SmartthingsAbstractHandler.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\handler\SmartthingsBridgeConfig.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\handler\SmartthingsBridgeHandler.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\handler\SmartthingsBridgeConfigStatusMessage.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\handler\SmartthingsThingHandler.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\handler\SmartthingsBridgeHandler.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsColor100Converter.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\handler\SmartthingsThingConfig.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsColorConverter.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\handler\SmartthingsThingConfigStatusMessage.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsConverter.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\handler\SmartthingsThingHandler.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsDefaultConverter.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\SmartthingsBindingConstants.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsHue100Converter.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\SmartthingsHandlerFactory.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\converter\SmartthingsOpenCloseControlConverter.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\SmartthingsServlet.java">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\dto\SmartthingsDeviceData.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\resources\ESH-INF\binding\binding.xml">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\dto\SmartthingsDiscoveryData.java">
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\resources\ESH-INF\i18n\smartthings.properties">
 </file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\dto\SmartthingsStateData.java">
-</file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\SmartthingsHandlerFactory.java">
-</file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\SmartthingsHttpClient.java">
-</file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\SmartthingsServlet.java">
-</file>
-<file name="D:\eclipse-oxygen\openhab-master2\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\SmartthingsBindingConstants.java">
-<error line="20" severity="warning" message="The package com.google.common.collect.ImmutableSet should not be used." source="org.openhab.tools.analysis.checkstyle.ForbiddenPackageUsageCheck"/>
+<file name="D:\eclipse-oxygen\openhab-newBuildSystem7\git\openhab2-addons\bundles\org.openhab.binding.smartthings\src\main\resources\ESH-INF\thing\thing-types.xml">
 </file>
 </checkstyle>

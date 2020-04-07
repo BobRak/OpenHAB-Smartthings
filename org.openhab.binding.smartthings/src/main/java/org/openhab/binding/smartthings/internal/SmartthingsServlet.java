@@ -12,7 +12,7 @@
  */
 package org.openhab.binding.smartthings.internal;
 
-import static org.openhab.binding.smartthings.SmartthingsBindingConstants.*;
+import static org.openhab.binding.smartthings.internal.SmartthingsBindingConstants.*;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -27,8 +27,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.eclipse.jdt.annotation.NonNullByDefault;
-import org.openhab.binding.smartthings.handler.SmartthingsBridgeHandler;
+import org.eclipse.jdt.annotation.Nullable;
 import org.osgi.service.component.ComponentContext;
+import org.osgi.service.component.annotations.Activate;
+import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Deactivate;
+import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
 import org.osgi.service.http.HttpService;
@@ -44,16 +48,16 @@ import com.google.gson.Gson;
  */
 @NonNullByDefault
 @SuppressWarnings("serial")
+@Component(immediate = true, service = HttpServlet.class)
 public class SmartthingsServlet extends HttpServlet {
     private static final String PATH = "/smartthings";
     private Logger logger = LoggerFactory.getLogger(SmartthingsServlet.class);
-    private HttpService httpService;
-    SmartthingsBridgeHandler bridgeHandler;
-    private EventAdmin eventAdmin;
-    private Gson gson;
+    private @Nullable HttpService httpService;
+    private @Nullable EventAdmin eventAdmin;
+    private @Nullable Gson gson;
 
+    @Activate
     protected void activate(Map<String, Object> config) {
-        // Get a Gson instance
         gson = new Gson();
         try {
             Dictionary<String, String> servletParams = new Hashtable<String, String>();
@@ -64,6 +68,7 @@ public class SmartthingsServlet extends HttpServlet {
         }
     }
 
+    @Deactivate
     protected void deactivate(ComponentContext componentContext) {
         try {
             httpService.unregister(PATH);
@@ -71,6 +76,7 @@ public class SmartthingsServlet extends HttpServlet {
         }
     }
 
+    @Reference
     protected void setHttpService(HttpService httpService) {
         this.httpService = httpService;
     }
@@ -79,6 +85,7 @@ public class SmartthingsServlet extends HttpServlet {
         this.httpService = null;
     }
 
+    @Reference
     protected void setEventAdmin(EventAdmin eventAdmin) {
         this.eventAdmin = eventAdmin;
     }
@@ -87,8 +94,22 @@ public class SmartthingsServlet extends HttpServlet {
         this.eventAdmin = null;
     }
 
+    // @Reference
+    protected void setGson(Gson gson) {
+        this.gson = gson;
+    }
+
+    protected void unsetGson() {
+        this.gson = null;
+    }
+
     @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void service(@Nullable HttpServletRequest req, @Nullable HttpServletResponse resp)
+            throws ServletException, IOException {
+        if (req == null) {
+            logger.info("SmartthingsServlet.service unexpectedly received a null request. Request not processed");
+            return;
+        }
         String path = req.getRequestURI();
         logger.debug("Smartthings servlet service() called with: {}: {} {}", req.getRemoteAddr(), req.getMethod(),
                 path);
