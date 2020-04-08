@@ -705,7 +705,7 @@
 		<label>Lock Only</label>
 		<description>Allow for the lock control of a lock device</description>
 		<channels>
-			<channel id="lock" typeId="lock-channel">
+			<channel id="lock" typeId="lock-only-channel">
 				<label>Lock</label>
 			</channel>
 		</channels>
@@ -1884,6 +1884,20 @@
 		<label>Lock state</label>
 		<category></category>
 		<state>
+			<options>
+				<option value="locked">Locked</option>
+				<option value="unknown">Unknown</option>
+				<option value="unlocked">Unlocked</option>
+				<option value="unlocked with timeout">Unlocked with timeout</option>
+			</options>
+		</state>
+	</channel-type>
+
+	<channel-type id="lock-only-channel">
+		<item-type>String</item-type>
+		<label>Lock state</label>
+		<category></category>
+		<state readOnly="true">
 			<options>
 				<option value="locked">Locked</option>
 				<option value="unknown">Unknown</option>
