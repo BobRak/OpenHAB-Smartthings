@@ -238,8 +238,7 @@ import groovy.transform.Field
         capability: "capability.lockOnly",
         attributes: [
             "lock"
-        ],
-        action: "actionLock"
+        ]
     ],
     "mediaController": [
         name: "Media Controller",
