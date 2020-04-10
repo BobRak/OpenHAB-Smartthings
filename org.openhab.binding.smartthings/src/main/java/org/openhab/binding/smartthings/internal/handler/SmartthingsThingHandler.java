@@ -219,7 +219,8 @@ public class SmartthingsThingHandler extends ConfigStatusThingHandler {
             logger.debug("Using converter {}", converterName);
             return cvtr;
         } catch (ClassNotFoundException e) {
-            logger.debug("No Custom converter exists for {} ({})", converterName, converterClassName);
+            // Most of the time there is no channel specific converter, the default converter is all that is needed.
+            logger.trace("No Custom converter exists for {} ({})", converterName, converterClassName);
         } catch (NoSuchMethodException e) {
             logger.info("NoSuchMethodException occurred for {} ({}) {}", converterName, converterClassName,
                     e.getMessage());

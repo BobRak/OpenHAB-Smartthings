@@ -50,7 +50,6 @@
 	</thing-type>
 
 	<thing-type id="airConditionerMode">
-		<!-- This does not have the necessary code to function. Need to have an appropriate simulator to finish -->
 		<supported-bridge-type-refs>
 			<bridge-type-ref id="smartthings" />
 		</supported-bridge-type-refs>
@@ -58,7 +57,7 @@
 		<description>Air Conditioner Mode</description>
 		<channels>
 			<channel id="airConditionerMode" typeId="airConditionerMode-channel">
-				<label></label>
+				<label>Air Conditioner Mode</label>
 			</channel>
 		</channels>
 		<config-description>
@@ -1687,11 +1686,13 @@
 				<option value="cool">Cool</option>
 				<option value="dry">Dry</option>
 				<option value="coolClean">Cool clean</option>
+				<!-- According to error messages from ST code the following are not supported
 				<option value="dryClean">Dry clean</option>
 				<option value="fanOnly">Fan only</option>
 				<option value="heat">Heat</option>
 				<option value="heatClean">Heat clean</option>
 				<option value="notSupported">Not supported</option>
+				-->
 			</options>
 		</state>
 	</channel-type>
@@ -1897,12 +1898,9 @@
 		<item-type>String</item-type>
 		<label>Lock state</label>
 		<category></category>
-		<state readOnly="true">
+		<state>
 			<options>
 				<option value="locked">Locked</option>
-				<option value="unknown">Unknown</option>
-				<option value="unlocked">Unlocked</option>
-				<option value="unlocked with timeout">Unlocked with timeout</option>
 			</options>
 		</state>
 	</channel-type>

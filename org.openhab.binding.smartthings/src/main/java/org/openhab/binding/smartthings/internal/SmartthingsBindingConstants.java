@@ -38,10 +38,10 @@ public class SmartthingsBindingConstants {
     // I tried to replace this with a dynamic processing of the thing-types.xml file using the ThingTypeRegistry
     // But the HandlerFactory wants to start checking on things before that code runs. So, back to a hard coded list
     public static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Collections.unmodifiableSet(Stream.of(
-            new ThingTypeUID(BINDING_ID, "accelerationSensor"), new ThingTypeUID(BINDING_ID, "alarm"),
-            new ThingTypeUID(BINDING_ID, "battery"), new ThingTypeUID(BINDING_ID, "beacon"),
-            new ThingTypeUID(BINDING_ID, "bulb"), new ThingTypeUID(BINDING_ID, "button"),
-            new ThingTypeUID(BINDING_ID, "carbonDioxideMeasurement"),
+            new ThingTypeUID(BINDING_ID, "accelerationSensor"), new ThingTypeUID(BINDING_ID, "airConditionerMode"),
+            new ThingTypeUID(BINDING_ID, "alarm"), new ThingTypeUID(BINDING_ID, "battery"),
+            new ThingTypeUID(BINDING_ID, "beacon"), new ThingTypeUID(BINDING_ID, "bulb"),
+            new ThingTypeUID(BINDING_ID, "button"), new ThingTypeUID(BINDING_ID, "carbonDioxideMeasurement"),
             new ThingTypeUID(BINDING_ID, "carbonMonoxideDetector"), new ThingTypeUID(BINDING_ID, "color"),
             new ThingTypeUID(BINDING_ID, "colorControl"), new ThingTypeUID(BINDING_ID, "colorTemperature"),
             new ThingTypeUID(BINDING_ID, "consumable"), new ThingTypeUID(BINDING_ID, "contactSensor"),

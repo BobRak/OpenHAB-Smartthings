@@ -81,7 +81,8 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
     public SmartthingsHandlerFactory() {
         // Get a Gson instance
         gson = new Gson();
-
+        // testing by bob
+        ChannelTypeRegistry ctr = getChannelTypeRegistry();
     }
 
     @Override
@@ -104,7 +105,6 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
             thingHandlers.add(thingHandler);
             return thingHandler;
         }
-
         return null;
     }
 
@@ -146,11 +146,14 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
                 result = new HashMap<String, Object>();
                 result = gson.fromJson(responseStr, result.getClass());
             }
+        } else if (status == 202) {
+            logger.info(
+                    "Sent message \"{}\" with path \"{}\" to the Smartthings hub, recieved HTTP status {} (This is the normal code from Smartthings)",
+                    data, path, status);
         } else {
             logger.info("Sent message \"{}\" with path \"{}\" to the Smartthings hub, recieved HTTP status {}", data,
                     path, status);
         }
-
         return result;
     }
 

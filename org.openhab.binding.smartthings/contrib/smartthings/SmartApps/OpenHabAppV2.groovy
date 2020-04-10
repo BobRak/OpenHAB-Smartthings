@@ -15,7 +15,7 @@
  *   - rjraker@gmail.com - 1/30/17 - Modified for use with Smartthings
  *   - st.john.johnson@gmail.com and jeremiah.wuenschel@gmail.com- original code for interface with another device
  *
- *  Copyright 2016 - 2018
+ *  Copyright 2016 - 2020
  *
  *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
  *  in compliance with the License. You may obtain a copy of the License at:
@@ -238,7 +238,8 @@ import groovy.transform.Field
         capability: "capability.lockOnly",
         attributes: [
             "lock"
-        ]
+        ],
+        action: "actionLockOnly"
     ],
     "mediaController": [
         name: "Media Controller",
@@ -435,7 +436,7 @@ import groovy.transform.Field
         attributes: [
             "coolingSetpoint"
         ],
-        action: "actionCoolingThermostat"
+        action: "actionThermostat"
     ],
     "thermostatFanMode": [
         name: "Thermostat Fan Mode",
@@ -443,7 +444,7 @@ import groovy.transform.Field
         attributes: [
             "thermostatFanMode"
         ],
-        action: "actionThermostatFan"
+        action: "actionThermostat"
     ],
     "thermostatHeatingSetpoint": [
         name: "Thermostat Heating Setpoint",
@@ -459,7 +460,7 @@ import groovy.transform.Field
         attributes: [
             "thermostatMode"
         ],
-        action: "actionThermostatMode"
+        action: "actionThermostat"
     ],
     "thermostatOperatingState": [
         name: "Thermostat Operating State",
@@ -804,7 +805,15 @@ def inputHandler(evt) {
 // This handles the basic case where there is one attribute and one action that sets the attribute.
 // And, the value is always an ENUM
 def actionEnum(device, attribute, value) {
-    device."$attribute"(value)
+    log.debug "actionEnum: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
+    //device."$attribute"(value)
+    device."$value"()
+}
+
+def actionAirConditionerMode(device, attribute, value) {
+    // This doesn't seem to do anything. But, the actionEnum as defined above does work.
+    log.debug "actionAirConditionerMode: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
+    device.setAirConditionerMode(value)
 }
 
 def actionAlarm(device, attribute, value) {
@@ -887,6 +896,7 @@ def actionActiveInactive(device, attribute, value) {
 }
 
 def actionThermostat(device, attribute, value) {
+    log.debug "actionThermostat: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
     switch(attribute) {
         case "heatingSetpoint":
             device.setHeatingSetpoint(value)
@@ -923,7 +933,7 @@ def actionColorTemperature(device, attribute, value) {
 }
 
 def actionLevel(device, attribute, value) {
-    log.debug "actionLevel: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
+    //log.debug "actionLevel: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
     // OpenHAB will send on / off or a number for the percent. See what we got and acct accordingly
     if (value == "off") {
         device.off()
@@ -945,6 +955,7 @@ def actionConsumable(device, attribute, value) {
 }
 
 def actionLock(device, attribute, value) {
+    //log.debug "actionLock: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
     if (value == "locked") {
         device.lock()
     } else if (value == "unlocked") {
@@ -952,20 +963,11 @@ def actionLock(device, attribute, value) {
     }
 }
 
-def actionCoolingThermostat(device, attribute, value) {
-    device.setCoolingSetpoint(value)
-}
-
-def actionThermostatFan(device, attribute, value) {
-    device.setThermostatFanMode(value)
-}
-
-def actionHeatingThermostat(device, attribute, value) {
-    device.setHeatingSetpoint(value)
-}
-
-def actionThermostatMode(device, attribute, value) {
-    device.setThermostatMode(value)
+def actionLockOnly(device, attribute, value) {
+    //log.debug "actionLockOnly: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
+    if (value == "locked") {
+        device.lock()
+    }
 }
 
 def actionTimedSession(device, attribute, value) {

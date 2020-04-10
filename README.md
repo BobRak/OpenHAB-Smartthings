@@ -29,3 +29,11 @@ Right after the 4/5 release I had reports that Discovery was no longer working. 
 ## 4/7/2020 Release notes
 
 Added support for some of the proposed capabilities in the [Samsung Smartthings Capabilities document](https://docs.smartthings.com/en/latest/capabilities-reference.html). In particular support was added for the DryerOperatingState and DryerMode capabilitles. Sample config files can be found in my repo: **Smartthings-SimulatedDryer**. This addition included changes to the Smartthings Hub code so make sure you reinstall the SmartApp.
+
+## 4/10/2020
+
+Added support the following capabilities:
+1. Air Conditioner Mode
+2. Temperature Measurement
+3. Thermostat Cooling Setpoint - Note: I created a Simulated Air Conditioner Device Handler to test the capabilities 1 - 3. I could not make this one work in the simulator but I do beleive the code is correct.  The openHAB code creates the correct message to the ST hub. The hub processes the message and calls the correct function to set the coolongSeptpoint but the attribute is not updated. I have given up on that after almost 2 days.
+4. Lock Only - I updated the code for this. I can confirm it will go to locked status. But, beacuse I don't have a way to set it to unlocked there is not as much testing as I would like.
