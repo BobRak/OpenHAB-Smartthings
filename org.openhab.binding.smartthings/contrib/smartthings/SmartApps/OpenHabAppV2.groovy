@@ -28,6 +28,7 @@
  */
 import groovy.json.JsonSlurper
 import groovy.json.JsonOutput
+import groovy.json.JsonBuilder
 import groovy.transform.Field
 
 // Massive lookup tree
@@ -682,6 +683,8 @@ def openhabUpdateHandler(evt) {
     def json = new JsonSlurper().parseText(evt.value)
     log.debug "Received update event from openhabDevice: ${json}"
 
+    // printSettings()
+
     if (json.type == "notify") {
         if (json.name == "Contacts") {
             sendNotificationToContacts("${json.value}", recipients)
@@ -704,7 +707,6 @@ def openhabUpdateHandler(evt) {
         openhabDevice.deviceNotification(jsonOut)
         return
     }
-    
     // Look for the device associated with this capability and perform the requested action
     settings[json.capabilityKey].each {device ->
         if (device.displayName == json.deviceDisplayName) {
@@ -717,6 +719,27 @@ def openhabUpdateHandler(evt) {
             }
         }
     }
+}
+
+// Debug method
+def printSettings() {
+    log.debug "**** printSettings() ****"
+    String out
+    settings.each { key, device ->
+        out += " *** ${key} *** \n"
+        device.each { d ->
+            out += "[ key: ${key}, deviceName: ${d.name}, deviceLabel: ${d.label}, deviceValue: ${d.currentValue} "
+            /* The following does work for showing attributes bug significantly expands the output
+            def attributes = d.getSupportedAttributes()
+            out += ", attrLen: ${attributes.size()}"
+            attributes.each { a->
+                out += ", ${a}"
+            }
+            out += "], \n"
+            */
+        }
+    }
+    log.debug "*** printSettings() done ***"
 }
 
 // Send a list of all devices to OpenHAB - used during OpenHAB's discovery process
