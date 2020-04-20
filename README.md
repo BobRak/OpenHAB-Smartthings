@@ -37,3 +37,15 @@ Added support the following capabilities:
 2. Temperature Measurement
 3. Thermostat Cooling Setpoint - Note: I created a Simulated Air Conditioner Device Handler to test the capabilities 1 - 3. I could not make this one work in the simulator but I do beleive the code is correct.  The openHAB code creates the correct message to the ST hub. The hub processes the message and calls the correct function to set the coolongSeptpoint but the attribute is not updated. I have given up on that after almost 2 days.
 4. Lock Only - I updated the code for this. I can confirm it will go to locked status. But, beacuse I don't have a way to set it to unlocked there is not as much testing as I would like.
+
+## 4/20/2020 
+
+Added additional states to the following capabilities And additional testing of those capabilities
+1. Air Conditioner Mode
+2. Temperature Measurement
+3. Thermostat Cooling Setpoint
+4. Thermostat Fan Mode
+5. Thermostat Heating Setpoint
+6. Thermostat Mode
+7. Thermostat Operating State
+8. Thermostat

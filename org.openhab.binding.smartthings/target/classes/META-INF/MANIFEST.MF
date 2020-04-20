@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Automatic-Module-Name: org.openhab.binding.smartthings
-Bnd-LastModified: 1586827529769
+Bnd-LastModified: 1587354878030
 Bundle-Description: This project contains the official add-ons of open
  HAB
 Bundle-Developers: openhab;email="info@openhab.org";name=openHAB;organ
@@ -21,7 +21,7 @@ Bundle-SCM: url="https://github.com/openhab/openhab2-addons/org.openha
  D
 Bundle-SymbolicName: org.openhab.binding.smartthings
 Bundle-Vendor: openHAB.org
-Bundle-Version: 2.5.0.202004140125
+Bundle-Version: 2.5.0.202004200354
 Created-By: 1.8.0_40 (Oracle Corporation)
 Import-Package: org.eclipse.smarthome.config.core,org.eclipse.smarthom
  e.config.core.status,org.eclipse.smarthome.config.discovery,org.eclip

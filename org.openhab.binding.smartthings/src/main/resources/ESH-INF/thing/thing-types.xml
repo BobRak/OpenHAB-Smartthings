@@ -1686,14 +1686,16 @@
 				<option value="cool">Cool</option>
 				<option value="dry">Dry</option>
 				<option value="coolClean">Cool clean</option>
-				<!-- According to error messages from ST code the following are not supported
 				<option value="dryClean">Dry clean</option>
-				<option value="fanOnly">Fan only</option>
+				<option value="fanOn">Fan on</option>
+				<option value="fanAuto">Fan auto</option>
+				<option value="fanCirculate">Fan circulate</option>
 				<option value="heat">Heat</option>
-				<option value="heatClean">Heat clean</option>
-				<option value="notSupported">Not supported</option>
-				-->
+				<option value="emergencyHeat">Emergency heat</option>
 			</options>
+
+
+
 		</state>
 	</channel-type>
 
@@ -1832,7 +1834,7 @@
 				<option value="run">Run</option>
 				<option value="stop">Stop</option>
 			</options>
-		</state> 
+		</state>
 	</channel-type>
 
 	<channel-type id="energy-channel">
@@ -2142,9 +2144,11 @@
 		<state>
 			<options>
 				<option value="auto">Auto</option>
+				<option value="eco">Eco</option>
 				<option value="cool">Cool</option>
-				<option value="emergency heat">Emergency heat</option>
 				<option value="heat">Heat</option>
+				<option value="emergency heat">Emergency heat</option>
+				<option value="rush hourheat">Rush hour</option>
 				<option value="off">Off</option>
 			</options>
 		</state>

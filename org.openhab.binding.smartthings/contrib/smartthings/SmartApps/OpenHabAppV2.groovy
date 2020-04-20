@@ -46,7 +46,7 @@ import groovy.transform.Field
         attributes: [
             "airConditionerMode"
         ],
-        action: "actionEnum"
+        action: actionAirConditionerMode
     ],
     "alarm": [
         name: "Alarm",
@@ -453,7 +453,7 @@ import groovy.transform.Field
         attributes: [
             "heatingSetpoint"
         ],
-        action: "actionHeatingThermostat"
+        action: "actionThermostat"
     ],
     "thermostatMode": [
         name: "Thermostat Mode",
@@ -461,7 +461,7 @@ import groovy.transform.Field
         attributes: [
             "thermostatMode"
         ],
-        action: "actionThermostat"
+        action: "actionThermostat" 
     ],
     "thermostatOperatingState": [
         name: "Thermostat Operating State",
@@ -620,28 +620,14 @@ def openhabStateHandler(evt) {
     def capability = CAPABILITY_MAP[mapIn.capabilityKey]
     if (capability == null) {
         log.error "No capability: \"${mapIn.capabilityKey}\" exists, make sure there is a CAPABILITY_MAP entry for this capability."
-        def jsonOut = new JsonOutput().toJson([
-            path: "/smartthings/error",
-            body: [
-                message: "Requested current state information for CAPABILITY: \"${mapIn.capabilityKey}\" but this is not defined in the SmartApp"
-            ]
-        ]) 
-        log.debug "Returning ${jsonOut}"
-        openhabDevice.deviceNotification(jsonOut)
+        sendErrorResponse "Requested current state information for CAPABILITY: \"${mapIn.capabilityKey}\" but this is not defined in the SmartApp"
         return
     }
     
     // Verify the attribute is on this capability
     if (! capability.attributes.contains(mapIn.capabilityAttribute) ) {
         log.error "Capability \"${mapIn.capabilityKey}\" does NOT contain the expected attribute: \"${mapIn.capabilityAttribute}\", make sure the a CAPABILITY_MAP for this capability contains the missing attribte."
-        def jsonOut = new JsonOutput().toJson([
-            path: "/smartthings/error",
-            startTime: json.StartTime,
-            body: [
-                message: "Requested current state information for CAPABILITY: \"${mapIn.capabilityKey}\" with attribute: \"${mapIn.capabilityAttribute}\" but this is attribute not defined for this capability in the SmartApp"
-            ]
-        ]) 
-        openhabDevice.deviceNotification(jsonOut)
+        sendErrorResponse "Requested current state information for CAPABILITY: \"${mapIn.capabilityKey}\" with attribute: \"${mapIn.capabilityAttribute}\" but this is attribute not defined for this capability in the SmartApp"
         return
     }
     
@@ -681,7 +667,7 @@ def openhabStateHandler(evt) {
 // Update a device when requested from OpenHAB
 def openhabUpdateHandler(evt) {
     def json = new JsonSlurper().parseText(evt.value)
-    log.debug "Received update event from openhabDevice: ${json}"
+    // log.debug "Received update event from openhabDevice: ${json}"
 
     // printSettings()
 
@@ -697,25 +683,25 @@ def openhabUpdateHandler(evt) {
     // Get the CAPABILITY_MAP entry for this device type
     def capability = CAPABILITY_MAP[json.capabilityKey]
     if (capability == null) {
-        log.error "No capability: \"${json.capabilityKey}\" exists, make sure there is a CAPABILITY_MAP entry for this capability."
-        def jsonOut = new JsonOutput().toJson([
-            path: "/smartthings/error",
-            body: [
-                message: "Update failed device displayName of: \"${json.deviceDisplayName}\" with CAPABILITY: \"${json.capabilityKey}\" because that CAPABILTY does not exist in the SmartApp"
-            ]
-        ]) 
-        openhabDevice.deviceNotification(jsonOut)
+        //log.error "No capability: \"${json.capabilityKey}\" exists, make sure there is a CAPABILITY_MAP entry for this capability."
+        sendErrorResponse "Update failed device displayName of: \"${json.deviceDisplayName}\" with CAPABILITY: \"${json.capabilityKey}\" because that CAPABILTY does not exist in the SmartApp" 
         return
     }
     // Look for the device associated with this capability and perform the requested action
     settings[json.capabilityKey].each {device ->
+        // log.debug "openhabUpdateHandler - looking at devices with capabilityKey ${json.capabilityKey} and device{ ${device.displayName}."
         if (device.displayName == json.deviceDisplayName) {
-            // log.debug "openhabUpdateHandler - found device for ${json.deviceDisplayName}"
+            log.debug "openhabUpdateHandler - found device for ${json.deviceDisplayName}"
             if (capability.containsKey("action")) {
-                log.debug "openhabUpdateHandler - Capability ${capability.name} with device name ${device.displayName} changed to ${json.value} using action ${capability.action}"
+                // log.debug "openhabUpdateHandler - Capability ${capability.name} with device name ${device.displayName} changed to ${json.value} using action ${capability.action}"
                 def action = capability["action"]
                 // Yes, this is calling the method dynamically
-                "$action"(device, json.capabilityAttribute, json.value)
+                try {
+                    "$action"(device, json.capabilityAttribute, json.value)
+                } catch (e) {
+                    sendErrorResponse "Error occured while calling action: {$action} for Capability: ${capability.name} with device name: ${device.displayName} changed to: ${json.value}. Exception ${e}"
+                    // log.error "Error occured while calling action: {$action} for Capability: ${capability.name} with device name: ${device.displayName} changed to: ${json.value}. Exception ${e}"
+                }
             }
         }
     }
@@ -740,6 +726,17 @@ def printSettings() {
         }
     }
     log.debug "*** printSettings() done ***"
+}
+
+def sendErrorResponse (msg) {
+    def jsonOut = new JsonOutput().toJson([
+        path: "/smartthings/error",
+        body: [
+            message: msg
+        ]
+    ]) 
+    openhabDevice.deviceNotification(jsonOut)
+    log.error msg
 }
 
 // Send a list of all devices to OpenHAB - used during OpenHAB's discovery process
@@ -829,12 +826,12 @@ def inputHandler(evt) {
 // And, the value is always an ENUM
 def actionEnum(device, attribute, value) {
     log.debug "actionEnum: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
-    //device."$attribute"(value)
-    device."$value"()
+    //device."${value}"()    // I can't figure out why this doesn't work, but it doesn't
+    def converted = "set" + attribute.capitalize() 
+    device."$converted"(value)
 }
 
 def actionAirConditionerMode(device, attribute, value) {
-    // This doesn't seem to do anything. But, the actionEnum as defined above does work.
     log.debug "actionAirConditionerMode: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
     device.setAirConditionerMode(value)
 }
@@ -978,7 +975,7 @@ def actionConsumable(device, attribute, value) {
 }
 
 def actionLock(device, attribute, value) {
-    //log.debug "actionLock: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
+    // log.debug "actionLock: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
     if (value == "locked") {
         device.lock()
     } else if (value == "unlocked") {
@@ -987,7 +984,7 @@ def actionLock(device, attribute, value) {
 }
 
 def actionLockOnly(device, attribute, value) {
-    //log.debug "actionLockOnly: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
+    // log.debug "actionLockOnly: Setting device \"${device}\" with attribute \"${attribute}\" to value \"${value}\""
     if (value == "locked") {
         device.lock()
     }
