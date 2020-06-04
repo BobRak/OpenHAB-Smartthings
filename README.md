@@ -49,3 +49,9 @@ Added additional states to the following capabilities And additional testing of 
 6. Thermostat Mode
 7. Thermostat Operating State
 8. Thermostat
+
+## 6/6/2020
+
+Added support the following capabilities:
+1. Washer Operating State (with attributes machineState and washerJobState)
+2. Washer Mode

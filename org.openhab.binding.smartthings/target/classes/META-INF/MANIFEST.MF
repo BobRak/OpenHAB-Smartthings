@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Automatic-Module-Name: org.openhab.binding.smartthings
-Bnd-LastModified: 1587354878030
+Bnd-LastModified: 1591229241660
 Bundle-Description: This project contains the official add-ons of open
  HAB
 Bundle-Developers: openhab;email="info@openhab.org";name=openHAB;organ
@@ -12,16 +12,15 @@ Bundle-License: "Eclipse Public License 2.0";link="https://www.eclipse
  .org/legal/epl-2.0/"
 Bundle-ManifestVersion: 2
 Bundle-Name: openHAB Add-ons :: Bundles :: Samsung Smartthings Binding
-Bundle-SCM: url="https://github.com/openhab/openhab2-addons/org.openha
- b.addons.reactor.bundles/org.openhab.binding.smartthings",connection=
- "scm:git:https://github.com/openhab/openhab2-addons.git/org.openhab.a
- ddons.reactor.bundles/org.openhab.binding.smartthings",developer-conn
- ection="scm:git:https://github.com/openhab/openhab2-addons.git/org.op
- enhab.addons.reactor.bundles/org.openhab.binding.smartthings",tag=HEA
- D
+Bundle-SCM: url="https://github.com/openhab/openhab-addons/org.openhab
+ .addons.reactor.bundles/org.openhab.binding.smartthings",connection="
+ scm:git:https://github.com/openhab/openhab-addons.git/org.openhab.add
+ ons.reactor.bundles/org.openhab.binding.smartthings",developer-connec
+ tion="scm:git:https://github.com/openhab/openhab-addons.git/org.openh
+ ab.addons.reactor.bundles/org.openhab.binding.smartthings",tag=HEAD
 Bundle-SymbolicName: org.openhab.binding.smartthings
 Bundle-Vendor: openHAB.org
-Bundle-Version: 2.5.0.202004200354
+Bundle-Version: 2.5.5.202006040007
 Created-By: 1.8.0_40 (Oracle Corporation)
 Import-Package: org.eclipse.smarthome.config.core,org.eclipse.smarthom
  e.config.core.status,org.eclipse.smarthome.config.discovery,org.eclip
