@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="org.openhab.binding.smartthings.internal.SmartthingsHandlerFactory" immediate="true" activate="activate" configuration-pid="binding.smarthings">
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="org.openhab.binding.smartthings.internal.SmartthingsHandlerFactory" immediate="true" configuration-pid="binding.smarthings">
   <property name="event.topics" type="String" value="org/openhab/binding/smartthings/state"/>
   <service>
     <provide interface="org.eclipse.smarthome.core.thing.binding.ThingHandlerFactory"/>
     <provide interface="org.osgi.service.event.EventHandler"/>
   </service>
-  <reference name="ChannelTypeService" interface="org.eclipse.smarthome.core.thing.type.ChannelTypeRegistry" bind="setChannelTypeService" unbind="unsetChannelTypeService"/>
   <reference name="HttpClientFactory" interface="org.eclipse.smarthome.io.net.http.HttpClientFactory" bind="setHttpClientFactory"/>
   <implementation class="org.openhab.binding.smartthings.internal.SmartthingsHandlerFactory"/>
 </scr:component>

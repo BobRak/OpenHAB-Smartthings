@@ -25,7 +25,7 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2020 openHAB.org</copyright>
     <item>
-      <title>File: 25,
+      <title>File: 26,
              Errors: 0,
              Warnings: 0,
              Infos: 0
@@ -103,6 +103,20 @@ under the License.
                           <tr>
                 <td>
                   <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.java.org.openhab.binding.smartthings.internal.handler.SmartthingsBridgeConfigStatusMessage.java">src/main/java/org/openhab/binding/smartthings/internal/handler/SmartthingsBridgeConfigStatusMessage.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="https://github.com/openhab/infrastructure/org.openhab.addons.reactor/org.openhab.addons.reactor.bundles/org.openhab.binding.smartthings/checkstyle.html#src.main.resources.ESH-INF.config.smartthings-config-description.xml">src/main/resources/ESH-INF/config/smartthings-config-description.xml</a>
                 </td>
                 <td>
                   0

@@ -8,8 +8,9 @@ This binding only works with the **Smartthings Classic** app for your phone.
 
 ## Installation instructions
 
-1. The org.openhab.binding.smartthings-2.5.0-SNAPSHOT.jar file which is located at org.openhab.binding.smartthings/target has to be copied to the addons folder in your openHAB installation.  If you are using Openhabian this will be in the Samba share: openHAB/addons. 
-2. If openHAB is currently running it will need to be restarted (On Linux: sudo /etc/init.d/openhab2 stop followed by sudo /etc/init.d/openhab2 start).
+1. Shutdown openHAB. On openhabian the command is: sudo systemctl stop openhab2.service
+2. The org.openhab.binding.smartthings-2.5.5-SNAPSHOT.jar file which is located at org.openhab.binding.smartthings/target has to be copied to the addons folder in your openHAB installation.  If you are using Openhabian this will be in the Samba share: openHAB/addons. **Make sure there is only one smartthings jar file in the addons directory.**
+2. Start openHAB. On openhabian the command is: sudo systemctl start openhab2.service
 3. Then follow the setup instructions in the README.md file in the org.openhab.binding.smartthing directory. Make sure to perform the **Smartthings Configuration** steps described in that file.
 
 ## How to report issues
@@ -55,3 +56,9 @@ Added additional states to the following capabilities And additional testing of 
 Added support the following capabilities:
 1. Washer Operating State (with attributes machineState and washerJobState)
 2. Washer Mode
+
+## 6/26/2020
+
+Many uopdates based on feedback for the openHAB review. Things that you might notice include:
+1. Many of the debug logging messages have been removed and other changed.
+2. The exception ``` The setThingHandlerFactory method has thrown an exception java.lang.ClassCastException ``` has been fixed.
