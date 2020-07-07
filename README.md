@@ -13,6 +13,8 @@ This binding only works with the **Smartthings Classic** app for your phone.
 2. Start openHAB. On openhabian the command is: sudo systemctl start openhab2.service
 3. Then follow the setup instructions in the README.md file in the org.openhab.binding.smartthing directory. Make sure to perform the **Smartthings Configuration** steps described in that file.
 
+If you see any strange or unexpected behaviour after upgrading the Smartthings binding it is recommended that you [Clear the Cache](https://community.openhab.org/t/clear-the-cache/36424).
+
 ## How to report issues
 
 If you discover one of your devices doesn't work as expected please follow the instructions in the [Troubleshooting file](org.openhab.binding.smartthings/Troubleshooting.md) and raise an issue on my Github Repo [BobRak](https://github.com/BobRak/)
@@ -62,3 +64,7 @@ Added support the following capabilities:
 Many uopdates based on feedback for the openHAB review. Things that you might notice include:
 1. Many of the debug logging messages have been removed and other changed.
 2. The exception ``` The setThingHandlerFactory method has thrown an exception java.lang.ClassCastException ``` has been fixed.
+
+## 7/4/2020
+
+Updates based on a second code review. No functional changes were requested.
