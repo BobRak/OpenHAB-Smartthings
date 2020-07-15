@@ -9,7 +9,6 @@ org\openhab\binding\smartthings\internal\converter\SmartthingsColor100Converter.
 org\openhab\binding\smartthings\internal\dto\SmartthingsStateData.class
 org\openhab\binding\smartthings\internal\dto\SmartthingsDeviceData.class
 org\openhab\binding\smartthings\internal\handler\SmartthingsThingHandler.class
-org\openhab\binding\smartthings\internal\dto\SmartthingsDiscoveryData.class
 org\openhab\binding\smartthings\internal\SmartthingsBindingConstants.class
 org\openhab\binding\smartthings\internal\converter\SmartthingsConverter.class
 org\openhab\binding\smartthings\internal\SmartthingsHandlerFactory.class

@@ -68,3 +68,12 @@ Many uopdates based on feedback for the openHAB review. Things that you might no
 ## 7/4/2020
 
 Updates based on a second code review. No functional changes were requested.
+
+## 7/15/2020
+
+Minor code changes to logging
+1. Reduced logging done by DiscoveryService as it was 90% of the logging and not that useful.
+2. Changed log level from TRACE to DEBUG for state messages from Smartthings.
+These are useful to confirm the hub is sending data
+
+Removed timing code from Smartthings code since it was eariler removed from openHAB code.

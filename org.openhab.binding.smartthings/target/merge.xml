@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?><sca xmlns:pmdns="http://pmd.sourceforge.net/report/2.0.0" xmlns:functx="http://www.functx.com">
    <file name="org.openhab.binding.smartthings.internal.discovery.SmartthingsDiscoveryService.java">
-      <message tool="pmd" line="86" message="&#xA;Use equals() to compare object references.&#xA;" priority="3" rule="CompareObjectsWithEquals" rule_url="https://pmd.github.io/pmd-6.7.0/pmd_rules_java_errorprone.html#compareobjectswithequals" category="error prone"/>
+      <message tool="pmd" line="87" message="&#xA;Use equals() to compare object references.&#xA;" priority="3" rule="CompareObjectsWithEquals" rule_url="https://pmd.github.io/pmd-6.7.0/pmd_rules_java_errorprone.html#compareobjectswithequals" category="error prone"/>
    </file>
 </sca>
