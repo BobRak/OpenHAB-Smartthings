@@ -1,2 +1,0 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<BugCollection version='3.1.0-RC3' threshold='high' effort='min'><Error></Error><Project><SrcDir>D:\eclipse-oxygen\openhab2-master\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\main\java</SrcDir><SrcDir>D:\eclipse-oxygen\openhab2-master\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\target\generated-sources\annotations</SrcDir><SrcDir>D:\eclipse-oxygen\openhab2-master\git\openhab2-addons\addons\binding\org.openhab.binding.smartthings\src\test\java</SrcDir></Project></BugCollection>

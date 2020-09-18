@@ -1,19 +1,21 @@
 # OpenHAB-Smartthings
 
-This is an openHAB binding for use with the Samsung Smartthings hub. On 3/5/19 it was submitted to openHAB for review and addition to openHAB bindings collection. Until it has been accepted and added to the openHAB platform you can install it from here.
+This is an openHAB binding for use with the Samsung Smartthings hub. On 9/19/20 it was submitted to openHAB for review and addition to openHAB bindings collection. Until it has been accepted and added to the openHAB platform you can install it from here.
 
-## Requires Smartthings Classic App
+## Requires Smartthings App
 
-This binding only works with the **Smartthings Classic** app for your phone.
+Previously this binding only worked with the **Smartthings Classic** app for your phone. Now it can work with either app
 
 ## Installation instructions
 
 1. Shutdown openHAB. On openhabian the command is: sudo systemctl stop openhab2.service
-2. The org.openhab.binding.smartthings-2.5.5-SNAPSHOT.jar file which is located at org.openhab.binding.smartthings/target has to be copied to the addons folder in your openHAB installation.  If you are using Openhabian this will be in the Samba share: openHAB/addons. **Make sure there is only one smartthings jar file in the addons directory.**
+2. The org.openhab.binding.smartthings-2.5.9-SNAPSHOT.jar file which is located at org.openhab.binding.smartthings/target has to be copied to the addons folder in your openHAB installation.  If you are using Openhabian this will be in the Samba share: openHAB/addons. **Make sure there is only one smartthings jar file in the addons directory.**
 2. Start openHAB. On openhabian the command is: sudo systemctl start openhab2.service
 3. Then follow the setup instructions in the README.md file in the org.openhab.binding.smartthing directory. Make sure to perform the **Smartthings Configuration** steps described in that file.
 
 If you see any strange or unexpected behaviour after upgrading the Smartthings binding it is recommended that you [Clear the Cache](https://community.openhab.org/t/clear-the-cache/36424).
+
+Also, make sure the code running on your Smartthings hub is the saame as in the contrib directory. This has been updated recently.
 
 ## How to report issues
 
@@ -77,3 +79,7 @@ Minor code changes to logging
 These are useful to confirm the hub is sending data
 
 Removed timing code from Smartthings code since it was eariler removed from openHAB code.
+
+## 9/18/2020
+
+Hopefully final code review changes as requested by openHAB. Also, a timeout can be set for each thing. See the README.md for details.

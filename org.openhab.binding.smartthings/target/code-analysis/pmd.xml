@@ -2,9 +2,9 @@
 <pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
-    version="6.7.0" timestamp="2020-07-15T14:29:26.294">
+    version="6.7.0" timestamp="2020-09-18T11:12:14.552">
 <file name="D:\eclipse-oxygen\openhab-PullRequest-3\git\openhab-addons\bundles\org.openhab.binding.smartthings\src\main\java\org\openhab\binding\smartthings\internal\discovery\SmartthingsDiscoveryService.java">
-<violation beginline="87" endline="87" begincolumn="13" endcolumn="55" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.openhab.binding.smartthings.internal.discovery" class="SmartthingsDiscoveryService" method="unsetThingHandlerFactory" externalInfoUrl="https://pmd.github.io/pmd-6.7.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
+<violation beginline="85" endline="85" begincolumn="13" endcolumn="55" rule="CompareObjectsWithEquals" ruleset="Error Prone" package="org.openhab.binding.smartthings.internal.discovery" class="SmartthingsDiscoveryService" method="unsetThingHandlerFactory" externalInfoUrl="https://pmd.github.io/pmd-6.7.0/pmd_rules_java_errorprone.html#compareobjectswithequals" priority="3">
 Use equals() to compare object references.
 </violation>
 </file>
