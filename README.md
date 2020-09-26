@@ -1,5 +1,7 @@
 # OpenHAB-Smartthings
 
+**This openHAB Binding is now part of openHAB. It is called "Samsung Smartthings" in the Add-ons tab. [Click here](https://www.openhab.org/addons/bindings/smartthings/)**
+
 This is an openHAB binding for use with the Samsung Smartthings hub. On 9/19/20 it was submitted to openHAB for review and addition to openHAB bindings collection. Until it has been accepted and added to the openHAB platform you can install it from here.
 
 ## Requires Smartthings App
@@ -83,3 +85,7 @@ Removed timing code from Smartthings code since it was eariler removed from open
 ## 9/18/2020
 
 Hopefully final code review changes as requested by openHAB. Also, a timeout can be set for each thing. See the README.md for details.
+
+## 9/11/2020
+
+This has been added to the openHAB distribution.  It is called "Samsung Smartthings" in the Add-ons tab. [Click here](https://www.openhab.org/addons/bindings/smartthings/)
