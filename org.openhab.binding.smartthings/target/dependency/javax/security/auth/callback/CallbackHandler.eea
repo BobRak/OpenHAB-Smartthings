@@ -1,0 +1,4 @@
+class javax/security/auth/callback/CallbackHandler
+handle
+ ([Ljavax/security/auth/callback/Callback;)V
+ ([L1javax/security/auth/callback/Callback;)V

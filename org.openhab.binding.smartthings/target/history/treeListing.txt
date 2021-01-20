@@ -1,1 +1,2 @@
+local:org.lastnpe.eea:eea-all:jar:2.2.1 (compile)
 local:org.apache.karaf.features:framework:kar:4.2.7 (compile?)

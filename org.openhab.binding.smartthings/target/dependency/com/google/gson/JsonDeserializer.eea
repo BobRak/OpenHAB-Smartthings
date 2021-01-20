@@ -1,0 +1,4 @@
+class com/google/gson/JsonDeserializer
+deserialize
+ (Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;Lcom/google/gson/JsonDeserializationContext;)TT;
+ (L1com/google/gson/JsonElement;L1java/lang/reflect/Type;L1com/google/gson/JsonDeserializationContext;)T0T;

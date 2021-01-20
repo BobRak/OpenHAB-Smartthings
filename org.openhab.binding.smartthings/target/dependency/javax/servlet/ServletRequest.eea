@@ -1,0 +1,25 @@
+class javax/servlet/ServletRequest
+getCharacterEncoding
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+getContentType
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+getInputStream
+ ()Ljavax/servlet/ServletInputStream;
+ ()L1javax/servlet/ServletInputStream;
+getParameter
+ (Ljava/lang/String;)Ljava/lang/String;
+ (L1java/lang/String;)L0java/lang/String;
+getParameterMap
+ ()Ljava/util/Map<Ljava/lang/String;[Ljava/lang/String;>;
+ ()L1java/util/Map<Ljava/lang/String;[Ljava/lang/String;>;
+getParameterNames
+ ()Ljava/util/Enumeration<Ljava/lang/String;>;
+ ()L1java/util/Enumeration<Ljava/lang/String;>;
+getParameterValues
+ (Ljava/lang/String;)[Ljava/lang/String;
+ (L1java/lang/String;)[0L1java/lang/String;
+setCharacterEncoding
+ (Ljava/lang/String;)V
+ (L0java/lang/String;)V

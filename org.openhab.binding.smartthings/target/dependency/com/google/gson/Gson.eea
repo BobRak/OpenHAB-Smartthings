@@ -1,0 +1,40 @@
+class com/google/gson/Gson
+excluder
+ ()Lcom/google/gson/internal/Excluder;
+ ()L1com/google/gson/internal/Excluder;
+fromJson
+ <T:Ljava/lang/Object;>(Lcom/google/gson/JsonElement;Ljava/lang/Class<TT;>;)TT;
+ <T:Ljava/lang/Object;>(L0com/google/gson/JsonElement;L1java/lang/Class<TT;>;)T0T;
+fromJson
+ <T:Ljava/lang/Object;>(Lcom/google/gson/JsonElement;Ljava/lang/reflect/Type;)TT;
+ <T:Ljava/lang/Object;>(L0com/google/gson/JsonElement;L1java/lang/reflect/Type;)T0T;
+fromJson
+ <T:Ljava/lang/Object;>(Ljava/lang/String;Ljava/lang/Class<TT;>;)TT;
+ <T:Ljava/lang/Object;>(L0java/lang/String;L1java/lang/Class<TT;>;)T0T;
+fromJson
+ <T:Ljava/lang/Object;>(Ljava/lang/String;Ljava/lang/reflect/Type;)TT;
+ <T:Ljava/lang/Object;>(L0java/lang/String;L1java/lang/reflect/Type;)T0T;
+newBuilder
+ ()Lcom/google/gson/GsonBuilder;
+ ()L1com/google/gson/GsonBuilder;
+toJson
+ (Lcom/google/gson/JsonElement;)Ljava/lang/String;
+ (L0com/google/gson/JsonElement;)L1java/lang/String;
+toJson
+ (Lcom/google/gson/JsonElement;Lcom/google/gson/stream/JsonWriter;)V
+ (L0com/google/gson/JsonElement;L1com/google/gson/stream/JsonWriter;)V
+toJson
+ (Ljava/lang/Object;)Ljava/lang/String;
+ (L0java/lang/Object;)L1java/lang/String;
+toJson
+ (Ljava/lang/Object;Ljava/lang/Appendable;)V
+ (L0java/lang/Object;L1java/lang/Appendable;)V
+toJson
+ (Ljava/lang/Object;Ljava/lang/reflect/Type;)Ljava/lang/String;
+ (L0java/lang/Object;L1java/lang/reflect/Type;)L1java/lang/String;
+toJson
+ (Ljava/lang/Object;Ljava/lang/reflect/Type;Lcom/google/gson/stream/JsonWriter;)V
+ (L0java/lang/Object;L1java/lang/reflect/Type;L1com/google/gson/stream/JsonWriter;)V
+toJson
+ (Ljava/lang/Object;Ljava/lang/reflect/Type;Ljava/lang/Appendable;)V
+ (L0java/lang/Object;L1java/lang/reflect/Type;L1java/lang/Appendable;)V

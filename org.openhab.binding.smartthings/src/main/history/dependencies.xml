@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<features xmlns="http://karaf.apache.org/xmlns/features/v1.6.0" name="org.openhab.binding.smartthings-2.5.9-SNAPSHOT">
-    <feature version="0.0.0">
-        <feature>openhab-runtime-base</feature>
-        <bundle>mvn:org.openhab.addons.bundles/org.openhab.binding.smartthings/2.5.9-SNAPSHOT</bundle>
-    </feature>
-</features>
+<ns2:features xmlns:ns2="http://karaf.apache.org/xmlns/features/v1.6.0" name="org.openhab.binding.smartthings-3.1.0-SNAPSHOT">
+    <ns2:feature version="0.0.0">
+        <ns2:feature>openhab-runtime-base</ns2:feature>
+        <ns2:feature>wrap</ns2:feature>
+        <ns2:bundle>mvn:org.openhab.addons.bundles/org.openhab.binding.smartthings/3.1.0-SNAPSHOT</ns2:bundle>
+        <ns2:bundle>wrap:mvn:org.lastnpe.eea/eea-all/2.2.1</ns2:bundle>
+    </ns2:feature>
+</ns2:features>

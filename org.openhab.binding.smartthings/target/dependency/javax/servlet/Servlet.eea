@@ -1,0 +1,13 @@
+class javax/servlet/Servlet
+getServletConfig
+ ()Ljavax/servlet/ServletConfig;
+ ()L0javax/servlet/ServletConfig;
+getServletInfo
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+init
+ (Ljavax/servlet/ServletConfig;)V
+ (L0javax/servlet/ServletConfig;)V
+service
+ (Ljavax/servlet/ServletRequest;Ljavax/servlet/ServletResponse;)V
+ (L1javax/servlet/ServletRequest;L1javax/servlet/ServletResponse;)V

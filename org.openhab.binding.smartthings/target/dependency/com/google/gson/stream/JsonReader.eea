@@ -1,0 +1,13 @@
+class com/google/gson/stream/JsonReader
+getPath
+ ()Ljava/lang/String;
+ ()L1java/lang/String;
+nextName
+ ()Ljava/lang/String;
+ ()L1java/lang/String;
+nextString
+ ()Ljava/lang/String;
+ ()L1java/lang/String;
+peek
+ ()Lcom/google/gson/stream/JsonToken;
+ ()L1com/google/gson/stream/JsonToken;

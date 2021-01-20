@@ -1,0 +1,4 @@
+class org/osgi/util/tracker/ServiceTracker
+getService
+ ()TT;
+ ()T0T;

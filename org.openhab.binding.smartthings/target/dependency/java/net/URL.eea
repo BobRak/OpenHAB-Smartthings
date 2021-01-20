@@ -1,0 +1,7 @@
+class java/net/URL
+toString
+ ()Ljava/lang/String;
+ ()L1java/lang/String;
+toURI
+ ()Ljava/net/URI;
+ ()L1java/net/URI;

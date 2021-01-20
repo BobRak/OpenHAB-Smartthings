@@ -1,0 +1,4 @@
+class org/mockito/invocation/InvocationOnMock
+getArguments
+ ()[Ljava/lang/Object;
+ ()[1L1java/lang/Object;

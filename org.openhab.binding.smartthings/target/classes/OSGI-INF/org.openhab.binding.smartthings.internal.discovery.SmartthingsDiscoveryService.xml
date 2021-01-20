@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="org.openhab.binding.smartthings.internal.discovery.SmartthingsDiscoveryService" immediate="true" configuration-pid="discovery.smartthings">
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="org.openhab.binding.smartthings.internal.discovery.SmartthingsDiscoveryService" configuration-pid="discovery.smartthings">
   <property name="event.topics" type="String" value="org/openhab/binding/smartthings/discovery"/>
   <service>
-    <provide interface="org.eclipse.smarthome.config.discovery.DiscoveryService"/>
+    <provide interface="org.openhab.core.config.discovery.DiscoveryService"/>
     <provide interface="org.osgi.service.event.EventHandler"/>
   </service>
-  <reference name="ThingHandlerFactory" interface="org.eclipse.smarthome.core.thing.binding.ThingHandlerFactory" bind="setThingHandlerFactory" unbind="unsetThingHandlerFactory"/>
+  <reference name="SmartthingsHubCommand" interface="org.openhab.binding.smartthings.internal.SmartthingsHubCommand" bind="setSmartthingsHubCommand" unbind="unsetSmartthingsHubCommand"/>
   <implementation class="org.openhab.binding.smartthings.internal.discovery.SmartthingsDiscoveryService"/>
 </scr:component>

@@ -1,0 +1,10 @@
+class javax/mail/Message$RecipientType
+TO
+ Ljavax/mail/Message$RecipientType;
+ L1javax/mail/Message$RecipientType;
+CC
+ Ljavax/mail/Message$RecipientType;
+ L1javax/mail/Message$RecipientType;
+BCC
+ Ljavax/mail/Message$RecipientType;
+ L1javax/mail/Message$RecipientType;

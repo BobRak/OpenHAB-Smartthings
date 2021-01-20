@@ -1,0 +1,13 @@
+class javax/swing/JList
+<init>
+ (Ljava/util/Vector<+TE;>;)V
+ (L1java/util/Vector<+TE;>;)V
+<init>
+ (Ljavax/swing/ListModel<TE;>;)V
+ (L1javax/swing/ListModel<TE;>;)V
+<init>
+ ([TE;)V
+ ([1TE;)V
+getPrototypeCellValue
+ ()TE;
+ ()T0E;

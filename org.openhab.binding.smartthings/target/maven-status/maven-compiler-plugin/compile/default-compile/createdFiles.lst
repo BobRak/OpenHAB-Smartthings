@@ -16,3 +16,4 @@ org\openhab\binding\smartthings\internal\handler\SmartthingsThingConfigStatusMes
 org\openhab\binding\smartthings\internal\converter\SmartthingsHue100Converter.class
 org\openhab\binding\smartthings\internal\converter\SmartthingsDefaultConverter.class
 org\openhab\binding\smartthings\internal\handler\SmartthingsThingConfig.class
+org\openhab\binding\smartthings\internal\SmartthingsHubCommand.class

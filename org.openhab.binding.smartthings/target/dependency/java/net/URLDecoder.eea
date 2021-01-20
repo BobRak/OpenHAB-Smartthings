@@ -1,0 +1,4 @@
+class java/net/URLDecoder
+decode
+ (Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+ (L1java/lang/String;L1java/lang/String;)L1java/lang/String;

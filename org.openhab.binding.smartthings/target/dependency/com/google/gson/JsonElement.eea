@@ -1,0 +1,31 @@
+class com/google/gson/JsonElement
+deepCopy
+ ()Lcom/google/gson/JsonElement;
+ ()L1com/google/gson/JsonElement;
+getAsBigDecimal
+ ()Ljava/math/BigDecimal;
+ ()L1java/math/BigDecimal;
+getAsBigInteger
+ ()Ljava/math/BigInteger;
+ ()L1java/math/BigInteger;
+getAsJsonArray
+ ()Lcom/google/gson/JsonArray;
+ ()L1com/google/gson/JsonArray;
+getAsJsonNull
+ ()Lcom/google/gson/JsonNull;
+ ()L1com/google/gson/JsonNull;
+getAsJsonObject
+ ()Lcom/google/gson/JsonObject;
+ ()L1com/google/gson/JsonObject;
+getAsJsonPrimitive
+ ()Lcom/google/gson/JsonPrimitive;
+ ()L1com/google/gson/JsonPrimitive;
+getAsNumber
+ ()Ljava/lang/Number;
+ ()L1java/lang/Number;
+getAsString
+ ()Ljava/lang/String;
+ ()L1java/lang/String;
+toString
+ ()Ljava/lang/String;
+ ()L1java/lang/String;

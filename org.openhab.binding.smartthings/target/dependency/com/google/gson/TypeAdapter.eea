@@ -1,0 +1,28 @@
+class com/google/gson/TypeAdapter
+fromJson
+ (Ljava/io/Reader;)TT;
+ (L1java/io/Reader;)T0T;
+fromJson
+ (Ljava/lang/String;)TT;
+ (L1java/lang/String;)T0T;
+fromJsonTree
+ (Lcom/google/gson/JsonElement;)TT;
+ (L1com/google/gson/JsonElement;)T0T;
+nullSafe
+ ()Lcom/google/gson/TypeAdapter<TT;>;
+ ()L1com/google/gson/TypeAdapter<TT;>;
+read
+ (Lcom/google/gson/stream/JsonReader;)TT;
+ (L1com/google/gson/stream/JsonReader;)T0T;
+toJson
+ (Ljava/io/Writer;TT;)V
+ (L1java/io/Writer;T0T;)V
+toJson
+ (TT;)Ljava/lang/String;
+ (T0T;)L1java/lang/String;
+toJsonTree
+ (TT;)Lcom/google/gson/JsonElement;
+ (T0T;)L1com/google/gson/JsonElement;
+write
+ (Lcom/google/gson/stream/JsonWriter;TT;)V
+ (L1com/google/gson/stream/JsonWriter;T0T;)V

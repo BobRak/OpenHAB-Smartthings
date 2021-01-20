@@ -1,0 +1,55 @@
+class javax/servlet/http/HttpServletResponse
+addCookie
+ (Ljavax/servlet/http/Cookie;)V
+ (L1javax/servlet/http/Cookie;)V
+addDateHeader
+ (Ljava/lang/String;J)V
+ (L1java/lang/String;J)V
+addHeader
+ (Ljava/lang/String;Ljava/lang/String;)V
+ (L1java/lang/String;L0java/lang/String;)V
+addIntHeader
+ (Ljava/lang/String;I)V
+ (L1java/lang/String;I)V
+containsHeader
+ (Ljava/lang/String;)Z
+ (L1java/lang/String;)Z
+encodeRedirectURL
+ (Ljava/lang/String;)Ljava/lang/String;
+ (L0java/lang/String;)L0java/lang/String;
+encodeRedirectUrl
+ (Ljava/lang/String;)Ljava/lang/String;
+ (L0java/lang/String;)L0java/lang/String;
+encodeURL
+ (Ljava/lang/String;)Ljava/lang/String;
+ (L0java/lang/String;)L0java/lang/String;
+encodeUrl
+ (Ljava/lang/String;)Ljava/lang/String;
+ (L0java/lang/String;)L0java/lang/String;
+getHeader
+ (Ljava/lang/String;)Ljava/lang/String;
+ (L1java/lang/String;)L0java/lang/String;
+getHeaders
+ (Ljava/lang/String;)Ljava/util/Collection<Ljava/lang/String;>;
+ (L1java/lang/String;)L1java/util/Collection<Ljava/lang/String;>;
+getHeaderNames
+ ()Ljava/util/Collection<Ljava/lang/String;>;
+ ()L1java/util/Collection<Ljava/lang/String;>;
+sendError
+ (ILjava/lang/String;)V
+ (IL0java/lang/String;)V
+sendRedirect
+ (Ljava/lang/String;)V
+ (L1java/lang/String;)V
+setDateHeader
+ (Ljava/lang/String;J)V
+ (L1java/lang/String;J)V
+setHeader
+ (Ljava/lang/String;Ljava/lang/String;)V
+ (L1java/lang/String;L0java/lang/String;)V
+setIntHeader
+ (Ljava/lang/String;I)V
+ (L1java/lang/String;I)V
+setStatus
+ (ILjava/lang/String;)V
+ (IL0java/lang/String;)V

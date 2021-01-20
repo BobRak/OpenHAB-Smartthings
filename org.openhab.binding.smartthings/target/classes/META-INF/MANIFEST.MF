@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Automatic-Module-Name: org.openhab.binding.smartthings
-Bnd-LastModified: 1600457822711
+Bnd-LastModified: 1611073980858
 Bundle-Description: This project contains the official add-ons of open
  HAB
 Bundle-Developers: openhab;email="info@openhab.org";name=openHAB;organ
@@ -20,45 +20,46 @@ Bundle-SCM: url="https://github.com/openhab/openhab-addons/org.openhab
  ab.addons.reactor.bundles/org.openhab.binding.smartthings",tag=HEAD
 Bundle-SymbolicName: org.openhab.binding.smartthings
 Bundle-Vendor: openHAB.org
-Bundle-Version: 2.5.9.202009181937
-Created-By: 14.0.2 (Oracle Corporation)
-Import-Package: org.eclipse.smarthome.config.core,org.eclipse.smarthom
- e.config.core.status,org.eclipse.smarthome.config.discovery,org.eclip
- se.smarthome.core.library.types,org.eclipse.smarthome.core.thing,org.
- eclipse.smarthome.core.thing.binding,org.eclipse.smarthome.core.types
- ,org.eclipse.smarthome.io.net.http,com.google.gson;version="[2.8,3)",
- javax.servlet;version="[3.1,4)",javax.servlet.http;version="[3.1,4)",
- org.eclipse.jetty.client;version="[9.3,10)",org.eclipse.jetty.client.
- api;version="[9.3,10)",org.eclipse.jetty.client.util;version="[9.3,10
- )",org.eclipse.jetty.http;version="[9.3,10)",org.osgi.framework;versi
- on="[1.8,2)",org.osgi.service.component;version="[1.4,2)",org.osgi.se
- rvice.event;version="[1.4,2)",org.osgi.service.http;version="[1.2,2)"
- ,org.slf4j;version="[1.7,2)"
-Private-Package: ESH-INF.binding,ESH-INF.config,ESH-INF.i18n,ESH-INF.t
- hing,org.openhab.binding.smartthings.internal,org.openhab.binding.sma
- rtthings.internal.converter,org.openhab.binding.smartthings.internal.
- discovery,org.openhab.binding.smartthings.internal.dto,org.openhab.bi
- nding.smartthings.internal.handler
+Bundle-Version: 3.1.0.202101191633
+Created-By: 11.0.8 (Oracle Corporation)
+Import-Package: org.openhab.core.config.core,org.openhab.core.config.c
+ ore.status,org.openhab.core.config.discovery,org.openhab.core.io.net.
+ http,org.openhab.core.library.types,org.openhab.core.thing,org.openha
+ b.core.thing.binding,org.openhab.core.types,com.google.gson;version="
+ [2.8,3)",javax.servlet,javax.servlet.http,org.eclipse.jetty.client;ve
+ rsion="[9.4,10)",org.eclipse.jetty.client.api;version="[9.4,10)",org.
+ eclipse.jetty.client.util;version="[9.4,10)",org.eclipse.jetty.http;v
+ ersion="[9.4,10)",org.osgi.framework;version="[1.8,2)",org.osgi.servi
+ ce.component;version="[1.4,2)",org.osgi.service.event;version="[1.4,2
+ )",org.osgi.service.http;version="[1.2,2)",org.slf4j;version="[1.7,2)
+ "
+Private-Package: OH-INF.binding,OH-INF.config,OH-INF.i18n,OH-INF.thing
+ ,org.openhab.binding.smartthings.internal,org.openhab.binding.smartth
+ ings.internal.converter,org.openhab.binding.smartthings.internal.disc
+ overy,org.openhab.binding.smartthings.internal.dto,org.openhab.bindin
+ g.smartthings.internal.handler
 Provide-Capability: osgi.service;objectClass:List<String>="javax.servl
  et.http.HttpServlet";uses:="javax.servlet.http",osgi.service;objectCl
- ass:List<String>="org.eclipse.smarthome.config.discovery.DiscoverySer
- vice,org.osgi.service.event.EventHandler";uses:="org.eclipse.smarthom
- e.config.discovery,org.osgi.service.event",osgi.service;objectClass:L
- ist<String>="org.eclipse.smarthome.core.thing.binding.ThingHandlerFac
- tory,org.osgi.service.event.EventHandler";uses:="org.eclipse.smarthom
- e.core.thing.binding,org.osgi.service.event"
-Require-Capability: osgi.service;filter:="(objectClass=org.eclipse.sma
- rthome.core.thing.binding.ThingHandlerFactory)";effective:=active,osg
- i.service;filter:="(objectClass=org.eclipse.smarthome.io.net.http.Htt
- pClientFactory)";effective:=active,osgi.service;filter:="(objectClass
- =org.osgi.service.event.EventAdmin)";effective:=active,osgi.service;f
- ilter:="(objectClass=org.osgi.service.http.HttpService)";effective:=a
- ctive,osgi.extender;filter:="(&(osgi.extender=osgi.component)(version
- >=1.4.0)(!(version>=2.0.0)))",osgi.ee;filter:="(&(osgi.ee=JavaSE)(ver
- sion=1.8))"
+ ass:List<String>="org.openhab.binding.smartthings.internal.Smartthing
+ sHubCommand,org.openhab.core.thing.binding.ThingHandlerFactory,org.os
+ gi.service.event.EventHandler";uses:="org.openhab.binding.smartthings
+ .internal,org.openhab.core.thing.binding,org.osgi.service.event",osgi
+ .service;objectClass:List<String>="org.openhab.core.config.discovery.
+ DiscoveryService,org.osgi.service.event.EventHandler";uses:="org.open
+ hab.core.config.discovery,org.osgi.service.event"
+Require-Capability: osgi.service;filter:="(objectClass=org.openhab.bin
+ ding.smartthings.internal.SmartthingsHubCommand)";effective:=active,o
+ sgi.service;filter:="(objectClass=org.openhab.core.io.net.http.HttpCl
+ ientFactory)";effective:=active,osgi.service;filter:="(objectClass=or
+ g.osgi.service.event.EventAdmin)";effective:=active,osgi.service;filt
+ er:="(objectClass=org.osgi.service.http.HttpService)";effective:=acti
+ ve,osgi.extender;filter:="(&(osgi.extender=osgi.component)(version>=1
+ .4.0)(!(version>=2.0.0)))",osgi.contract;osgi.contract=JavaServlet;fi
+ lter:="(&(osgi.contract=JavaServlet)(version=3.1.0))",osgi.ee;filter:
+ ="(&(osgi.ee=JavaSE)(version=11))"
 Service-Component: OSGI-INF/org.openhab.binding.smartthings.internal.S
  martthingsHandlerFactory.xml,OSGI-INF/org.openhab.binding.smartthings
  .internal.SmartthingsServlet.xml,OSGI-INF/org.openhab.binding.smartth
  ings.internal.discovery.SmartthingsDiscoveryService.xml
-Tool: Bnd-4.3.0.201909301554
+Tool: Bnd-5.1.2.202007211702
 

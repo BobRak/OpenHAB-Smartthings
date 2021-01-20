@@ -89,3 +89,8 @@ Hopefully final code review changes as requested by openHAB. Also, a timeout can
 ## 9/11/2020
 
 This has been added to the openHAB distribution.  It is called "Samsung Smartthings" in the Add-ons tab. [Click here](https://www.openhab.org/addons/bindings/smartthings/)
+
+## 1/20/2021
+
+This version requires OH 3.1. It fixes a bug that caused the Discovery service to not find any devices connected
+to the Smartthings hub.  This has been submitted to openHAB but is being posted here for anone that wants quicker access to the changes.

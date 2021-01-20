@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2010-2020 Contributors to the openHAB project
+ * Copyright (c) 2010-2021 Contributors to the openHAB project
  *
  * See the NOTICE file(s) distributed with this work for additional
  * information.
@@ -27,18 +27,18 @@ import org.eclipse.jetty.client.HttpClient;
 import org.eclipse.jetty.client.api.ContentResponse;
 import org.eclipse.jetty.client.util.StringContentProvider;
 import org.eclipse.jetty.http.HttpMethod;
-import org.eclipse.smarthome.core.thing.Bridge;
-import org.eclipse.smarthome.core.thing.Channel;
-import org.eclipse.smarthome.core.thing.Thing;
-import org.eclipse.smarthome.core.thing.ThingTypeUID;
-import org.eclipse.smarthome.core.thing.ThingUID;
-import org.eclipse.smarthome.core.thing.binding.BaseThingHandlerFactory;
-import org.eclipse.smarthome.core.thing.binding.ThingHandler;
-import org.eclipse.smarthome.core.thing.binding.ThingHandlerFactory;
-import org.eclipse.smarthome.io.net.http.HttpClientFactory;
 import org.openhab.binding.smartthings.internal.dto.SmartthingsStateData;
 import org.openhab.binding.smartthings.internal.handler.SmartthingsBridgeHandler;
 import org.openhab.binding.smartthings.internal.handler.SmartthingsThingHandler;
+import org.openhab.core.io.net.http.HttpClientFactory;
+import org.openhab.core.thing.Bridge;
+import org.openhab.core.thing.Channel;
+import org.openhab.core.thing.Thing;
+import org.openhab.core.thing.ThingTypeUID;
+import org.openhab.core.thing.ThingUID;
+import org.openhab.core.thing.binding.BaseThingHandlerFactory;
+import org.openhab.core.thing.binding.ThingHandler;
+import org.openhab.core.thing.binding.ThingHandlerFactory;
 import org.osgi.service.component.annotations.Component;
 import org.osgi.service.component.annotations.Reference;
 import org.osgi.service.event.Event;
@@ -55,17 +55,17 @@ import com.google.gson.Gson;
  * @author Bob Raker - Initial contribution
  */
 @NonNullByDefault
-@Component(service = { ThingHandlerFactory.class,
-        EventHandler.class }, immediate = true, configurationPid = "binding.smarthings", property = "event.topics=org/openhab/binding/smartthings/state")
-public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implements ThingHandlerFactory, EventHandler {
+@Component(service = { ThingHandlerFactory.class, SmartthingsHubCommand.class,
+        EventHandler.class }, configurationPid = "binding.smarthings", property = "event.topics=org/openhab/binding/smartthings/state")
+public class SmartthingsHandlerFactory extends BaseThingHandlerFactory
+        implements ThingHandlerFactory, EventHandler, SmartthingsHubCommand {
 
     private final Logger logger = LoggerFactory.getLogger(SmartthingsHandlerFactory.class);
 
     private @Nullable SmartthingsBridgeHandler bridgeHandler = null;
     private @Nullable ThingUID bridgeUID;
     private Gson gson;
-    private List<SmartthingsThingHandler> thingHandlers = Collections
-            .synchronizedList(new ArrayList<SmartthingsThingHandler>());
+    private List<SmartthingsThingHandler> thingHandlers = Collections.synchronizedList(new ArrayList<>());
 
     private @NonNullByDefault({}) HttpClient httpClient;
 
@@ -153,6 +153,9 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
             String data = (String) event.getProperty("data");
             SmartthingsStateData stateData = new SmartthingsStateData();
             stateData = gson.fromJson(data, stateData.getClass());
+            if (stateData == null) {
+                return;
+            }
             SmartthingsThingHandler handler = findHandler(stateData);
             if (handler != null) {
                 handler.handleStateMessage(stateData);
@@ -192,5 +195,11 @@ public class SmartthingsHandlerFactory extends BaseThingHandlerFactory implement
     @Nullable
     public SmartthingsBridgeHandler getBridgeHandler() {
         return bridgeHandler;
+    }
+
+    @Override
+    @Nullable
+    public ThingUID getBridgeUID() {
+        return bridgeHandler.getThing().getUID();
     }
 }

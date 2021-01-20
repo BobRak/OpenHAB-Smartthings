@@ -1,0 +1,76 @@
+class com/google/gson/GsonBuilder
+addDeserializationExclusionStrategy
+ (Lcom/google/gson/ExclusionStrategy;)Lcom/google/gson/GsonBuilder;
+ (L1com/google/gson/ExclusionStrategy;)L1com/google/gson/GsonBuilder;
+addSerializationExclusionStrategy
+ (Lcom/google/gson/ExclusionStrategy;)Lcom/google/gson/GsonBuilder;
+ (L1com/google/gson/ExclusionStrategy;)L1com/google/gson/GsonBuilder;
+addTypeAdaptersForDate
+ (Ljava/lang/String;IILjava/util/List<Lcom/google/gson/TypeAdapterFactory;>;)V
+ (L0java/lang/String;IILjava/util/List<Lcom/google/gson/TypeAdapterFactory;>;)V
+create
+ ()Lcom/google/gson/Gson;
+ ()L1com/google/gson/Gson;
+disableHtmlEscaping
+ ()Lcom/google/gson/GsonBuilder;
+ ()L1com/google/gson/GsonBuilder;
+disableInnerClassSerialization
+ ()Lcom/google/gson/GsonBuilder;
+ ()L1com/google/gson/GsonBuilder;
+enableComplexMapKeySerialization
+ ()Lcom/google/gson/GsonBuilder;
+ ()L1com/google/gson/GsonBuilder;
+excludeFieldsWithModifiers
+ ([I)Lcom/google/gson/GsonBuilder;
+ ([I)L1com/google/gson/GsonBuilder;
+excludeFieldsWithoutExposeAnnotation
+ ()Lcom/google/gson/GsonBuilder;
+ ()L1com/google/gson/GsonBuilder;
+generateNonExecutableJson
+ ()Lcom/google/gson/GsonBuilder;
+ ()L1com/google/gson/GsonBuilder;
+registerTypeAdapter
+ (Ljava/lang/reflect/Type;Ljava/lang/Object;)Lcom/google/gson/GsonBuilder;
+ (L1java/lang/reflect/Type;L1java/lang/Object;)L1com/google/gson/GsonBuilder;
+registerTypeAdapterFactory
+ (Lcom/google/gson/TypeAdapterFactory;)Lcom/google/gson/GsonBuilder;
+ (L1com/google/gson/TypeAdapterFactory;)L1com/google/gson/GsonBuilder;
+registerTypeHierarchyAdapter
+ (Ljava/lang/Class<*>;Ljava/lang/Object;)Lcom/google/gson/GsonBuilder;
+ (L1java/lang/Class<*>;L1java/lang/Object;)L1com/google/gson/GsonBuilder;
+serializeNulls
+ ()Lcom/google/gson/GsonBuilder;
+ ()L1com/google/gson/GsonBuilder;
+serializeSpecialFloatingPointValues
+ ()Lcom/google/gson/GsonBuilder;
+ ()L1com/google/gson/GsonBuilder;
+setDateFormat
+ (I)Lcom/google/gson/GsonBuilder;
+ (I)L1com/google/gson/GsonBuilder;
+setDateFormat
+ (II)Lcom/google/gson/GsonBuilder;
+ (II)L1com/google/gson/GsonBuilder;
+setDateFormat
+ (Ljava/lang/String;)Lcom/google/gson/GsonBuilder;
+ (L1java/lang/String;)L1com/google/gson/GsonBuilder;
+setExclusionStrategies
+ ([Lcom/google/gson/ExclusionStrategy;)Lcom/google/gson/GsonBuilder;
+ ([1L1com/google/gson/ExclusionStrategy;)L1com/google/gson/GsonBuilder;
+setFieldNamingPolicy
+ (Lcom/google/gson/FieldNamingPolicy;)Lcom/google/gson/GsonBuilder;
+ (L1com/google/gson/FieldNamingPolicy;)L1com/google/gson/GsonBuilder;
+setFieldNamingStrategy
+ (Lcom/google/gson/FieldNamingStrategy;)Lcom/google/gson/GsonBuilder;
+ (L1com/google/gson/FieldNamingStrategy;)L1com/google/gson/GsonBuilder;
+setLenient
+ ()Lcom/google/gson/GsonBuilder;
+ ()L1com/google/gson/GsonBuilder;
+setLongSerializationPolicy
+ (Lcom/google/gson/LongSerializationPolicy;)Lcom/google/gson/GsonBuilder;
+ (L1com/google/gson/LongSerializationPolicy;)L1com/google/gson/GsonBuilder;
+setPrettyPrinting
+ ()Lcom/google/gson/GsonBuilder;
+ ()L1com/google/gson/GsonBuilder;
+setVersion
+ (D)Lcom/google/gson/GsonBuilder;
+ (D)L1com/google/gson/GsonBuilder;

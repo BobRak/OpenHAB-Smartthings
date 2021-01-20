@@ -1,0 +1,4 @@
+class java/util/stream/BaseStream
+iterator
+ ()Ljava/util/Iterator<TT;>;
+ ()L1java/util/Iterator<TT;>;

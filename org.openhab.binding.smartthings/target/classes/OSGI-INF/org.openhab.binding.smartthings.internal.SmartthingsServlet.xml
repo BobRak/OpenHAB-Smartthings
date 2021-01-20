@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="org.openhab.binding.smartthings.internal.SmartthingsServlet" immediate="true" activate="activate" deactivate="deactivate">
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.3.0" name="org.openhab.binding.smartthings.internal.SmartthingsServlet" activate="activate" deactivate="deactivate">
   <service>
     <provide interface="javax.servlet.http.HttpServlet"/>
   </service>

@@ -1,0 +1,25 @@
+class javax/servlet/ServletResponse
+getCharacterEncoding
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+getContentType
+ ()Ljava/lang/String;
+ ()L0java/lang/String;
+getLocale
+ ()Ljava/util/Locale;
+ ()L1java/util/Locale;
+getOutputStream
+ ()Ljavax/servlet/ServletOutputStream;
+ ()L1javax/servlet/ServletOutputStream;
+getWriter
+ ()Ljava/io/PrintWriter;
+ ()L1java/io/PrintWriter;
+setCharacterEncoding
+ (Ljava/lang/String;)V
+ (L0java/lang/String;)V
+setContentType
+ (Ljava/lang/String;)V
+ (L0java/lang/String;)V
+setLocale
+ (Ljava/util/Locale;)V
+ (L0java/util/Locale;)V
